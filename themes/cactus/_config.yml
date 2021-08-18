@@ -2,6 +2,8 @@
 # Content
 ##############################################################################
 
+highlight: monokai
+
 # Link to a page that gives an overview of all your projects.
 # This can be an external link (e.g., to you GitHub profile) or to another
 # page within your website.
@@ -60,8 +62,8 @@ post:
 # Customize the copyright years
 # Note: if start_year/end_year not provided, will use current year.
 copyright:
-  start_year: 2016
-  end_year:
+  # start_year: 2016
+  end_year: 2021
 
 ##############################################################################
 # Look and Feel

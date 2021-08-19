@@ -2,12 +2,10 @@
 # Content
 ##############################################################################
 
-highlight: monokai
-
 # Link to a page that gives an overview of all your projects.
 # This can be an external link (e.g., to you GitHub profile) or to another
 # page within your website.
-projects_url: http://github.com/probberechts
+# projects_url: http://github.com/probberechts
 
 # Set the page direction to RTL or LTR. default is LTR. (if you set it 'rtl', the 'vazir' font will be loaded.)
 direction: ltr
@@ -18,8 +16,9 @@ direction: ltr
 nav:
   home: /
   # about: /about/
-  # articles: /archives/
-  # projects: projects_url
+  Posts: /archives/
+  projects: https://github.com/BarneyShi
+  Resume: https://barneyshi.me/
 
 
 # Links to your social media accounts.
@@ -29,7 +28,7 @@ nav:
 social_links:
   github: https://github.com/BarneyShi
   linkedin: https://www.linkedin.com/in/barneyshi/
-  file-alt: https://barneyshi.me/
+  black-tie: https://barneyshi.me/
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
@@ -41,8 +40,8 @@ tags_overview: false
 #   - post_count: whether to show only the x most recent posts.
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
-  show_all_posts: true
-  # post_count: 5
+  show_all_posts: false
+  post_count: 5
   # sort_updated: false
 
 # Customize the archive view.
@@ -63,7 +62,7 @@ post:
 # Note: if start_year/end_year not provided, will use current year.
 copyright:
   # start_year: 2016
-  end_year: 2021
+  # end_year: 2021
 
 ##############################################################################
 # Look and Feel
@@ -108,6 +107,7 @@ favicon:
 # The color scheme that should be used to highlight codeblocks.
 # See source/css/_highlight for a list of all available color schemes.
 # highlight: rainbow
+highlight: monokai
 
 # Set the color scheme.
 # Available color schemes are 'dark', 'light', 'classic' and 'white'.

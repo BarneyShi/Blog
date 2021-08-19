@@ -3,6 +3,7 @@ title: Leetcode 14 - Longest prefix
 date: 2021-08-18 22:39:45
 tags:
 - leetcode
+- string
 ---
 Write a function to find the longest common prefix string amongst an array of strings.
 

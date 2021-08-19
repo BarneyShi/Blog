@@ -3,6 +3,7 @@ title: Leetcode 13 - Roman to Integer
 date: 2021-08-18 01:55:15
 tags: 
 - leetcode
+- string
 ---
 Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D` and `M`.
 

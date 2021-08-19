@@ -1491,7 +1491,7 @@ article .content .caption {
 }
 .highlight {
   background: #272822;
-  color: #ddd;
+  color: #000;
 }
 .highlight .code .tag,
 .highlight .code .keyword,
@@ -1528,7 +1528,7 @@ article .content .caption {
 .highlight .code .variable,
 .highlight .code .template-tag,
 .highlight .code .template-variable {
-  color: #a6e22e;
+  color: #8fbd33;
 }
 .highlight .code .comment,
 .highlight .code .quote,
@@ -1567,7 +1567,8 @@ code {
   border: 1px dotted #666;
   border-radius: 2px;
   -webkit-border-radius: 2px;
-  color: #10e098;
+  color: #123ee0;
+  font-weight: 600;
 }
 .highlight {
   overflow-x: auto;

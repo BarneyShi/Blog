@@ -18,7 +18,7 @@ direction: ltr
 nav:
   home: /
   # about: /about/
-  articles: /archives/
+  # articles: /archives/
   # projects: projects_url
 
 
@@ -29,7 +29,7 @@ nav:
 social_links:
   github: https://github.com/BarneyShi
   linkedin: https://www.linkedin.com/in/barneyshi/
-  file: https://barneyshi.me/
+  file-alt: https://barneyshi.me/
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
@@ -41,9 +41,9 @@ tags_overview: false
 #   - post_count: whether to show only the x most recent posts.
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
-  show_all_posts: false
-  post_count: 5
-  sort_updated: false
+  show_all_posts: true
+  # post_count: 5
+  # sort_updated: false
 
 # Customize the archive view.
 # Options:

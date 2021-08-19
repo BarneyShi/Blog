@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Team1-VanHouse",
+    "url": "https://vanhouse.herokuapp.com/",
+    "desc": "CPSC455 course project. A full-stack website dedicated to facilitate the renting processb between Vancouver-based tenants and landlords."
+  },
+  {
+    "name": "iMemeDB",
+    "url": "https://imemedb.herokuapp.com/",
+    "desc": "A CRUD website purely for meme reviews where users can rate and share stories about their favourite memes."
+  },
+  {
+    "name": "AutoTurn Online",
+    "url": "https://autoturnonline.com/",
+    "desc": "A static landing page, which is my first co-op project."
+  },
+  {
+    "name": "YelpLake",
+    "url": "https://yelplakes.herokuapp.com/",
+    "desc": "Where it all started - My first project mimicing a famous Udemy course 'Web Development Bootcamp."
+  }
+]

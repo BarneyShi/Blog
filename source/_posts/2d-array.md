@@ -2,7 +2,7 @@
 title: Hackrank - 2D-array
 date: 2021-08-18 22:58:28
 tags:
-- hackrank
+- hackerrank
 - array
 ---
 **Thought:** 

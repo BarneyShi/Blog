@@ -8,7 +8,8 @@ tags:
 ### Analysis:
 - Average time complexity: After a long deduction, it's `O(nlogn)`
 - Worst time complexity: It happens when the `pivot` is always picked as the `largest` or `smallest` value. So it's `O(n^2)`
-### Steps
+
+### Steps: 
 1. Choose an element as a pivot
 2. Next, partition the remaining items into two disjoint sublists,
 such that all items greater than the pivot follow it, and all

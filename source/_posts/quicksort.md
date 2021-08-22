@@ -7,13 +7,15 @@ tags:
 ---
 ### Analysis:
 - Average time complexity: After a long deduction, it's `O(nlogn)`
-- Worst time complexity: It happens when the `pivot` is always picked as the `largest` or `smallest` value. So it's `O(n^2)`. 
+- Worst time complexity: It happens when the `pivot` is always picked as the `largest` or `smallest` value. So it's `O(n^2)`.
+
 ### Steps: 
 1. Choose an element as a pivot
 2. Next, partition the remaining items into two disjoint sublists,
 such that all items greater than the pivot follow it, and all
 elements less than the pivot precede it.
 3. Start recursion.
+
 ### Note: The tricky part is how to implememnt `partition`.
 ```javascript
 const qSort = (arr, start, end) => {
@@ -45,7 +47,7 @@ const partition = (arr, start, end) => {
 Take `[4, 2, 7, 1, 3, 9, 8]` for example:
 ```
 Intial: [4, 2, 7, 1, 3, 9, 8]
-    *
+            *
 After iteration: [4, 2, 7, 1, 3, 9, 8]
                         *
 After iteration: [4, 2, 7, 1, 3, 9, 8]

@@ -1,5 +1,5 @@
 ---
-title: combinations
+title: Leetcode 77 - Combinations
 date: 2021-08-21 17:46:32
 tags:
 - leetcode

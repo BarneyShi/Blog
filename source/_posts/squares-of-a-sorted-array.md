@@ -29,11 +29,12 @@ Output: [4,9,9,49,121]
 **Note:** It's very easy to come up with a brute force way. But double-pointer is fancier.
 
 ```javascript
-/* Brute force */
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
+ 
+/* Brute force */
 var sortedSquares = function (nums) {
   const arr = nums.map((e) => e ** 2);
   return arr.sort((a, b) => a - b);

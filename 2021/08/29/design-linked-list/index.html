@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Need some ES5 inheritance knowledge  Design your implementation of the linked list. You can choose to use a singly or doubly linked list.A node in a singly linked list should have two attribute">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 707 - Design linked list">
+<meta property="og:url" content="http://example.com/2021/08/29/design-linked-list/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Need some ES5 inheritance knowledge  Design your implementation of the linked list. You can choose to use a singly or doubly linked list.A node in a singly linked list should have two attribute">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-29T01:56:33.000Z">
+<meta property="article:modified_time" content="2021-08-29T09:00:56.600Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="medium">
+<meta property="article:tag" content="linked list">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 707 - Design linked list</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/08/27/remove-element/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/29/design-linked-list/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/29/design-linked-list/&text=Leetcode 707 - Design linked list"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/29/design-linked-list/&is_video=false&description=Leetcode 707 - Design linked list"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 707 - Design linked list&body=Check out this article: http://example.com/2021/08/29/design-linked-list/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/29/design-linked-list/&name=Leetcode 707 - Design linked list&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/29/design-linked-list/&t=Leetcode 707 - Design linked list"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 707 - Design linked list
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-29T01:56:33.000Z" itemprop="datePublished">2021-08-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/leetcode/" rel="tag">leetcode</a>, <a class="tag-link-link" href="/tags/linked-list/" rel="tag">linked list</a>, <a class="tag-link-link" href="/tags/medium/" rel="tag">medium</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>Note:</strong></p>
+<ul>
+<li>Need some ES5 inheritance knowledge</li>
+</ul>
+<p>Design your implementation of the linked list. You can choose to use a singly or doubly linked list.<br>A node in a singly linked list should have two attributes: val and next. val is the value of the current node, and next is a pointer/reference to the next node.<br>If you want to use the doubly linked list, you will need one more attribute prev to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed.</p>
+<p>Implement the MyLinkedList class:</p>
+<ul>
+<li>MyLinkedList() Initializes the MyLinkedList object.</li>
+<li>int get(int index) Get the value of the indexth node in the linked list. If the index is invalid, return -1.</li>
+<li><code>void addAtHead(int val)</code> Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.</li>
+<li><code>void addAtTail(int val)</code> Append a node of value val as the last element of the linked list.</li>
+<li><code>void addAtIndex(int index, int val)</code> Add a node of value val before the indexth node in the linked list. If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, the node will not be inserted.</li>
+<li><code>void deleteAtIndex(int index)</code> Delete the indexth node in the linked list, if the index is valid</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;MyLinkedList&quot;, &quot;addAtHead&quot;, &quot;addAtTail&quot;, &quot;addAtIndex&quot;, &quot;get&quot;, &quot;deleteAtIndex&quot;, &quot;get&quot;]</span><br><span class="line">[[], [1], [3], [1, 2], [1], [1], [1]]</span><br><span class="line">Output</span><br><span class="line">[null, null, null, null, 2, null, 3]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">MyLinkedList myLinkedList = new MyLinkedList();</span><br><span class="line">myLinkedList.addAtHead(1);</span><br><span class="line">myLinkedList.addAtTail(3);</span><br><span class="line">myLinkedList.addAtIndex(1, 2);    // linked list becomes 1-&gt;2-&gt;3</span><br><span class="line">myLinkedList.get(1);              // return 2</span><br><span class="line">myLinkedList.deleteAtIndex(1);    // now the linked list is 1-&gt;3</span><br><span class="line">myLinkedList.get(1);              // return 3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LinkNode</span>(<span class="params">val, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.val = val;</span><br><span class="line">  <span class="built_in">this</span>.next = next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Initialize your data structure here.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> MyLinkedList = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.size = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">this</span>.head = <span class="literal">null</span>;</span><br><span class="line">  <span class="built_in">this</span>.tail = <span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Get the nth node</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">index</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;LinkNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.getNode = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">this</span>.size - <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> pointer = <span class="built_in">this</span>.head;</span><br><span class="line">  <span class="keyword">while</span> (i++ &lt; index) &#123;</span><br><span class="line">    pointer = pointer.next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Get the value of the index-th node in the linked list. If the index is invalid, return -1. </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">index</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.get = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">this</span>.size - <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> node = <span class="built_in">this</span>.getNode(index);</span><br><span class="line">  <span class="keyword">return</span> node.val;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">val</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.addAtHead = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newHead = <span class="keyword">new</span> LinkNode(val, <span class="built_in">this</span>.head);</span><br><span class="line">  <span class="built_in">this</span>.head = newHead;</span><br><span class="line">  <span class="built_in">this</span>.size++;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">this</span>.tail) &#123;</span><br><span class="line">    <span class="built_in">this</span>.tail = newHead;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Append a node of value val to the last element of the linked list. </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">val</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.addAtTail = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newTail = <span class="keyword">new</span> LinkNode(val, <span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">this</span>.size === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.tail = newTail;</span><br><span class="line">    <span class="built_in">this</span>.head = newTail;</span><br><span class="line">    <span class="built_in">this</span>.size++;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> oldTail = <span class="built_in">this</span>.getNode(<span class="built_in">this</span>.size - <span class="number">1</span>);</span><br><span class="line">  oldTail.next = newTail;</span><br><span class="line">  <span class="built_in">this</span>.tail = newTail;</span><br><span class="line">  <span class="built_in">this</span>.size++;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>index </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">val</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.addAtIndex = <span class="function"><span class="keyword">function</span>(<span class="params">index, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (index &gt; <span class="built_in">this</span>.size) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> (index &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.addAtHead(val);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (index === <span class="built_in">this</span>.size) &#123;</span><br><span class="line">    <span class="built_in">this</span>.addAtTail(val);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> node = <span class="keyword">new</span> LinkNode(val,<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">this</span>.getNode(index-<span class="number">1</span>);</span><br><span class="line">  node.next = target.next;</span><br><span class="line">  target.next = node;</span><br><span class="line">  <span class="built_in">this</span>.size++;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Delete the index-th node in the linked list, if the index is valid. </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">index</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">MyLinkedList.prototype.deleteAtIndex = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">this</span>.size - <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> (index === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.head = <span class="built_in">this</span>.head.next;</span><br><span class="line">    <span class="built_in">this</span>.size--;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">this</span>.getNode(index-<span class="number">1</span>);</span><br><span class="line">  target.next = target.next.next;</span><br><span class="line">  <span class="built_in">this</span>.size--;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Your MyLinkedList object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * var obj = new MyLinkedList()</span></span><br><span class="line"><span class="comment"> * var param_1 = obj.get(index)</span></span><br><span class="line"><span class="comment"> * obj.addAtHead(val)</span></span><br><span class="line"><span class="comment"> * obj.addAtTail(val)</span></span><br><span class="line"><span class="comment"> * obj.addAtIndex(index,val)</span></span><br><span class="line"><span class="comment"> * obj.deleteAtIndex(index)</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/29/design-linked-list/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/29/design-linked-list/&text=Leetcode 707 - Design linked list"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/29/design-linked-list/&is_video=false&description=Leetcode 707 - Design linked list"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 707 - Design linked list&body=Check out this article: http://example.com/2021/08/29/design-linked-list/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/29/design-linked-list/&title=Leetcode 707 - Design linked list"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/29/design-linked-list/&name=Leetcode 707 - Design linked list&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/29/design-linked-list/&t=Leetcode 707 - Design linked list"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

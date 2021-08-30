@@ -4,7 +4,7 @@ date: 2021-08-27 01:08:45
 tags:
 - leetcode
 - medium
-- linked-list
+- linked list
 ---
 Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
 ![img](https://assets.leetcode.com/uploads/2021/03/06/removelinked-list.jpg)

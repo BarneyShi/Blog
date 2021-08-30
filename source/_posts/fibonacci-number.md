@@ -18,6 +18,7 @@ Input: n = 2
 Output: 1
 Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
 ```
+**Iterative**
 ```javascript
 // Time complexity: O(n)
 // DP formula: F(n) = F(n-1) + F(n-2);
@@ -37,6 +38,7 @@ var fib = function(n) {
   return ans[n];
 };
 ```
+**Recursive**
 ```javascript
 // Time complexity: O(n^2)
 // You can think of it as a tree, and the number of tree nodes is its time complexity. There are 2^0 + 2^1 + 2^2 + ... + 2^n nodes, which is O(n^2);

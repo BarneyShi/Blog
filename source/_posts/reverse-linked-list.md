@@ -10,7 +10,7 @@ tags:
 
 Given the head of a singly linked list, reverse the list, and return the reversed list.
 
-**Example1:**
+**Example 1:**
 ![img](https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg)
 ```
 Input: head = [1,2,3,4,5]

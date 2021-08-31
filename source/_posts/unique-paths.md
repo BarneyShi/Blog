@@ -5,7 +5,10 @@ tags:
 - leetcode
 - dp
 ---
-**`Note`:** The DP formula is `DP[i][j] = DP[i-1][j] + DP[i][j-1]`; Every element in this 2D array means how many paths there are from `[0][0]` to `[i][j]`.
+**`Note`:** 
+- The DP formula is `DP[i][j] = DP[i-1][j] + DP[i][j-1]`; 
+- Every element in this 2D array means how many paths there are from `[0][0]` to `[i][j]`. 
+- To initialize our array, we just need to fill the `first row` and `col` with `1` because there is only `1` way from `(0,0)` to those places.
 
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 

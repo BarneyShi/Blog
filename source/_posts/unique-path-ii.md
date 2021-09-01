@@ -1,5 +1,5 @@
 ---
-title: Leetcode 63 - Unique path ii
+title: Leetcode 63 - Unique path II
 date: 2021-08-31 01:55:27
 tags:
 - leetcode

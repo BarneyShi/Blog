@@ -16,7 +16,7 @@ Output: 5
 ```
 
 **`Note:`** 
-- `DP[i]` represents the numbe of unique BST tree.
+- `DP[i]` represents the number of unique BST trees.
 - The DP formula is `DP[i] += DP[j] + DP[i-j-1]`.
   - Explaination: 
   ![img](https://img-blog.csdnimg.cn/20210107093106367.png)

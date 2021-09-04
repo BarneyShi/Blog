@@ -14,6 +14,9 @@ Given an array of weight `[w0, w1, w2...]` and an array of value `[v0, v1, v2...
     - Not select `i`, then the sum of value is the same of selecting from `0` to `i-1`.
     - Select `i`, then the sum of value is equal to selecing from `0` to `i-1` but substracting the weight of `i` from the bag.
 
+**How to initialize DP:**
+![img](https://code-thinking.cdn.bcebos.com/pics/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%9810.jpg)
+
 ```javascript
 /**
  * @param {array} weight

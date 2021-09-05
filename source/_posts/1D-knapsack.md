@@ -2,7 +2,7 @@
 title: Leetcode - 1D knapsack optimization
 date: 2021-09-04 02:56:13
 tags:
--leetcode
+- leetcode
 - dp
 ---
 We can optimize what we got from using a 2D array.

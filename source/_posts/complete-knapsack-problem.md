@@ -14,6 +14,8 @@ There are unlimited numbre of each item. What's the largest total value you can 
 **`Note:`**
 - It doesn't matter you iterate `i (item)` or `j (bag)` first.
 - The inner loop `doesn't` need to be in `reversed` order because you can add an item multi times.
+- If you `don't care about the order` of elements in results, iterate `i` first.
+  - Explaination: When we iterate `i` first, there won't be situations where `{1, 5}` and `{5, 1}` are considered two different results because the order of `i` is fixed now.
 
 ```javascript
 function completeKnapSack(weight, value, bagWeight) {

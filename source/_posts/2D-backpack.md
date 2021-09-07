@@ -1,5 +1,5 @@
 ---
-title: Leetcode - 01 Knapsack problem
+title: DP - 01 Knapsack problem
 date: 2021-09-03 01:52:23
 tags:
 - leetcode

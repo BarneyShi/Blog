@@ -1,5 +1,5 @@
 ---
-title: Leetcode - 1D knapsack optimization
+title: DP - 1D knapsack optimization
 date: 2021-09-04 02:56:13
 tags:
 - leetcode

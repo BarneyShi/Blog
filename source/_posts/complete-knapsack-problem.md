@@ -1,5 +1,5 @@
 ---
-title: Leetcode - Complete knapsack problem
+title: DP - Complete knapsack problem
 date: 2021-09-06 21:41:15
 tags:
 - leetcode

@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Given an array of weight [w0, w1, w2...] and an array of value [v0, v1, v2...] for some items. Pick some items to fill up a backpack whose maximum capacity is N, with the biggest sum of values. Note:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode - 01 Knapsack problem">
+<meta property="og:title" content="DP - 01 Knapsack problem">
 <meta property="og:url" content="http://example.com/2021/09/03/2D-backpack/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
 <meta property="og:description" content="Given an array of weight [w0, w1, w2...] and an array of value [v0, v1, v2...] for some items. Pick some items to fill up a backpack whose maximum capacity is N, with the biggest sum of values. Note:">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/pics/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%9810.jpg">
 <meta property="article:published_time" content="2021-09-03T01:52:23.000Z">
-<meta property="article:modified_time" content="2021-09-07T07:49:50.738Z">
+<meta property="article:modified_time" content="2021-09-07T07:51:12.616Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="dp">
@@ -40,7 +40,7 @@
       
     
     <!-- title -->
-    <title>Leetcode - 01 Knapsack problem</title>
+    <title>DP - 01 Knapsack problem</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -95,16 +95,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/03/2D-backpack/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/03/2D-backpack/&text=Leetcode - 01 Knapsack problem"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/03/2D-backpack/&is_video=false&description=Leetcode - 01 Knapsack problem"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode - 01 Knapsack problem&body=Check out this article: http://example.com/2021/09/03/2D-backpack/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/03/2D-backpack/&name=Leetcode - 01 Knapsack problem&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/03/2D-backpack/&t=Leetcode - 01 Knapsack problem"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/03/2D-backpack/&text=DP - 01 Knapsack problem"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/03/2D-backpack/&is_video=false&description=DP - 01 Knapsack problem"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DP - 01 Knapsack problem&body=Check out this article: http://example.com/2021/09/03/2D-backpack/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/03/2D-backpack/&name=DP - 01 Knapsack problem&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/03/2D-backpack/&t=DP - 01 Knapsack problem"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -121,7 +121,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Leetcode - 01 Knapsack problem
+        DP - 01 Knapsack problem
     </h1>
 
 
@@ -198,16 +198,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/03/2D-backpack/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/03/2D-backpack/&text=Leetcode - 01 Knapsack problem"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/03/2D-backpack/&is_video=false&description=Leetcode - 01 Knapsack problem"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode - 01 Knapsack problem&body=Check out this article: http://example.com/2021/09/03/2D-backpack/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=Leetcode - 01 Knapsack problem"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/03/2D-backpack/&name=Leetcode - 01 Knapsack problem&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/03/2D-backpack/&t=Leetcode - 01 Knapsack problem"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/03/2D-backpack/&text=DP - 01 Knapsack problem"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/03/2D-backpack/&is_video=false&description=DP - 01 Knapsack problem"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DP - 01 Knapsack problem&body=Check out this article: http://example.com/2021/09/03/2D-backpack/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/03/2D-backpack/&title=DP - 01 Knapsack problem"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/03/2D-backpack/&name=DP - 01 Knapsack problem&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/03/2D-backpack/&t=DP - 01 Knapsack problem"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

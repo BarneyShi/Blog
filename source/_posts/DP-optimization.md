@@ -1,5 +1,5 @@
 ---
-title: DP optimization
+title: DP - Optimization 2D to 1D
 date: 2021-09-06 00:38:09
 tags:
 - leetcode

@@ -22,7 +22,7 @@ Output:
   [1,3],
   [1,4],
 ]
-**Note:** One of the most typical backtracking problems. Remeber to use spread operator while pushing element into ans because we are passing `path` as `reference`.
+**Note:** One of the most typical backtracking problems. Remeber to use spread operator while pushing element into ans because we are passing `path` as `reference`. `path` always points to a place in memory and this variable will eventually be empty because of our `undo` operations in code. So if we don't use `spread operator` to clone a new array and push it into `ans`, what we get will just be empty.
 ```javascript
 /**
  * @param {number} n

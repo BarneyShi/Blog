@@ -5,10 +5,21 @@ tags:
 - leetcode
 - backtracking
 ---
+**`Note:`**
+- This is a `backtracking` problem.
+- Not like other `combination sum` questions. You are not just iterating a `single` string, instead, you are iterating `many` strings in responding to every `digit` of digits.
+- Three steps to do backtracking problems
+  - The backtracking `params` are current index of digits and digits.
+  - The `termination condition` is `index === digits.length`
+  - The logic of iterating on each level is the most important part
+    - Get the string according to `index`.
+    - Do backtracking.
+
 Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
 
 A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
 
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png)
 ```javascript
 /**
  * @param {string} digits
@@ -28,7 +39,6 @@ var letterCombinations = function(digits) {
       return;
     }
     const str = map[digits[index]];
-    console.log(index)
     for (let i = 0; i < str.length; i++) {
       path.push(str[i]);
       backtracking(index + 1, digits);

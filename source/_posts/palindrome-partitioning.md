@@ -9,6 +9,7 @@ tags:
 - This is a backtracking problem.
 - Need a helper `isPalindrome`
 - We need to pass a param `startIndex` as usual, and `[startIndex, i]` is just what we got by spliting.
+![img](https://code-thinking.cdn.bcebos.com/pics/131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2.jpg)
 
 Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
 

@@ -1,5 +1,5 @@
 ---
-title: Leetcode 377 - Combination sum iv
+title: Leetcode 377 - Combination sum IV
 date: 2021-09-07 16:45:25
 tags:
 - leetcode

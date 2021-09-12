@@ -1,5 +1,5 @@
 ---
-title: Leetcode 40 - Combination sum ii
+title: Leetcode 40 - Combination sum II
 date: 2021-09-10 17:59:56
 tags:
 - leetcode

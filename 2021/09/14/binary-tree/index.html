@@ -18,8 +18,10 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200806190304693.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200806190511967.png">
 <meta property="og:image" content="https://i.imgur.com/Lutiahp.png">
+<meta property="og:image" content="https://i.imgur.com/ueWnuvn.png">
+<meta property="og:image" content="https://i.imgur.com/sbTuu7e.png">
 <meta property="article:published_time" content="2021-09-14T19:12:11.000Z">
-<meta property="article:modified_time" content="2021-09-15T09:59:05.786Z">
+<meta property="article:modified_time" content="2021-09-15T10:25:56.091Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="binary tree">
 <meta name="twitter:card" content="summary">
@@ -112,7 +114,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-many-kinds-of-binary-tree-are-there"><span class="toc-number">1.</span> <span class="toc-text">How many kinds of binary tree are there?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Different-traversal-ways"><span class="toc-number">2.</span> <span class="toc-text">Different traversal ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-define-your-own-tree-node"><span class="toc-number">3.</span> <span class="toc-text">How to define your own tree node?</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-many-kinds-of-binary-tree-are-there"><span class="toc-number">1.</span> <span class="toc-text">How many kinds of binary tree are there?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Different-traversal-ways"><span class="toc-number">2.</span> <span class="toc-text">Different traversal ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-define-your-own-tree-node"><span class="toc-number">3.</span> <span class="toc-text">How to define your own tree node?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Traverse-in-iterative-ways"><span class="toc-number">4.</span> <span class="toc-text">Traverse in iterative ways</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -181,6 +183,31 @@
 <li><code>Post order</code>: 1, 2, 4, 7, 8, 6, 5</li>
 </ul>
 <h2 id="How-to-define-your-own-tree-node"><a href="#How-to-define-your-own-tree-node" class="headerlink" title="How to define your own tree node?"></a>How to define your own tree node?</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unction <span class="function"><span class="title">TreeNode</span>(<span class="params">val, left, right</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.val = (val===<span class="literal">undefined</span> ? <span class="number">0</span> : val)</span><br><span class="line">    <span class="built_in">this</span>.left = (left===<span class="literal">undefined</span> ? <span class="literal">null</span> : left)</span><br><span class="line">    <span class="built_in">this</span>.right = (right===<span class="literal">undefined</span> ? <span class="literal">null</span> : right)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Traverse-in-iterative-ways"><a href="#Traverse-in-iterative-ways" class="headerlink" title="Traverse in iterative ways"></a>Traverse in iterative ways</h2><p><img src="https://i.imgur.com/ueWnuvn.png" alt="img"></p>
+<ul>
+<li><p><code>Pre-order</code>:</p>
+<ul>
+<li>Because we are using a <code>stack</code>, to ensure that we push <code>left</code> node first into the <code>result</code> by popping it out of <code>stack</code>. We have to push <code>right</code> node first.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> preorderTraversal = <span class="function"><span class="keyword">function</span>(<span class="params">root, result = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> result;</span><br><span class="line">  <span class="keyword">let</span> stack = [root];</span><br><span class="line">  <span class="keyword">while</span> (stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> cur = stack.pop();</span><br><span class="line">    result.push(cur.val);</span><br><span class="line">    cur.right &amp;&amp; stack.push(cur.right);</span><br><span class="line">    cur.left &amp;&amp; stack.push(cur.left);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>In-order</code><br><img src="https://i.imgur.com/sbTuu7e.png" alt="img"></p>
+<ul>
+<li>Think about this particular tree.</li>
+<li>The result we want is <code>5, 6, 7</code></li>
+<li></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inorderTraversal</span>(<span class="params">root, result = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> cur = root;</span><br><span class="line">  <span class="keyword">while</span> (stack.length || cur) &#123;</span><br><span class="line">    <span class="keyword">if</span> (cur) &#123;</span><br><span class="line">      <span class="comment">// Let go deeper in left subtree </span></span><br><span class="line">      stack.push(cur);</span><br><span class="line">      cur = cur.left;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Three is no more left subtree. We need to record `cur.val` then turn to the right subtree.</span></span><br><span class="line">      <span class="keyword">let</span> node = stack.pop();</span><br><span class="line">      result.push(node.val);</span><br><span class="line">      cur = node.right;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Post-order</code><ul>
+<li>The order of <code>pre-order</code> is <code>Root, Left, Right</code>, so if we just tweak the order of <code>left, right</code> a bit, then <code>reverse</code> the result, it would be <code>Left, Right, Root</code>!!</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postorderTraversal = <span class="function"><span class="keyword">function</span>(<span class="params">root, result = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> result;</span><br><span class="line">  <span class="keyword">let</span> stack = [root];</span><br><span class="line">  <span class="keyword">let</span> cur = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">while</span> (stack.length) &#123;</span><br><span class="line">    cur = stack.pop();</span><br><span class="line">    result.push(cur.val);</span><br><span class="line">    <span class="comment">// Opposite order of `pre-order`.</span></span><br><span class="line">    cur.left &amp;&amp; stack.push(cur.left);</span><br><span class="line">    cur.right &amp;&amp; stack.push(cur.right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result.reverse();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
@@ -205,7 +232,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-many-kinds-of-binary-tree-are-there"><span class="toc-number">1.</span> <span class="toc-text">How many kinds of binary tree are there?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Different-traversal-ways"><span class="toc-number">2.</span> <span class="toc-text">Different traversal ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-define-your-own-tree-node"><span class="toc-number">3.</span> <span class="toc-text">How to define your own tree node?</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-many-kinds-of-binary-tree-are-there"><span class="toc-number">1.</span> <span class="toc-text">How many kinds of binary tree are there?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Different-traversal-ways"><span class="toc-number">2.</span> <span class="toc-text">Different traversal ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-define-your-own-tree-node"><span class="toc-number">3.</span> <span class="toc-text">How to define your own tree node?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Traverse-in-iterative-ways"><span class="toc-number">4.</span> <span class="toc-text">Traverse in iterative ways</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

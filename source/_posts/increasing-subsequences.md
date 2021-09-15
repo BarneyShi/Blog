@@ -10,6 +10,7 @@ tags:
 - To avoid duplicates but also preserve the order of original elements, you cannot just used `sort` on nums.
 - Use `used[]` to check duplicates on the `same tree level` before adding them to your path.
 - Need to add `every qualified node` instead of just `leaf node`.
+ ![img](https://img-blog.csdnimg.cn/20201124200229824.png)
  
 Given an integer array nums, return all the different possible increasing subsequences of the given array with at least two elements. You may return the answer in any order.
 

@@ -8,6 +8,7 @@ tags:
 **`Note:`**
 - This is a `backtracking` problem.
 - The key is to make every element get `added multi times`.
+- We still need `startIndex` because we need it to know where we should start our forloop. If we just use `0` for start point, there will be duplicates. Like `[2,5,3]` vs `[5,2,3]`.
 
 Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
 

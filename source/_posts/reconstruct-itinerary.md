@@ -49,8 +49,8 @@ var findItinerary = function(tickets) {
       found = true;
       return;
     }
-    for (let i = 0; i < tickets.length; i++) {
-      if (tickets[i][0] !== departure || found || visited[i]) continue;
+    for (let i = 0; i < tickets.length && !found; i++) {
+      if (tickets[i][0] !== departure || visited[i]) continue;
       visited[i] = true;
       path.push(tickets[i][1]);
       backtracking(path[path.length-1]);

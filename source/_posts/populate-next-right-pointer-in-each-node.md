@@ -1,5 +1,5 @@
 ---
-title: Leetcode 116 - Populate next right pointer in each node
+title: Leetcode 116/117 - Populate next right pointer in each node
 date: 2021-09-16 00:38:39
 tags:
 - leetcode

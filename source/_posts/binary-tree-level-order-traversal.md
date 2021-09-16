@@ -5,6 +5,10 @@ tags:
 - leetcode
 - binary tree
 ---
+**`Note`**:
+- Use iterative way.
+- Use `queue` data structure and `shift()` function to get the first element.
+
 Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
 **Example**

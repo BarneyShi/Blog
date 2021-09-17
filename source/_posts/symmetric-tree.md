@@ -1,5 +1,5 @@
 ---
-title: Leetcode 101 - Symmetric tree
+title: Leetcode 101/100 - Symmetric tree / Same tree
 date: 2021-09-16 22:01:58
 tags:
 - leetcode

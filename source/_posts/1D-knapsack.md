@@ -7,7 +7,7 @@ tags:
 ---
 We can optimize what we got from using a 2D array.
 In `DP[i][j] = max(DP[i-1][j], DP[i-1][j-weight[i] + value[i])`, we can see the state of `DP[i]` is only related to `DP[i-1]`. Somehow, we can use a 1D array to get what we want: 
-`DP[j] = max(DP[j - weight(i)] + value[i])`.
+`DP[j] = max(DP[i], DP[j - weight(i)] + value[i])`.
 
 **Note:**
 1. We have to iterate `item` first then `bag`.

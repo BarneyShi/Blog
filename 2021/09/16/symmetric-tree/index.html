@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Note  Intuitive way is to use recursion. There are three situations Both are null, which means left subtree and right subtree are the same. One of them is null, so it’s false Both are not null, then w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 101 - Symmetric tree">
+<meta property="og:title" content="Leetcode 101&#x2F;100 - Symmetric tree &#x2F; Same tree">
 <meta property="og:url" content="http://example.com/2021/09/16/symmetric-tree/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
 <meta property="og:description" content="Note  Intuitive way is to use recursion. There are three situations Both are null, which means left subtree and right subtree are the same. One of them is null, so it’s false Both are not null, then w">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg">
 <meta property="article:published_time" content="2021-09-16T22:01:58.000Z">
-<meta property="article:modified_time" content="2021-09-17T05:12:29.230Z">
+<meta property="article:modified_time" content="2021-09-17T05:16:31.951Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="binary tree">
@@ -40,7 +40,7 @@
       
     
     <!-- title -->
-    <title>Leetcode 101 - Symmetric tree</title>
+    <title>Leetcode 101/100 - Symmetric tree / Same tree</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -93,16 +93,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/16/symmetric-tree/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/16/symmetric-tree/&text=Leetcode 101 - Symmetric tree"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/16/symmetric-tree/&is_video=false&description=Leetcode 101 - Symmetric tree"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode 101 - Symmetric tree&body=Check out this article: http://example.com/2021/09/16/symmetric-tree/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/16/symmetric-tree/&name=Leetcode 101 - Symmetric tree&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/16/symmetric-tree/&t=Leetcode 101 - Symmetric tree"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/16/symmetric-tree/&text=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/16/symmetric-tree/&is_video=false&description=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 101/100 - Symmetric tree / Same tree&body=Check out this article: http://example.com/2021/09/16/symmetric-tree/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/16/symmetric-tree/&name=Leetcode 101/100 - Symmetric tree / Same tree&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/16/symmetric-tree/&t=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -119,7 +119,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Leetcode 101 - Symmetric tree
+        Leetcode 101/100 - Symmetric tree / Same tree
     </h1>
 
 
@@ -197,16 +197,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/16/symmetric-tree/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/16/symmetric-tree/&text=Leetcode 101 - Symmetric tree"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/16/symmetric-tree/&is_video=false&description=Leetcode 101 - Symmetric tree"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode 101 - Symmetric tree&body=Check out this article: http://example.com/2021/09/16/symmetric-tree/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101 - Symmetric tree"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/16/symmetric-tree/&name=Leetcode 101 - Symmetric tree&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/16/symmetric-tree/&t=Leetcode 101 - Symmetric tree"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/16/symmetric-tree/&text=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/16/symmetric-tree/&is_video=false&description=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 101/100 - Symmetric tree / Same tree&body=Check out this article: http://example.com/2021/09/16/symmetric-tree/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/16/symmetric-tree/&title=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/16/symmetric-tree/&name=Leetcode 101/100 - Symmetric tree / Same tree&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/16/symmetric-tree/&t=Leetcode 101/100 - Symmetric tree / Same tree"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

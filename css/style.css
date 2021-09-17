@@ -1575,6 +1575,8 @@ code {
   border-radius: 2px;
   -webkit-border-radius: 2px;
   color: #da132f;
+  font-family: inherit;
+  font-size: 0.87rem;
 }
 .highlight {
   overflow-x: auto;

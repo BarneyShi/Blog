@@ -10,8 +10,11 @@ In `DP[i][j] = max(DP[i-1][j], DP[i-1][j-weight[i] + value[i])`, we can see the 
 `DP[j] = max(DP[i], DP[j - weight(i)] + value[i])`.
 
 **Note:**
-1. We have to iterate `item` first then `bag`.
-2. We have to iterate `bag` from the `end` to the `start`.
+- When we don't care about the `order` of element:
+  1. We have to iterate `item` first then `bag`. (So for arr[1,2..], we can be sure [2,1] won't happen in any result.)
+  2. We have to iterate `bag` from the `end` to the `start`.
+- When we care about the order of element:
+  1. Iterate `j` first then `i`.
 
 ```javascript
 function 1DKnapsack(weight, value, bagWeight) {

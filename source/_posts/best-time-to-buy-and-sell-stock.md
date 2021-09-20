@@ -9,7 +9,7 @@ tags:
 - DP1 deduction: `dp[i] = max(dp[i-1], price[i] - min element between 0 and i-1)`.
 - Use `min` to remember previous min and compare with `price[i]` so we don't need to calculate min every time from array [0, i-1].
 - DP2 uses a 2D array. `DP[i][0]` means the most money an investor has if he `owns` a stock.
-  - dp[i][0] = Math.max(dp[i-1][0], -prices[i]);
+  - dp[i][0] = Math.max(dp[i-1][0], -prices[i]); (`Note`: it's `-prices[i]` instead of `dp[i-1][1]-prices[i]` because we can only buy and sell once)
 - `DP[i][1]` means the most money an investors has if he `doesn't own` a stock.
   - dp[i][1] = Math.max(dp[i-1][1], prices[i]+dp[i-1][0]);
 

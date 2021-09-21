@@ -44,6 +44,6 @@ var maxProfit = function(prices) {
     dp[i][3] = Math.max(dp[i-1][2] - prices[i], dp[i-1][3]);
     dp[i][4] = Math.max(dp[i-1][3] + prices[i], dp[i-1][4]);
   }
-  return Math.max(dp[prices.length-1][0], dp[prices.length-1][2], dp[prices.length-1][4]);
+  return dp[prices.length-1][4];
 };
 ```

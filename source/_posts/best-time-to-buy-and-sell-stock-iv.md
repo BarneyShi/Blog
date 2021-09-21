@@ -1,49 +1,59 @@
 ---
-title: Leetcode 123 - Best time to buy and sell stock III
-date: 2021-09-20 04:05:28
+title: Leetcode 188 - Best time to buy and sell stock iv
+date: 2021-09-20 17:18:51
 tags:
 - leetcode
 - dp
 ---
 **`Note`**
-- We use `4` states to represent the state of each day (It doesn't mean each state happens on the day, could be in the past).
-   - `0` no operation since day0.
-   - `1` buy a stock for the 1st time `before today` or `today`.
-   - `2` sell a stock for the 1st time `before today` or `today`.
-   - `3` buy a stock 2rd time `before today` or `today`.
-   - `4` sell a stock 2rd time `before today` or `today`.
-- The most profitable operation must be at `dp[price.length-1][4]`.
+- Basically we need to find the pattern from `III`.
+- To initialize the `dp` array, it's not hard to find that `even index` needs to be `0` and `odd index` needs to be `prices[0]`.
+- To iterate through `i`, two sitations based on i
+  - When i is even, `dp[i][j] = Math.max(dp[i-1][j-1] + prices[i], dp[i-1][j]);`
+  - When i is odd, `dp[i][j] = Math.max(dp[i-1][j-1] - prices[i], dp[i-1][j])`
 
-You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You are given an integer array prices where prices[i] is the price of a given stock on the ith day, and an integer k.
 
-Find the maximum profit you can achieve. You may complete at most two transactions.
+Find the maximum profit you can achieve. You may complete at most k transactions.
 
 Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
 **Example**
 ```
-Input: prices = [3,3,5,0,0,3,1,4]
-Output: 6
-Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
-Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
+Input: k = 2, prices = [2,4,1]
+Output: 2
+Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
 ```
 
 ```javascript
 /**
+ * @param {number} k
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
-  let dp = [...Array(prices.length)].map(e => Array(2).fill(0));
-  dp[0][0] = 0, dp[0][1] = -prices[0], dp[0][2] = 0, dp[0][3] = -prices[0], dp[0][4] = 0;
-  
-  for (let i = 1; i < prices.length; i++) {
-    dp[i][0] = dp[i-1][0];
-    dp[i][1] = Math.max(dp[i-1][1], dp[i-1][0] - prices[i]);
-    dp[i][2] = Math.max(dp[i-1][1] + prices[i], dp[i-1][2]);
-    dp[i][3] = Math.max(dp[i-1][2] - prices[i], dp[i-1][3]);
-    dp[i][4] = Math.max(dp[i-1][3] + prices[i], dp[i-1][4]);
+var maxProfit = function(k, prices) {
+  if (prices.length === 0) return 0;
+  let dp = [...Array(prices.length)].map(e => Array(2*k+1).fill(0));
+  for (let i = 0; i <= 2*k; i++) {
+    if (i % 2 === 0) {
+      dp[0][i] = 0;
+    } else {
+      dp[0][i] = -prices[0];
+    }
   }
-  return dp[prices.length-1][4];
+  for (let i = 1; i < prices.length; i++) {
+    for (let j = 0; j <= 2*k; j++) {
+      if (j === 0) {
+        dp[i][0] = dp[i-1][0];
+        continue;
+      }
+      if (j % 2 === 0) {
+        dp[i][j] = Math.max(dp[i-1][j-1] + prices[i], dp[i-1][j]);
+      } else {
+        dp[i][j] = Math.max(dp[i-1][j-1] - prices[i], dp[i-1][j]);
+      }
+    }
+  }
+  return dp[prices.length-1][2*k];
 };
 ```

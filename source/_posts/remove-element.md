@@ -29,10 +29,14 @@ var removeElement = function(nums, val) {
   let fastIndex = 0;
   let slowIndex = 0;
   while (fastIndex < nums.length) {
-    if (nums[fastIndex] !== val) {
-      nums[slowIndex] = nums[fastIndex];
-      slowIndex++;
+    while (nums[fastIndex] === val) {
+      fastIndex++;
     }
+    if (fastIndex >= nums.length) {
+      return slowIndex;
+    }
+    nums[slowIndex] = nums[fastIndex];
+    slowIndex++;
     fastIndex++;
   }
   return slowIndex;

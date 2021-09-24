@@ -13,6 +13,7 @@ tags:
   - When `word1[i-1] !== word2[j-1]`, there are **`3`** kinds of operations:
     - Replace: `dp[i][j] = dp[i-1][j-1] + 1`
     - Add/Delete: Convert `word1 [0, i-2]` to `word2 [0, i-1]` or vice versa.
+      - `dp[i][j-1] + 1` Or `dp[i-1][j] + 1`. When to convert a longer one to a short one, it's `deletion`. In the reverse way, it's `addition`. 
 
 ![img](https://i.imgur.com/VVJHuf5.png)
 

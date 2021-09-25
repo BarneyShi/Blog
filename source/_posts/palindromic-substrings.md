@@ -10,6 +10,7 @@ tags:
   - When `s[i] == s[j]`
     - When the length of `s[i, j]` is 1 or 2. For example, `a` or `aa`, it must be a palindrome.
     - When the length of `s[i, j]` is bigger than 2, it then depends on `s[i+1, j-1]`, which is `dp[i+1][j-1]`. It also means that we need to iterate `i` from big to small.
+    - ![img](https://i.imgur.com/SBV1WFV.png)
 
 Given a string s, return the number of palindromic substrings in it.
 

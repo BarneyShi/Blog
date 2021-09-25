@@ -13,11 +13,13 @@
 <meta property="og:site_name" content="Barney&#39;s Blog">
 <meta property="og:description" content="Note  DP dp[i][j] means s[i - j] is a palindrome string. When s[i] &#x3D;&#x3D; s[j] When the length of s[i, j] is 1 or 2. For example, a or aa, it must be a palindrome. When the length of s[i, j] is bigger tha">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/SBV1WFV.png">
 <meta property="article:published_time" content="2021-09-24T02:26:55.000Z">
-<meta property="article:modified_time" content="2021-09-25T05:26:47.330Z">
+<meta property="article:modified_time" content="2021-09-25T06:36:03.285Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/SBV1WFV.png">
     
     
       
@@ -155,6 +157,7 @@
 <li>When <code>s[i] == s[j]</code><ul>
 <li>When the length of <code>s[i, j]</code> is 1 or 2. For example, <code>a</code> or <code>aa</code>, it must be a palindrome.</li>
 <li>When the length of <code>s[i, j]</code> is bigger than 2, it then depends on <code>s[i+1, j-1]</code>, which is <code>dp[i+1][j-1]</code>. It also means that we need to iterate <code>i</code> from big to small.</li>
+<li><img src="https://i.imgur.com/SBV1WFV.png" alt="img"></li>
 </ul>
 </li>
 </ul>

@@ -33,9 +33,10 @@ Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
  */
 var integerBreak = function(n) {
   let dp = [...Array(n+1).fill(0)];
-  dp[2] = 1;
-  for (let i = 3; i <= n; i++) {
-    for (let j = 1; j < i-1; j++) {
+  dp[0] = 0;
+  dp[1] = 1;
+  for (let i = 2; i <= n; i++) {
+    for (let j = 1; j < i; j++) {
       dp[i] = Math.max(dp[i], j*(i-j), dp[j]*(i-j), j*dp[i-j], dp[j]*dp[i-j]);
     }
   }

@@ -5,6 +5,14 @@ tags:
 - leetcode
 - dp
 ---
+**`Note:`**
+- This is also a `01 knapsack` problem.
+- To get the bagWeight, think in this way: `bagWeight - (sum - bagWeight) = target`. We pick what's gonna be `+` into our bag.
+- The DP formula is `DP[j] = DP[j] + DP[j - nums[i]]` based on two situations when we encounter `nums[i]`.
+  - When we don't pick `nums[i]`, then it's still `DP[j]` as our last iteration.
+  - When we pick `nums[i]`, then it's `DP[j - nums[i]]`.
+- Initialize `DP[0]` as `1` because if it's `0`, then all our results would be `0`.
+
 You are given an integer array nums and an integer target.
 
 You want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.
@@ -23,14 +31,6 @@ Explanation: There are 5 ways to assign symbols to make the sum of nums be targe
 +1 + 1 + 1 - 1 + 1 = 3
 +1 + 1 + 1 + 1 - 1 = 3
 ```
-
-**`Note:`**
-- This is also a `01 knapsack` problem.
-- To get the bagWeight, think in this way: `bagWeight - (sum - bagWeight) = target`. We pick what's gonna be `+` into our bag.
-- The DP formula is `DP[j] = DP[j] + DP[j - nums[i]]` based on two situations when we encounter `nums[i]`.
-  - When we don't pick `nums[i]`, then it's still `DP[j]` as our last iteration.
-  - When we pick `nums[i]`, then it's `DP[j - nums[i]]`.
-- Initialize `DP[0]` as `1` because if it's `0`, then all our results would be `0`.
 
 ```javascript
 /**

@@ -9,7 +9,7 @@ tags:
 **`DP`**
 - This is a `complete knapsack` problem.
 - The DP deduction is `DP[j] = isValid(word) && DP[j-word]`
-- We'd better iterate `j` (backpack) first because if not, it's hard to deal with multi matches, like `[apple, pen] with 'applepenapple'`. After the first iteration, `DP[5] == true`. But `DP[12] == false`. At the end, you got `DP[8] == true` but DP[12] didn't change. 
+- We'd better iterate `j` (backpack) first because we care about the `order of elements`.
 
 **`Backtracking`**
 - Easier to come up with a solution but we have to optimize, otherwise TLE.

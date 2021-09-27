@@ -35,13 +35,13 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
  */
 var maxProfit = function(prices) {
   if (prices.length === 1) return 0;
-  let dp = [...Array(prices.length).fill(0)];
+  let res = 0;
   let min = prices[0];
   for (let i = 1; i < prices.length; i++) {
-    dp[i] = Math.max(dp[i-1], prices[i] - min);
-    if (min > prices[i]) min = prices[i];
+    res = Math.max(res, prices[i] - min);
+    min = Math.min(min, prices[i]);
   }
-  return dp[prices.length-1];
+  return res;
 };
 ```
 

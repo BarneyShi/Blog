@@ -73,20 +73,16 @@ var rob = function(root) {
 **DP**
 ```javascript
 var rob = function(root) {
-  if (!root) return 0;
-  const res = postOrder(root);
-  return Math.max(...res);
-  
-  function postOrder(node) {
+  const result = recursion(root);
+  return Math.max(result[0], result[1]);
+
+  function recursion(node) {
     if (!node) return [0,0];
-    const left = postOrder(node.left)
-    const right = postOrder(node.right);
-    // Pick the parent
-    const val1 = node.val + left[0] + right[0];
-    // Do not pick the parent
-    const val2 = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
-    
-    return [val2, val1];
+    let left = [0,0];
+    let right = [0,0];
+    left = recursion(node.left);
+    right = recursion(node.right);
+    return [node.val + left[1] + right[1], Math.max(left[0], left[1]) + Math.max(right[0], right[1])];
   }
 };
 ```

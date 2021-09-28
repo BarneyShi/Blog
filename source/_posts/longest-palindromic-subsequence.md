@@ -1,5 +1,5 @@
 ---
-title: Leetcode - Longest palindromic subsequence
+title: Leetcode 516 - Longest palindromic subsequence
 date: 2021-09-24 23:29:10
 tags:
 - dp
@@ -43,6 +43,7 @@ var longestPalindromeSubseq = function(s) {
         }
         dp[i][j] = dp[i+1][j-1] + 2;
       } else {
+        /* Interesting */
         dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j]);
       }
     }

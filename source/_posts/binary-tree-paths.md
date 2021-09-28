@@ -50,3 +50,45 @@ var binaryTreePaths = function(root) {
   }
 };
 ```
+
+**`Backtracking`**
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {string[]}
+ */
+var binaryTreePaths = function(root) {
+  let result = [];
+  backtracking(root, []);
+  result = result.map(arr => arr.join('->'));
+  return result;
+  
+  function backtracking(node, path) {
+    if (!node.left && !node.right) {
+      path.push(node.val);
+      result.push([...path]);
+      return;
+    }
+    if (node.left) {
+      path.push(node.val);
+      backtracking(node.left, [...path]);
+      /* BACKTRACKING */
+      path.pop();
+    }
+    if (node.right) {
+      path.push(node.val);
+      backtracking(node.right, [...path]);
+      /* BACKTRACKING */
+      path.pop();
+    }
+  }
+};
+```

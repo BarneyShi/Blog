@@ -77,15 +77,14 @@ var binaryTreePaths = function(root) {
       result.push([...path]);
       return;
     }
+    path.push(node.val);
     if (node.left) {
-      path.push(node.val);
-      backtracking(node.left, [...path]);
+      backtracking(node.left, path);
       /* BACKTRACKING */
       path.pop();
     }
     if (node.right) {
-      path.push(node.val);
-      backtracking(node.right, [...path]);
+      backtracking(node.right, path);
       /* BACKTRACKING */
       path.pop();
     }

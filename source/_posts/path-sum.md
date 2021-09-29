@@ -2,6 +2,7 @@
 title: Leetcode 112 - Path sum
 date: 2021-09-28 17:36:05
 tags:
+- binatry tree
 ---
 **`Note:`**
 - Backtracking is easy but slower. 

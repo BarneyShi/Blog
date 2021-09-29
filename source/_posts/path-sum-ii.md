@@ -4,6 +4,9 @@ date: 2021-09-28 17:48:28
 tags:
 - binary tree
 ---
+**`Note`**
+- Recursion is pretty intutitive.
+- Backtracking - Remember not to add cur node's val multi times.
 
 Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
 

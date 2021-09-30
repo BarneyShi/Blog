@@ -1,5 +1,5 @@
 ---
-title: Leetcode 98 - Validate bst
+title: Leetcode 98 - Validate BST
 date: 2021-09-29 19:48:08
 tags:
 - binary tree

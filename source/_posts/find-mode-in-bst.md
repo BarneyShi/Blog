@@ -1,5 +1,5 @@
 ---
-title: Leetcode 501 - Find mode in bst
+title: Leetcode 501 - Find mode in BST
 date: 2021-09-29 23:22:47
 tags:
 - binary tree

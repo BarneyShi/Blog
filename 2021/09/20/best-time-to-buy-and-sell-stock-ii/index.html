@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Note  It’s really similar to buy and sell I, but with only one difference. When calculating dp[i][0], there are two situations: We already have a stock yesterday and hold it through today. We bought a">
+    <meta name="description" content="Note  DP It’s really similar to buy and sell I, but with only one difference. When calculating dp[i][0], there are two situations: We already have a stock yesterday and hold it through today. We bough">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 122 - Best time to buy and sell stock II">
 <meta property="og:url" content="http://example.com/2021/09/20/best-time-to-buy-and-sell-stock-ii/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Note  It’s really similar to buy and sell I, but with only one difference. When calculating dp[i][0], there are two situations: We already have a stock yesterday and hold it through today. We bought a">
+<meta property="og:description" content="Note  DP It’s really similar to buy and sell I, but with only one difference. When calculating dp[i][0], there are two situations: We already have a stock yesterday and hold it through today. We bough">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-20T01:35:42.000Z">
-<meta property="article:modified_time" content="2021-10-05T01:16:06.626Z">
+<meta property="article:modified_time" content="2021-10-05T07:12:35.527Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="dp">
@@ -153,6 +153,7 @@
   <div class="content" itemprop="articleBody">
     <p><strong><code>Note</code></strong></p>
 <ul>
+<li><code>DP</code><ul>
 <li>It’s really similar to buy and sell I, but with only one difference.</li>
 <li>When calculating <code>dp[i][0]</code>, there are two situations:<ul>
 <li>We already have a stock yesterday and hold it through today.</li>
@@ -161,13 +162,24 @@
 </ul>
 </li>
 </ul>
+</li>
+<li><code>Greedy</code><ul>
+<li>We might think it’s hard to find a day with really low price to buy and a day with high price to sell, but actually, the profits can be dissected.</li>
+<li>Take <code>[1, 3, 2, 7]</code>, <code>buy 1 sell 7 === buy 1 sell 3 + buy 2 sell 7</code></li>
+<li>Which means we only need to buy and sell when <code>prices[i] &gt; prices[i-1]</code></li>
+</ul>
+</li>
+</ul>
 <p>You are given an integer array prices where prices[i] is the price of a given stock on the ith day.</p>
 <p>On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.</p>
 <p>Find and return the maximum profit you can achieve.</p>
 <p><strong>Example</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: prices = [7,1,5,3,6,4]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.</span><br><span class="line">Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</span><br><span class="line">Total profit is 4 + 3 = 7.</span><br></pre></td></tr></table></figure>
-
+<p><strong><code>DP</code></strong> O(n)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">prices</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxProfit = <span class="function"><span class="keyword">function</span>(<span class="params">prices</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dp = [...Array(prices.length)].map(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">Array</span>(<span class="number">2</span>).fill(<span class="number">0</span>));</span><br><span class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">  dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">    dp[i][<span class="number">0</span>] = <span class="built_in">Math</span>.max(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>]-prices[i]);</span><br><span class="line">    dp[i][<span class="number">1</span>] = <span class="built_in">Math</span>.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>]+prices[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Greedy</code></strong> O(n)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">prices</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxProfit = <span class="function"><span class="keyword">function</span>(<span class="params">prices</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (prices[i] &gt; prices[i-<span class="number">1</span>]) &#123;</span><br><span class="line">      result += prices[i] - prices[i-<span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 

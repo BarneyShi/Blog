@@ -6,9 +6,12 @@ tags:
 - greedy
 ---
 **`Note:`**
--`DP`
+-`DP` (Slow)
   - `dp[i]` means the min steps from `index 0` to `index i`.
   - For each `i` we need to find the min dp value between `[0, i-1]` and add `1` to it.
+
+- `Greedy`
+  - How to be greedy? Always take next step that can `go furthest from there`.
 
 Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
 
@@ -25,6 +28,7 @@ Output: 2
 Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
 ```
 
+**`DP O(n^2)`** 
 ```javascript
 /**
  * @param {number[]} nums
@@ -41,5 +45,29 @@ var jump = function(nums) {
     }
   }
   return dp[nums.length - 1];
+};
+```
+
+**`DP O(n)`**
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var jump = function(nums) {
+  let start = 0;
+  // Don't initialize `end` to `nums[0]`, you don't know if nums[0] is bigger than nums.length - 1.
+  let end = 0;
+  let ans = 0;
+  while (end < nums.length - 1) {
+    let tmp = 0;
+    for (let i = start; i <= end; i++) {
+      tmp = Math.max(tmp, nums[i] + i);
+    }
+    start = end + 1;
+    end = tmp;
+    ans++;
+  }
+  return ans;
 };
 ```

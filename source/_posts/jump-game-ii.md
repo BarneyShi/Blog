@@ -64,6 +64,7 @@ var jump = function(nums) {
     for (let i = start; i <= end; i++) {
       tmp = Math.max(tmp, nums[i] + i);
     }
+    // Don't update `start` as `i` (The index of biggest tmp) because in that way we'll iterate elements after `i` more than one.
     start = end + 1;
     end = tmp;
     ans++;

@@ -41,19 +41,20 @@ Therefore, return 3 as the starting index.
  */
 var canCompleteCircuit = function(gas, cost) {
   for (let i = 0; i < gas.length; i++) {
-    if (gas[i] >= cost[i]) {
-      let k = 0;
-      let curPos = i;
-      let tank = 0;
-      while (k < gas.length) {
-        tank += gas[curPos] - cost[curPos]
-        if (tank < 0 ) {
-          break;
-        }
-        k++;
-        if (++curPos === gas.length) curPos = 0;
+    let tank = 0;
+    let curPos = i;
+    while (tank >= 0) {
+      tank += gas[curPos] - cost[curPos];
+      if (tank < 0) {
+        break;
       }
-      if (k === gas.length) return i;
+      curPos++;
+      if (curPos === gas.length) {
+        curPos = 0;
+      }
+      if (curPos === i) {
+        return i;
+      }
     }
   }
   return -1;

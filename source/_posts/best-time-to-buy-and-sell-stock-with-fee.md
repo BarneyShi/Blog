@@ -6,8 +6,13 @@ tags:
 - dp
 ---
 **`Note`**
-- Very similar to other stock questions, the only mistake I made was initialize `dp[9][1]`
-- `dp[0][1]` should be `0` instead of `-fee`.
+- `DP`
+  - Very similar to other stock questions, the only mistake I made was initialize `dp[9][1]`
+  - `dp[0][1]` should be `0` instead of `-fee`.
+- `Greedy`
+  - Looking for `minPrice` to buy and `highPrice` to sell, considering fee.
+  - Use `minPrice` to store min price we've met.
+  - Be careful of examples like `[1, 4, 10], fee 2`. Certainly, we should buy 1 and sell 4. We paid fee while selling it. But actually the optimal trade is to buy 1 and sell 10. So, we should make `minPrice = 4 - 2` so we won't calculate fees twice when buying 4 and selling 10.
 
 You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee representing a transaction fee.
 
@@ -26,7 +31,7 @@ Explanation: The maximum profit can be achieved by:
 - Selling at prices[5] = 9
 The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
 ```
-
+**`DP`**
 ```javascript
 /**
  * @param {number[]} prices
@@ -44,5 +49,28 @@ var maxProfit = function(prices, fee) {
   }
   console.log(dp)
   return Math.max(dp[prices.length-1][1], dp[prices.length-1][0]);
+};
+```
+
+**`Greedy`**
+```javascript
+/**
+ * @param {number[]} prices
+ * @param {number} fee
+ * @return {number}
+ */
+var maxProfit = function(prices, fee) {
+  let result = 0;
+  let minPrice = prices[0];
+  for (let i = 1; i < prices.length; i++) {
+    if (minPrice + fee < prices[i]) {
+      result += prices[i] - minPrice - fee;
+      /* IMPORTANT */
+      minPrice = prices[i] - fee;
+    } else if (prices[i] < minPrice) {
+      minPrice = prices[i];
+    }
+  }
+  return result;
 };
 ```

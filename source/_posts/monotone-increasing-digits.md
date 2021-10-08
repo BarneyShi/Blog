@@ -64,7 +64,7 @@ var monotoneIncreasingDigits = function(n) {
         }
         j--;
       }
-      let res_str = string.slice(0, j) + string[j] - 1 + "9".repeat(string.length - j - 1);
+      const res_str = string.slice(0, j) + string[j] - 1 + "9".repeat(string.length - j - 1);
       return res_str;
     }
   }

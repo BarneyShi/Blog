@@ -1577,6 +1577,7 @@ code {
   color: #da132f;
   font-family: inherit;
   font-size: 0.87rem;
+  font-weight: 600;
 }
 .highlight {
   overflow-x: auto;

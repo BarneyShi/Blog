@@ -6,11 +6,11 @@ tags:
 - greedy
 ---
 **`Note:`**
--`DP` (Slow)
+- `DP` (Slow)
   - `dp[i]` means the min steps from `index 0` to `index i`.
   - For each `i` we need to find the min dp value between `[0, i-1]` and add `1` to it.
 
-- `Greedy`
+- `Greedy` (Optimal)
   - How to be greedy? Always take next step that can `go furthest from there`.
 
 Given an array of non-negative integers nums, you are initially positioned at the first index of the array.

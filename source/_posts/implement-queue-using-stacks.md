@@ -5,7 +5,8 @@ tags:
 - queue
 ---
 **`Note:`**
-- DO NOT use methods like `slice`, `splice`, or just assigning values based on `index`. That's not using stack!
+- DO NOT use methods like `slice`, `splice`, or just assigning values based on `index`. That's not using stack! 
+- Use `pop` because what we get will be the last element added.
 - Use `2 stacks (arrays)` with methods like `pop()`, `push()`.
 - `StackIn` is the stack to push to when you want to insert.
 - `StackOut` is the stack to contain `reversed` elements from `stackIn`. In that way, when we do `pop` on stackOut, what we get will be the first element of `stackIn`.

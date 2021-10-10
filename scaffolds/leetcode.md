@@ -9,6 +9,11 @@ tags:
 **`Question:`**
 
 
+**`Example:`**
+```
+
+```
+
 **`Code:`**
 ```javascript
 

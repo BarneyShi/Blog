@@ -5,7 +5,11 @@ tags:
 - queue
 ---
 **`Note:`**
-- Know how prototype inheritance works in JS
+- DO NOT use methods like `slice`, `splice`, or just assigning values based on `index`. That's not using stack!
+- Use `2 stacks (arrays)` with methods like `pop()`, `push()`.
+- `StackIn` is the stack to push to when you want to insert.
+- `StackOut` is the stack to contain `reversed` elements from `stackIn`. In that way, when we do `pop` on stackOut, what we get will be the first element of `stackIn`.
+- Learn to reuse methods that we've implemented.
 
 **`Question:`**
 Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
@@ -42,7 +46,8 @@ myQueue.empty(); // return false
 **`Code:`**
 ```javascript
 var MyQueue = function() {
-  this.queue = [];
+  this.stackIn = [];
+  this.stackOut = [];
 };
 
 /** 
@@ -50,30 +55,37 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
-  this.queue.push(x);
+  this.stackIn.push(x);
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-  const res = this.queue[0];
-  this.queue = this.queue.slice(1);
-  return res;
+  /* This length check is essential! */
+  if (!this.stackOut.length) {
+    while(this.stackIn.length) {
+      this.stackOut.push(this.stackIn.pop());
+    }
+  }
+  return this.stackOut.pop();
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-  return this.queue[0];
+  /* Resue is important */
+  const res = this.pop();
+  this.stackOut.push(res);
+  return res;
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-  return this.queue.length === 0;
+  return !this.stackOut.length && !this.stackIn.length;
 };
 
 /**

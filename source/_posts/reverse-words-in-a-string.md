@@ -1,5 +1,5 @@
 ---
-title: Leetcode 151 - Eeverse words in a string
+title: Leetcode 151 - Reverse words in a string
 date: 2021-10-11 02:54:57
 tags:
 - double pointer

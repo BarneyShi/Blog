@@ -33,28 +33,15 @@ Output："We%20are%20happy."
  * @return {string}
  */
 var replaceSpace = function(s) {
-  let spaceCount = 0;
-  for (const char of s) {
-    if (char === ' ') spaceCount++;
-  }
-  s = s + ' '.repeat(spaceCount * 2);
-  let left = s.length - spaceCount*2 - 1;
-  let right = s.length - 1;
-  const arr = s.split('');
-  while (left >= 0) {
-    if (arr[left] !== ' ') {
-      [arr[right], arr[left]] = [arr[left], arr[right]];
-      left--;
-      right--;
-    } else {
-      arr[right--] = '0';
-      arr[right--] = '2';
-      arr[right--] = '%';
-      left--; 
+  let res = '';
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === ' ') {
+      res += '%20';
+      continue;
     }
+    res += s[i];
   }
-  return arr.join('');
-
+  return res;
 };
 ```
 

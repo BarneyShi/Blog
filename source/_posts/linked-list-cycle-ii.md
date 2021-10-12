@@ -4,14 +4,16 @@ date: 2021-10-11 23:58:51
 tags:
 ---
 **`Note:`**
-- Just like `Linked list cycle I`, we should use `double pointer` but it's more complicated.
-- ![img](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
-- By using 2-pointer, we can find the node where two pointers meet.
-- Here comes the deduction: 
-  - Assume `fast` pointer has travelled `n` rounds inside the cycle.
-  - Because `fast` always travels `2 times` more than `slow`, we have `2*(a + b) = a + n*(b + c) + b`, which is `a = c + (n-1)*b`.
-  - If `n = 1`, we have `a = c`.
-  - Because right now `slow` is at `b`, we can use another pointer at the start. And if they both start moving, they will  meet at the intersection!.
+- Double pointer:
+  - Just like `Linked list cycle I`, we should use `double pointer` but it's more complicated.
+  - ![img](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
+  - By using 2-pointer, we can find the node where two pointers meet.
+  - Here comes the deduction: 
+    - Assume `fast` pointer has travelled `n` rounds inside the cycle.
+    - Because `fast` always travels `2 times` more than `slow`, we have `2*(a + b) = a + n*(b + c) + b`, which is `a = c + (n-1)*b`.
+    - If `n = 1`, we have `a = c`.
+    - Because right now `slow` is at `b`, we can use another pointer at the start. And if they both start moving, they will  meet at the intersection!.
+- Use `Set` to tell if we've iterated the current node before.
 
 **`Question:`**
 
@@ -30,6 +32,8 @@ Explanation: There is a cycle in the linked list, where tail connects to the sec
 ```
 
 **`Code:`**
+
+**`Double pointer`**
 ```javascript
 /**
  * Definition for singly-linked list.
@@ -61,5 +65,33 @@ var detectCycle = function(head) {
     fast = fast.next;
   }
   return slow;
+};
+```
+
+**`Set`**
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var detectCycle = function(head) {
+  const set = new Set();
+  let p = head;
+  while (p) {
+    if (set.has(p)) {
+      return p;
+    }
+    set.add(p);
+    p = p.next;
+  }
+  return null;
 };
 ```

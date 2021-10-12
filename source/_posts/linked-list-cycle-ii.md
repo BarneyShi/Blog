@@ -6,7 +6,7 @@ tags:
 **`Note:`**
 - Double pointer:
   - Just like `Linked list cycle I`, we should use `double pointer` but it's more complicated.
-  - ![img](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
+  - ![img](https://i.imgur.com/hHFR4Ht.png)
   - By using 2-pointer, we can find the node where two pointers meet.
   - Here comes the deduction: 
     - Assume `fast` pointer has travelled `n` rounds inside the cycle.

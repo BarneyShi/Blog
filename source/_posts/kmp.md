@@ -44,6 +44,7 @@ function geneNext(str) {
   let i = 0;
   for (let j = 1; j < str.length; j++) {
     while (i > 0 && str[i] !== str[j]) {
+      // We let i be next[i-1] instead of i = next[indexOf(str[j])]
       i = next[i - 1];
     }
     if (str[i] === str[j]) {

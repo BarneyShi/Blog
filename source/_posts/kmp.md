@@ -47,7 +47,6 @@ function geneNext(str) {
       i = next[i - 1];
     }
     if (str[i] === str[j]) {
-      next[j] = i + 1;
       i++;
     }
     next[j] = i;

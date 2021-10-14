@@ -11,8 +11,20 @@ tags:
     - `Suffix` are the substrings that don't include the first char.
     - For example `aaba`, `next[3] == 1` as in `a`.
 - How to get the prefix table?
-  - Let `i = 0`, `j = 1`. Take `aaa` for example, if `pattern[i] === pattern[j]`, then `next[j] === i + 1`.
-  - if `pattern[i] !== pattern[j]`, use a while loop to find a `pattern[i]` that can make `pattern[i] !== pattern[j]`. While jumping backwards, make `i = next[i - 1]` every time.
+  - `j` can be understood as the `end of prefix`.
+  - `i` can be understood as the `end of suffix`.
+  - Let `j = 0`, `i = 1`. Take `aaa` for example, if `pattern[i] === pattern[j]`, then `next[i] === j + 1`.
+  - if `pattern[i] !== pattern[j]` like below
+  - ![img](https://i.imgur.com/nfIsa11.jpg)
+  - We need to find a max `prefix` for `suffix (ABABA)` ending at `i`! (The prefix will occupy all or part of ABABA)
+  - We need to go back, but apparently we cannot do `j = next[j]` because then we'll always have a prefix ending with the same char like `pattern[j]`.
+  - What about `next[j-1]`? That sounds right!
+  - By the definition of this prefix table, `pattern[0, j-1]` is the same as a string ending before `i` whose length is the same as `pattern[0, j-1]`. Right now they both end with `B`.
+  - By `next[j-1]`, we will find (if it exsits) a max prefix that ends with `B` (even if we have to iterate multiple times).
+  - When we find this prefix, we get its `length` by `next[]`. And because of the table is indexed by `0`. When `pattern[j] === pattern[i]`, if means we are actually `checking the char after the prefix`. 
+  - If they match, we've found a qualified prefix that's the longest and it is followed by a char that is the same as `pattern[i]`.
+  - We got the prefix!
+
 - The techqinue:
   - Deal with situations where chars are not equal `first`. 
   - Use `while` loops.

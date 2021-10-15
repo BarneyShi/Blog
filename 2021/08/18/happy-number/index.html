@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Note: Learnt how to manipulate numbers. Like how to get the last digit with modulues operator num % 10    and (num - remainder) &#x2F; 10    1234567891011121314151617181920212223var isHappy &#x3D; function(n) &amp;">
+    <meta name="description" content="Note  Learnt how to manipulate numbers. Like how to get the last digit with modulues operator num % 10. Learn how to use hash to check if nums appeared before.  1234567891011121314151617181920212223&#x2F;*">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 202 - Happy number">
 <meta property="og:url" content="http://example.com/2021/08/18/happy-number/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Note: Learnt how to manipulate numbers. Like how to get the last digit with modulues operator num % 10    and (num - remainder) &#x2F; 10    1234567891011121314151617181920212223var isHappy &#x3D; function(n) &amp;">
+<meta property="og:description" content="Note  Learnt how to manipulate numbers. Like how to get the last digit with modulues operator num % 10. Learn how to use hash to check if nums appeared before.  1234567891011121314151617181920212223&#x2F;*">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-18T23:08:37.000Z">
-<meta property="article:modified_time" content="2021-10-15T06:55:14.922Z">
+<meta property="article:modified_time" content="2021-10-15T07:31:31.642Z">
 <meta property="article:author" content="Barney">
-<meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="number">
+<meta property="article:tag" content="hash">
 <meta name="twitter:card" content="summary">
     
     
@@ -142,7 +142,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/leetcode/" rel="tag">leetcode</a>, <a class="tag-link-link" href="/tags/number/" rel="tag">number</a>
+        <a class="tag-link-link" href="/tags/hash/" rel="tag">hash</a>, <a class="tag-link-link" href="/tags/number/" rel="tag">number</a>
     </div>
 
 
@@ -151,9 +151,12 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><strong>Note</strong>: Learnt how to manipulate numbers. Like how to get the last digit with modulues operator <code>num % 10</code></p>
-<p>   and <code>(num - remainder) / 10</code></p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isHappy = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> map = [];</span><br><span class="line">    map.push(n);</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">      n = addAlldigitsSquared(n);</span><br><span class="line">      <span class="keyword">if</span> (n === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (map.includes(n)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      map.push(n);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addAlldigitsSquared</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ans = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(n) &#123;</span><br><span class="line">    ans += (n % <span class="number">10</span>)**<span class="number">2</span>;</span><br><span class="line">    n = (n - (n % <span class="number">10</span>)) / <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <p><strong>Note</strong></p>
+<ul>
+<li>Learnt how to manipulate numbers. Like how to get the last digit with modulues operator <code>num % 10</code>.</li>
+<li>Learn how to use <code>hash</code> to check if nums appeared before.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isHappy = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nums = [];</span><br><span class="line">  <span class="keyword">while</span> (!nums.includes(n)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n === <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    nums.push(n);</span><br><span class="line">    <span class="keyword">const</span> sum = addAllDigits(n);</span><br><span class="line">    n = sum;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addAllDigits</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    result += (num % <span class="number">10</span>)**<span class="number">2</span>;</span><br><span class="line">    num = <span class="built_in">Math</span>.floor(num / <span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
   </div>

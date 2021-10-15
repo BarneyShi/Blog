@@ -2,36 +2,36 @@
 title: Leetcode 202 - Happy number
 date: 2021-08-18 23:08:37
 tags:
-- leetcode
 - number
+- hash
 ---
-**Note**: Learnt how to manipulate numbers. Like how to get the last digit with modulues operator `num % 10`
+**Note**
+- Learnt how to manipulate numbers. Like how to get the last digit with modulues operator `num % 10`.
+- Learn how to use `hash` to check if nums appeared before.
 
-   and `(num - remainder) / 10`
+```javascript
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+  let nums = [];
+  while (!nums.includes(n)) {
+    if (n === 1) return true;
+    nums.push(n);
+    const sum = addAllDigits(n);
+    n = sum;
+  }
+  return false;
+};
 
-   ```javascript
-   var isHappy = function(n) {
-       let map = [];
-       map.push(n);
-       while(true) {
-         n = addAlldigitsSquared(n);
-         if (n === 1) {
-           break;
-         }
-         if (map.includes(n)) {
-           return false;
-         }
-         map.push(n);
-       }
-     return true;
-   };
-   function addAlldigitsSquared(n) {
-     let ans = 0;
-     while(n) {
-       ans += (n % 10)**2;
-       n = (n - (n % 10)) / 10;
-     }
-     return ans;
-   }
-   ```
+function addAllDigits(num) {
+  let result = 0;
+  while (num > 0) {
+    result += (num % 10)**2;
+    num = Math.floor(num / 10);
+  }
+  return result;
+}
+```
 

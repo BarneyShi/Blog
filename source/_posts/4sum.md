@@ -5,8 +5,8 @@ tags:
 - double pointer
 ---
 **`Note:`**
-- Naive method: write a `3sum` help with a for loop, so basically 2 `loops`.
 - Use `Set` and store nums as strings to remove duplicates.
+- Naive method: write a `3sum` help with a for loop, so basically 2 `loops`.
 
 **`Question:`**
 
@@ -24,6 +24,41 @@ Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
 ```
 
 **`Code:`**
+
+**`4Sum optimal`**
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
+var fourSum = function(nums, target) {
+  let result = new Set();
+  nums.sort((a, b) => a - b);
+  
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length - 2; j++) {
+      let left = j + 1;
+      let right = nums.length - 1;
+      while (left < right) {
+        const sum = nums[left] + nums[right];
+        if (sum < target - nums[i] - nums[j]) {
+          left++;
+        } else if (sum > target - nums[i] - nums[j]) {
+          right--;
+        } else {
+          result.add(`${nums[i]},${nums[j]},${nums[left]},${nums[right]}`);
+          left++;
+          right--;
+        }
+      }
+    }
+  }
+  return Array.from(result).map(e => e.split(','));
+};
+```
+
+**`Naive 4Sum with a helper`**
 ```javascript
 /**
  * @param {number[]} nums

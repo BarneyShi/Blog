@@ -6,21 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.  12Input: n &#x3D; 3Output: [[1,2,3],[8,9,4],[7,6,5]] Note:   How to initialize an empty 2D array?con">
+    <meta name="description" content="Note:   How to initialize an empty 2D array?const arr &#x3D; [...Array(n)].map(e &#x3D;&gt; Array(n)) Keep [start, right) style - make the right boundary open so you won’t be lost. Speical case for the last nod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 59 - Spiral matrix">
+<meta property="og:title" content="Leetcode 59 - Spiral matrix II">
 <meta property="og:url" content="http://example.com/2021/08/25/spiral-matrix/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.  12Input: n &#x3D; 3Output: [[1,2,3],[8,9,4],[7,6,5]] Note:   How to initialize an empty 2D array?con">
+<meta property="og:description" content="Note:   How to initialize an empty 2D array?const arr &#x3D; [...Array(n)].map(e &#x3D;&gt; Array(n)) Keep [start, right) style - make the right boundary open so you won’t be lost. Speical case for the last nod">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2020/11/13/spiraln.jpg">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020121623550681.png">
 <meta property="article:published_time" content="2021-08-25T22:37:59.000Z">
-<meta property="article:modified_time" content="2021-10-16T06:31:54.206Z">
+<meta property="article:modified_time" content="2021-10-16T07:27:32.831Z">
 <meta property="article:author" content="Barney">
-<meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="array">
-<meta property="article:tag" content="medium">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/11/13/spiraln.jpg">
     
@@ -42,7 +40,7 @@
       
     
     <!-- title -->
-    <title>Leetcode 59 - Spiral matrix</title>
+    <title>Leetcode 59 - Spiral matrix II</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -97,16 +95,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/25/spiral-matrix/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/25/spiral-matrix/&text=Leetcode 59 - Spiral matrix"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/25/spiral-matrix/&is_video=false&description=Leetcode 59 - Spiral matrix"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode 59 - Spiral matrix&body=Check out this article: http://example.com/2021/08/25/spiral-matrix/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/25/spiral-matrix/&name=Leetcode 59 - Spiral matrix&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/25/spiral-matrix/&t=Leetcode 59 - Spiral matrix"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/25/spiral-matrix/&text=Leetcode 59 - Spiral matrix II"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/25/spiral-matrix/&is_video=false&description=Leetcode 59 - Spiral matrix II"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 59 - Spiral matrix II&body=Check out this article: http://example.com/2021/08/25/spiral-matrix/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/25/spiral-matrix/&name=Leetcode 59 - Spiral matrix II&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/25/spiral-matrix/&t=Leetcode 59 - Spiral matrix II"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -123,7 +121,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Leetcode 59 - Spiral matrix
+        Leetcode 59 - Spiral matrix II
     </h1>
 
 
@@ -146,7 +144,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/array/" rel="tag">array</a>, <a class="tag-link-link" href="/tags/leetcode/" rel="tag">leetcode</a>, <a class="tag-link-link" href="/tags/medium/" rel="tag">medium</a>
+        <a class="tag-link-link" href="/tags/array/" rel="tag">array</a>
     </div>
 
 
@@ -155,16 +153,18 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.</p>
-<p><img src="https://assets.leetcode.com/uploads/2020/11/13/spiraln.jpg" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 3</span><br><span class="line">Output: [[1,2,3],[8,9,4],[7,6,5]]</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong> </p>
+    <p><strong>Note:</strong> </p>
 <ul>
 <li>How to initialize an empty <code>2D</code> array?<br><code>const arr = [...Array(n)].map(e =&gt; Array(n))</code></li>
 <li>Keep <code>[start, right)</code> style - make the right boundary open so you won’t be lost.</li>
+<li>Speical case for the last node when <code>n</code> is <code>odd</code>.</li>
 </ul>
+<p>Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.</p>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/13/spiraln.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 3</span><br><span class="line">Output: [[1,2,3],[8,9,4],[7,6,5]]</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://img-blog.csdnimg.cn/2020121623550681.png" alt="img"></p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) <span class="keyword">return</span> [[<span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">let</span> ans = [...Array(n)].map(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">Array</span>(n));</span><br><span class="line">  <span class="keyword">let</span> rowStart = <span class="number">0</span>, rowEnd = n - <span class="number">1</span>, colStart = <span class="number">0</span>, colEnd = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> counter = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (rowStart &lt;= rowEnd &amp;&amp; colStart &lt;= colEnd) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = colStart; i &lt; colEnd; i++) &#123;</span><br><span class="line">      ans[rowStart][i] = counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = rowStart; i &lt; rowEnd; i++) &#123;</span><br><span class="line">      ans[i][colEnd] = counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = colEnd; i &gt; colStart; i--) &#123;</span><br><span class="line">      ans[rowEnd][i] = counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = rowEnd; i &gt; rowStart; i--) &#123;</span><br><span class="line">      ans[i][colStart] = counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    rowStart++;</span><br><span class="line">    rowEnd--;</span><br><span class="line">    colStart++;</span><br><span class="line">    colEnd--;</span><br><span class="line">    <span class="comment">// Need to fill the last one if n is odd.</span></span><br><span class="line">    <span class="keyword">if</span> (rowStart === rowEnd &amp;&amp; colStart === colEnd) ans[(n-<span class="number">1</span>)/<span class="number">2</span>][(n-<span class="number">1</span>)/<span class="number">2</span>] = n**<span class="number">2</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[][]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> generateMatrix = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) <span class="keyword">return</span> [[<span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">let</span> result = [...Array(n)].map(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">Array</span>(n).fill(<span class="number">0</span>));</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> rowStart = <span class="number">0</span>, rowEnd = n-<span class="number">1</span>, colStart = <span class="number">0</span>, colEnd = n - <span class="number">1</span>; </span><br><span class="line">  <span class="keyword">while</span> (count &lt;= n**<span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = colStart; i &lt; colEnd; i++) &#123;</span><br><span class="line">      result[rowStart][i] = count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = rowStart; i &lt; rowEnd; i++) &#123;</span><br><span class="line">      result[i][colEnd] = count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = colEnd; i &gt; colStart; i--) &#123;</span><br><span class="line">      result[rowEnd][i] = count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = rowEnd; i &gt; rowStart; i--) &#123;</span><br><span class="line">      result[i][colStart] = count++;</span><br><span class="line">    &#125;</span><br><span class="line">    colStart++;</span><br><span class="line">    colEnd--;</span><br><span class="line">    rowStart++;</span><br><span class="line">    rowEnd--;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> === <span class="number">1</span> &amp;&amp; count === n*n) &#123;</span><br><span class="line">      result[<span class="built_in">Math</span>.floor(n/<span class="number">2</span>)][<span class="built_in">Math</span>.floor(n/<span class="number">2</span>)] = n**<span class="number">2</span>;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -196,16 +196,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/25/spiral-matrix/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/25/spiral-matrix/&text=Leetcode 59 - Spiral matrix"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/25/spiral-matrix/&is_video=false&description=Leetcode 59 - Spiral matrix"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Leetcode 59 - Spiral matrix&body=Check out this article: http://example.com/2021/08/25/spiral-matrix/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/25/spiral-matrix/&name=Leetcode 59 - Spiral matrix&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/25/spiral-matrix/&t=Leetcode 59 - Spiral matrix"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/25/spiral-matrix/&text=Leetcode 59 - Spiral matrix II"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/25/spiral-matrix/&is_video=false&description=Leetcode 59 - Spiral matrix II"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 59 - Spiral matrix II&body=Check out this article: http://example.com/2021/08/25/spiral-matrix/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/25/spiral-matrix/&title=Leetcode 59 - Spiral matrix II"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/25/spiral-matrix/&name=Leetcode 59 - Spiral matrix II&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/25/spiral-matrix/&t=Leetcode 59 - Spiral matrix II"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

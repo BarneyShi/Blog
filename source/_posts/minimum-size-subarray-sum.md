@@ -23,19 +23,22 @@ Explanation: The subarray [4,3] has the minimal length under the problem constra
  * @param {number[]} nums
  * @return {number}
  */
- // Time complexity: O(n) because every elements are operated twice, so it's 2n, which indicates O(n)
 var minSubArrayLen = function(target, nums) {
-  let len = nums.length + 1;
-  let left = 0, right = 0, sum = 0, ans = len;
+  let left = 0, right = 0;
+  let sum = 0, length = Infinity;
   while (right < nums.length) {
     sum += nums[right];
-    while (sum >= target) {
-      ans = ans < right - left + 1 ? ans : right - left + 1;
-      sum -= nums[left];
-      left++;
+    if (sum < target) {
+      right++;
+    } else {
+      while (sum >= target) {
+        length = Math.min(length, right - left + 1);
+        sum -= nums[left];
+        left++;
+      }
+      right++;
     }
-    right++;
   }
-  return ans == len ? 0 : ans;
+  return length === Infinity ? 0 : length;
 };
 ```

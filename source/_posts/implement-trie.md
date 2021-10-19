@@ -6,7 +6,7 @@ tags:
 ---
 **`Note:`**
 - What does `Trie` look like?
-![img](https://pic.leetcode-cn.com/1631438217-BertVN-image.png)
+![img](https://i.imgur.com/FCZv2Kv.png)
 - `children` must be defined as an `object` so we can quickly check if a `char` is presented using `children[char]`.
 - While inserting, we have to specify `isEnd` to the `last char`. Because only in this way, we can tell the difference between `app` and `apple`. Otherwise, we won't be sure if `appl` is also presented in our Trie.
 

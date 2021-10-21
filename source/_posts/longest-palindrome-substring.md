@@ -12,6 +12,11 @@ tags:
   - Because `dp[i][j]` depends on `dp[i+1][j-1]`, we have to iterate `i` from big to small, `j` from small to big. Also, make sure `j` bigger than `i`.
   - When `j - i < 1`. Compare the length.
   - When `j - i > 1`, check `dp[i+1][j-1]`.
+- `Center spread`:
+  - ![img](https://i.imgur.com/cCEEGNR.png)
+  - ![img](https://i.imgur.com/aU2RG4T.png)
+  - For each `single` element or `two` adjacent elements, we spread the `window` if the two new nums on `left end` and `right end` are equal.
+  - Because there might be both `single center` or `dual center`, we have to do twice.
 
 **`Question:`**
 
@@ -25,6 +30,36 @@ Note: "aba" is also a valid answer.
 ```
 
 **`Code:`**
+
+**`Center spread O(n^2)`**
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function (s) {
+  let start = 0, end = 0;
+  let maxLen = 0;
+  for (let i = 0; i < s.length; i++) {
+    centerSpread(i, i, s);
+    centerSpread(i, i + 1, s);
+  }
+  return s.slice(start, end + 1);
+
+  function centerSpread(center1, center2, s) {
+    while (center1 >= 0 && center2 < s.length && s[center1] === s[center2]) {
+      // If statement must proceed changes to center1 and center2. Because new boundaries s[center1]. s[center2] might not be equal.
+      if (center2 - center1 + 1 > maxLen) {
+        start = center1;
+        end = center2;
+        maxLen = center2 - center1 + 1;
+      }
+      center1--;
+      center2++;
+    }
+  }
+};
+```
 
 **`DP, O(n^2)`**
 ```javascript

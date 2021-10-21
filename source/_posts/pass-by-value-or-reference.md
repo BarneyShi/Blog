@@ -57,5 +57,6 @@ changeMember(x);
 console.log("after changeMember: " + x.member); /* change persists */
 ```
 
-**Exaplain**
-Array/Object is passed by value, but its elements are passed by reference. So when we want to `reassign` values to the `object`, it won't persist. So, `array.push(x)` or `array.pop()` will work. But `array = newArr` will not change the value of object in its `parent scope`. Because when we do `chagneObject(x)`, here `x` is passed by value. Another attempts trying to change `x = newArr` is in vain.
+**Exaplain**:
+
+`Array/Object` is `passed by value`, but its elements are `passed by reference`. So when we want to `reassign` values to the `object`, it won't persist. So, `array.push(x)` or `array.pop()` will work. But `array = newArr` will not change the value of object in its `parent scope`. Because when we do `chagneObject(x)`, here `x` is passed by value. Another attempts trying to change `x = newArr` is in vain.

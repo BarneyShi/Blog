@@ -12,6 +12,7 @@ tags:
   - Make sure `100 >>> i >= 3`.
   - After we find `100 >>> 1` for 5 times, which means we've found `2^5 = 32` divisors exist in 100. Then `100 - 32*3 = 4`
   - Let dividend = 4, and add 32 to res. Do the iteration again.
+- Use `>>>` on `2**31` otherwise you'll get a negative number coz `2**31`'s first digit is `1` and JS will assume its a negative number after shifting it.
 
 **`Question:`**
 

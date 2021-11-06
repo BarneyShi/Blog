@@ -13,7 +13,8 @@ tags:
       - Note: if we are gonna use it, the premise is that `(s[i] === p[j] || p[j] === '.')`.
     - If it is not, we just need to check if `(s[i] === p[j] || p[j] === '.')`.
   - Some tricky parts:
-    - DON'T use array as map's key, somehow it doesn't work. Use strings.
+    - DON'T use array as map's key, it doesn't work because `comma operator` only return the `last operand`.
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comma_Operator
     - Always put `match before recursions` because otherwise we'll fall into a loop hole. Match has the function to terminate the call.
 
 **`Question:`**

@@ -1,12 +1,15 @@
 ---
-title: Sort - Quicksort
+title: Sort - Quick sort
 date: 2021-08-21 21:51:51
 tags:
 - sort
 - algorithm
 ---
+- `Note`:
+  - If we choose `array[left]` as the pivot, `right` pointer MUST `move first`.
+  - Because if we move `left` pointer first, when it stops, `array[left] > pivot`, then when we `swap array[left], array[start]`, we'll swap a big value into left.
 ### Analysis:
-- Average time complexity: After a long deduction, it's `O(nlogn)`
+- Average time complexity: `O(nlogn)` - Every time, `n` elements are operated, and if we choose `pivot` wisely, it's exactly the `middle`, so we only need to recursively do `logn` times. So it's `O(nlogn)`.
 - Worst time complexity: It happens when the `pivot` is always picked as the `largest` or `smallest` value. So it's `O(n^2)`.
 
 ### Steps: 
@@ -18,47 +21,26 @@ elements less than the pivot precede it.
 
 ### Note: The tricky part is how to implememnt `partition`.
 ```javascript
-const qSort = (arr, start, end) => {
-  /* Terminating calls */
-  if (start >= end) {
-    return;
-  }
-  let pivotIndex = partition(arr, start, end);
-  qSort(arr, start, pivotIndex - 1);
-  qSort(arr, pivotIndex + 1, end);
-};
-
-const partition = (arr, start, end) => {
-  // Initialize the point as the start
-  let pointer = start + 1;
-  // Initialize pivot value as the first element
-  let pivotValue = arr[start];
-  for (let i = pointer; i <= end; i++) {
-    if (arr[i] < pivotValue) {
-      [arr[i], arr[pointer]] = [arr[pointer], arr[i]];
-      pointer++;
+const partition = (array, left, right) => {
+  const start = left;
+  const pivot = array[start];
+  while (left < right) {
+    while (left < right && array[right] >= pivot) {
+      right--;
     }
+    while (left < right && array[left] <= pivot) {
+      left++;
+    }
+    [array[left], array[right]] = [array[right], array[left]];
   }
-  /* Here we swtich pivot value with (pointer - 1) instead of (pointer), because the pointer is currently pointing to an element bigger than pivot value. Think about that */
-  [arr[pointer - 1], arr[start]] = [arr[start], arr[pointer - 1]];
-  return pointer - 1;
-};
+  [array[left], array[start]] = [array[start], array[left]];
+  return left;
+}
+const quickSort = (array, left, right) => {
+  if (left >= right) return;
+  const pivot = partition(array, left, right);
+  quickSort(array, left, pivot - 1);
+  quickSort(array, pivot + 1, right);
+}
 ```
-Take `[4, 2, 7, 1, 3, 9, 8]` for example:
-```
-Intial: [4, 2, 7, 1, 3, 9, 8]
-            *
-After iteration: [4, 2, 7, 1, 3, 9, 8]
-                        *
-After iteration: [4, 2, 7, 1, 3, 9, 8]
-                        *
-After iteration: [4, 2, 1, 7, 3, 9, 8]
-                           *
-After iteration: [4, 2, 1, 3, 7, 9, 8]
-                              *
-After iteration: [4, 2, 1, 3, 7, 9, 8]
-                              *
-... end                              
-```
-As you can say, eventually, the pointer will be pointing to an element that is `bigger` than our `pivot`
                   

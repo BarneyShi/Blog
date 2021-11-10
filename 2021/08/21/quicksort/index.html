@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Analysis: Average time complexity: After a long deduction, it’s O(nlogn) Worst time complexity: It happens when the pivot is always picked as the largest or smallest value. So it’s O(n^2).  Steps: Cho">
+    <meta name="description" content="Note: If we choose array[left] as the pivot, right pointer MUST move first. Because if we move left pointer first, when it stops, array[left] &gt; pivot, then when we swap array[left], array[start],">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sort - Quicksort">
+<meta property="og:title" content="Sort - Quick sort">
 <meta property="og:url" content="http://example.com/2021/08/21/quicksort/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Analysis: Average time complexity: After a long deduction, it’s O(nlogn) Worst time complexity: It happens when the pivot is always picked as the largest or smallest value. So it’s O(n^2).  Steps: Cho">
+<meta property="og:description" content="Note: If we choose array[left] as the pivot, right pointer MUST move first. Because if we move left pointer first, when it stops, array[left] &gt; pivot, then when we swap array[left], array[start],">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-21T21:51:51.000Z">
-<meta property="article:modified_time" content="2021-11-10T01:42:48.145Z">
+<meta property="article:modified_time" content="2021-11-10T05:11:15.412Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="algorithm">
 <meta property="article:tag" content="sort">
@@ -38,7 +38,7 @@
       
     
     <!-- title -->
-    <title>Sort - Quicksort</title>
+    <title>Sort - Quick sort</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -93,16 +93,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/21/quicksort/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/21/quicksort/&text=Sort - Quicksort"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/21/quicksort/&is_video=false&description=Sort - Quicksort"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Sort - Quicksort&body=Check out this article: http://example.com/2021/08/21/quicksort/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/21/quicksort/&name=Sort - Quicksort&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/21/quicksort/&t=Sort - Quicksort"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/21/quicksort/&text=Sort - Quick sort"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/21/quicksort/&is_video=false&description=Sort - Quick sort"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sort - Quick sort&body=Check out this article: http://example.com/2021/08/21/quicksort/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/21/quicksort/&name=Sort - Quick sort&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/21/quicksort/&t=Sort - Quick sort"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -119,7 +119,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Sort - Quicksort
+        Sort - Quick sort
     </h1>
 
 
@@ -151,8 +151,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h3><ul>
-<li>Average time complexity: After a long deduction, it’s <code>O(nlogn)</code></li>
+    <ul>
+<li><code>Note</code>:<ul>
+<li>If we choose <code>array[left]</code> as the pivot, <code>right</code> pointer MUST <code>move first</code>.</li>
+<li>Because if we move <code>left</code> pointer first, when it stops, <code>array[left] &gt; pivot</code>, then when we <code>swap array[left], array[start]</code>, we’ll swap a big value into left.<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h3></li>
+</ul>
+</li>
+<li>Average time complexity: <code>O(nlogn)</code> - Every time, <code>n</code> elements are operated, and if we choose <code>pivot</code> wisely, it’s exactly the <code>middle</code>, so we only need to recursively do <code>logn</code> times. So it’s <code>O(nlogn)</code>.</li>
 <li>Worst time complexity: It happens when the <code>pivot</code> is always picked as the <code>largest</code> or <code>smallest</code> value. So it’s <code>O(n^2)</code>.</li>
 </ul>
 <h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><ol>
@@ -160,11 +165,7 @@
 <li>Next, partition the remaining items into two disjoint sublists,<br>such that all items greater than the pivot follow it, and all<br>elements less than the pivot precede it.</li>
 <li>Start recursion.</li>
 </ol>
-<h3 id="Note-The-tricky-part-is-how-to-implememnt-partition"><a href="#Note-The-tricky-part-is-how-to-implememnt-partition" class="headerlink" title="Note: The tricky part is how to implememnt partition."></a>Note: The tricky part is how to implememnt <code>partition</code>.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> qSort = <span class="function">(<span class="params">arr, start, end</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/* Terminating calls */</span></span><br><span class="line">  <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> pivotIndex = partition(arr, start, end);</span><br><span class="line">  qSort(arr, start, pivotIndex - <span class="number">1</span>);</span><br><span class="line">  qSort(arr, pivotIndex + <span class="number">1</span>, end);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> partition = <span class="function">(<span class="params">arr, start, end</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Initialize the point as the start</span></span><br><span class="line">  <span class="keyword">let</span> pointer = start + <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// Initialize pivot value as the first element</span></span><br><span class="line">  <span class="keyword">let</span> pivotValue = arr[start];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = pointer; i &lt;= end; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] &lt; pivotValue) &#123;</span><br><span class="line">      [arr[i], arr[pointer]] = [arr[pointer], arr[i]];</span><br><span class="line">      pointer++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* Here we swtich pivot value with (pointer - 1) instead of (pointer), because the pointer is currently pointing to an element bigger than pivot value. Think about that */</span></span><br><span class="line">  [arr[pointer - <span class="number">1</span>], arr[start]] = [arr[start], arr[pointer - <span class="number">1</span>]];</span><br><span class="line">  <span class="keyword">return</span> pointer - <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Take <code>[4, 2, 7, 1, 3, 9, 8]</code> for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Intial: [4, 2, 7, 1, 3, 9, 8]</span><br><span class="line">            *</span><br><span class="line">After iteration: [4, 2, 7, 1, 3, 9, 8]</span><br><span class="line">                        *</span><br><span class="line">After iteration: [4, 2, 7, 1, 3, 9, 8]</span><br><span class="line">                        *</span><br><span class="line">After iteration: [4, 2, 1, 7, 3, 9, 8]</span><br><span class="line">                           *</span><br><span class="line">After iteration: [4, 2, 1, 3, 7, 9, 8]</span><br><span class="line">                              *</span><br><span class="line">After iteration: [4, 2, 1, 3, 7, 9, 8]</span><br><span class="line">                              *</span><br><span class="line">... end                              </span><br></pre></td></tr></table></figure>
-<p>As you can say, eventually, the pointer will be pointing to an element that is <code>bigger</code> than our <code>pivot</code>
-                  </p>
+<h3 id="Note-The-tricky-part-is-how-to-implememnt-partition"><a href="#Note-The-tricky-part-is-how-to-implememnt-partition" class="headerlink" title="Note: The tricky part is how to implememnt partition."></a>Note: The tricky part is how to implememnt <code>partition</code>.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> partition = <span class="function">(<span class="params">array, left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> start = left;</span><br><span class="line">  <span class="keyword">const</span> pivot = array[start];</span><br><span class="line">  <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; array[right] &gt;= pivot) &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; array[left] &lt;= pivot) &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">    [array[left], array[right]] = [array[right], array[left]];</span><br><span class="line">  &#125;</span><br><span class="line">  [array[left], array[start]] = [array[start], array[left]];</span><br><span class="line">  <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> quickSort = <span class="function">(<span class="params">array, left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> pivot = partition(array, left, right);</span><br><span class="line">  quickSort(array, left, pivot - <span class="number">1</span>);</span><br><span class="line">  quickSort(array, pivot + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -196,16 +197,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/21/quicksort/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/21/quicksort/&text=Sort - Quicksort"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/21/quicksort/&is_video=false&description=Sort - Quicksort"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Sort - Quicksort&body=Check out this article: http://example.com/2021/08/21/quicksort/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quicksort"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/21/quicksort/&name=Sort - Quicksort&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/21/quicksort/&t=Sort - Quicksort"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/21/quicksort/&text=Sort - Quick sort"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/21/quicksort/&is_video=false&description=Sort - Quick sort"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sort - Quick sort&body=Check out this article: http://example.com/2021/08/21/quicksort/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/21/quicksort/&title=Sort - Quick sort"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/21/quicksort/&name=Sort - Quick sort&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/21/quicksort/&t=Sort - Quick sort"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

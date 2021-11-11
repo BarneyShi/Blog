@@ -6,6 +6,10 @@ tags:
 - backtracking
 ---
 **`Note:`**
+- `Bitwise`
+  - It's a `binary` watch. `Hour` is represented by `4 bits`. `Min` is represented by `6 bits`.
+  - `The number of 1`s in each binary number means how many `LEDs are on`.
+
 - Too many cases, using `backtracking` is good for finding out all combinations.
 - Need to seperately call `dfs` on `hour[]` and `min[]`.
 - Use two tmp arrays to contain H/M, then use a `double for loop` to get all `combinations`.
@@ -33,6 +37,23 @@ Output: ["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]
 ```
 
 **`Code:`**
+
+**`BitWise`**
+```javascript
+var readBinaryWatch = function(turnedOn) {
+    const ans = [];
+    for (let h = 0; h < 12; ++h) {
+        for (let m = 0; m < 60; ++m) {
+            if (h.toString(2).split('0').join('').length + m.toString(2).split('0').join('').length === turnedOn) {
+                ans.push(h + ":" + (m < 10 ? "0" : "") + m);
+            }
+        }
+    }
+    return ans;
+};
+```
+
+**`DFS + Backtracking`**
 ```javascript
 /**
  * @param {number} turnedOn

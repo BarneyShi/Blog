@@ -1,11 +1,12 @@
 ---
-title: Sort - Quick sort
+title: Sort - Quicksort
 date: 2021-08-21 21:51:51
 tags:
 - sort
 - algorithm
 ---
 - `Note`:
+  - ![img](https://i.imgur.com/V6jl43g.png)
   - If we choose `array[left]` as the pivot, `right` pointer MUST `move first`.
   - Because if we move `left` pointer first, when it stops, `array[left] > pivot`, then when we `swap array[left], array[start]`, we'll swap a big value into left.
 ### Analysis:

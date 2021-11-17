@@ -60,6 +60,7 @@ function geneNext(str) {
       i = next[i - 1];
     }
     if (str[i] === str[j]) {
+      // Why we need plus one? Because the value of next[] is `length` but not `index`. Imagine we go all the way back to index 0 and `str[0] === str[j]`, then str[j] should be `1`.
       i++;
     }
     next[j] = i;

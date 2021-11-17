@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/nfIsa11.jpg">
 <meta property="article:published_time" content="2021-10-13T17:58:31.000Z">
-<meta property="article:modified_time" content="2021-11-17T04:52:08.272Z">
+<meta property="article:modified_time" content="2021-11-17T07:37:22.746Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
@@ -166,18 +166,18 @@
 </li>
 <li><p>How to get the prefix table?</p>
 <ul>
-<li><code>j</code> can be understood as the <code>end of prefix</code>.</li>
-<li><code>i</code> can be understood as the <code>end of suffix</code>.</li>
-<li>Let <code>j = 0</code>, <code>i = 1</code>. Take <code>aaa</code> for example, if <code>pattern[i] === pattern[j]</code>, then <code>next[i] === j + 1</code>.</li>
+<li><code>i</code> can be understood as the <code>end of prefix</code>.</li>
+<li><code>j</code> can be understood as the <code>end of suffix</code>.</li>
+<li>Let <code>i = 0</code>, <code>j = 1</code>. Take <code>aaa</code> for example, if <code>pattern[i] === pattern[j]</code>, then <code>next[j] === i + 1</code>.</li>
 <li>if <code>pattern[i] !== pattern[j]</code> like below</li>
 <li><img src="https://i.imgur.com/nfIsa11.jpg" alt="img"></li>
-<li>We need to find a max <code>prefix</code> for <code>suffix (ABABA)</code> ending at <code>i</code>! (The prefix will occupy all or part of ABABA)</li>
-<li>We need to go back, but apparently we cannot do <code>j = next[j]</code> because then we’ll always have a prefix ending with the same char like <code>pattern[j]</code>.</li>
-<li>What about <code>next[j-1]</code>? That sounds right!</li>
-<li>By the definition of this prefix table, <code>pattern[0, j-1]</code> is the same as a string ending before <code>i</code> whose length is the same as <code>pattern[0, j-1]</code>. Right now they both end with <code>B</code>.</li>
-<li>By <code>next[j-1]</code>, we will find (if it exsits) a max prefix that ends with <code>B</code> (even if we have to iterate multiple times).</li>
+<li>We need to find a max <code>prefix</code> for <code>suffix (ABABA)</code> ending at <code>j</code>! (The prefix will occupy all or part of ABABA)</li>
+<li>We need to go back, but apparently we cannot do <code>i = next[i]</code> because then we’ll always have a prefix ending with the same char like <code>pattern[j]</code>.</li>
+<li>What about <code>next[i - 1]</code>? That sounds right!</li>
+<li>By the definition of this prefix table, <code>pattern[0, i - 1]</code> is the same as a string ending before <code>j</code> whose length is the same as <code>pattern[0, i - 1]</code>. Right now they both end with <code>B</code>.</li>
+<li>By <code>next[i - 1]</code>, we will find (if it exsits) a max prefix that ends with <code>B</code> (even if we have to iterate multiple times).</li>
 <li>When we find this prefix, we get its <code>length</code> by <code>next[]</code>. And because of the table is indexed by <code>0</code>. When <code>pattern[j] === pattern[i]</code>, if means we are actually <code>checking the char after the prefix</code>. </li>
-<li>If they match, we’ve found a qualified prefix that’s the longest and it is followed by a char that is the same as <code>pattern[i]</code>.</li>
+<li>If they match, we’ve found a qualified prefix that’s the longest and it is followed by a char that is the same as <code>pattern[j]</code>.</li>
 <li>We got the prefix!</li>
 </ul>
 </li>

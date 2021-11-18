@@ -7,11 +7,8 @@ tags:
 **`Note:`**
 
 1. **`Searching for a target`**
+- Return the index otherwise -1
 ```javascript
-// Return the index otherwise -1
-/**
- * @param {array} sorted
-**/
 function binarySearch(array, target) {
   let left = 0, right = array.length - 1;
   // Here it's `Equal` coz if there is only one element left and it's not the answer. 
@@ -31,10 +28,10 @@ function binarySearch(array, target) {
 ```
 
 2. **`Searching for the FIRST number that is SMALLER or EQUAL to the target`**
+- Return the index otherwise -1
+- Idea: Resize the window till only ONE element left coz if `array[mid] == target`, 
+- it doesn't mean it's the FIRST one. Like `[2,2,2,4]`, array[1] = 2, but 0 is the ans.
 ```javascript
-// Return the index otherwise -1
-// Idea: Resize the window till only ONE element left coz if `array[mid] == target`, 
-// it doesn't mean it's the FIRST one. Like `[2,2,2,4]`, array[1] = 2, but 0 is the ans.
 
 function binarySearch(array, target) {
   let left = 0, right = array.length - 1;
@@ -54,10 +51,12 @@ function binarySearch(array, target) {
 ```
 
 3. **`Searching for the LAST number that is BIGGER or EQUAL to the target`**
-```javascript
-// Return the index otherwise -1
-// Idea: Resize the window till only ONE element left.
+- Return the index otherwise -1
+- Idea: Resize the window till only ONE element left.
+- Why it's `mid = left + ((1 + right - left) >> 1)`?
+- Think about `[2,2], 2`. If we initialize `mid` as `(left + right) / 2 === 0`. It will fall into a `loop hole`.
 
+```javascript
 function binarySearch(array, target) {
   let left = 0, right = array.length - 1;
   // Don't use `<=` here because we are not just looking for the target, we are looking for `smaller` or `equal`.

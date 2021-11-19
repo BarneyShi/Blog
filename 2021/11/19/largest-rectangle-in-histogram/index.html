@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  For each col, we need to find the first col that is shorter than it on both left and right. Use brute force will give us a O(n^2) algorithm. Can we finish it in just one iteration? Is there a d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 84 - Largest rectangle in histogram">
+<meta property="og:url" content="http://example.com/2021/11/19/largest-rectangle-in-histogram/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  For each col, we need to find the first col that is shorter than it on both left and right. Use brute force will give us a O(n^2) algorithm. Can we finish it in just one iteration? Is there a d">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/F06LfeN.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg">
+<meta property="article:published_time" content="2021-11-19T01:48:52.000Z">
+<meta property="article:modified_time" content="2021-11-19T10:34:15.725Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="monotonic queue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/F06LfeN.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 84 - Largest rectangle in histogram</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/11/18/island-perimeter/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/11/19/largest-rectangle-in-histogram/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&text=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&is_video=false&description=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 84 - Largest rectangle in histogram&body=Check out this article: http://example.com/2021/11/19/largest-rectangle-in-histogram/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&name=Leetcode 84 - Largest rectangle in histogram&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/11/19/largest-rectangle-in-histogram/&t=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 84 - Largest rectangle in histogram
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-11-19T01:48:52.000Z" itemprop="datePublished">2021-11-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/monotonic-queue/" rel="tag">monotonic queue</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>For each <code>col</code>, we need to find the <code>first</code> col that is <code>shorter</code> than it on both <code>left</code> and <code>right</code>.</li>
+<li>Use brute force will give us a O(n^2) algorithm. Can we finish it in just one iteration?</li>
+<li>Is there a data structure that can quickly give us the <code>first</code> col that is shorter than the current col on the <code>left</code> and <code>right</code>?</li>
+<li><code>Monotonic queue</code>!</li>
+<li>For an element stack[i] in <code>stack</code>, <code>stack[i-1]</code> is the first element shorter than stack[i] on the left.</li>
+<li>What about <code>right</code> side? When we got a real shorter col and need to pop many cols including <code>stack[i]</code>, we found the <code>first</code> shorter col on the right.</li>
+<li>Use <code>monoStack[]</code> to store indexes of cols.</li>
+<li>How to calculate area of a rectangle? </li>
+<li><img src="https://i.imgur.com/F06LfeN.png" alt="img"></li>
+<li>For example, the current stack[] is <code>[1,4,7]</code>, which is corresponding to heights like <code>[2,5,8]</code>, the next col height is <code>6</code>.</li>
+<li>How do we know the <code>WIDTH</code> of col with height <code>8</code>?<ul>
+<li>Pop up the top of stack first as <code>top</code>.</li>
+<li>Clearly, the width is between cols with height 5 and 6.</li>
+<li>Right now the stack is like <code>[1, 4]</code>.</li>
+<li>The <code>width = i - stack[stack.length - 1] - 1</code>, which is 3 (index 5, 6, 7).</li>
+<li><code>Area = height[top] * width</code>. </li>
+</ul>
+</li>
+<li><code>DETAILS</code>:<ol>
+<li>What if the cols are strictly increasing? We don’t even have a chance to calculate the area.</li>
+</ol>
+<ul>
+<li><code>Add 0 to the end of heights[]</code>!!</li>
+<li>In this way, we can ensure that we’ve pop out all cols after all iterations.</li>
+</ul>
+<ol start="2">
+<li>When there is only one element left in the <code>stack</code>, there is <code>stack[stack.length - 1]</code> is <code>UNDEFINED</code>!</li>
+</ol>
+<ul>
+<li><code>Add 0 to the start of heights[] as well</code>!!</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>Given an array of integers <code>heights</code> representing the histogram’s bar height where the width of each bar is <code>1</code>, return the area of the largest rectangle in the histogram.</p>
+<p><strong><code>Example:</code></strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: heights = [2,1,5,6,2,3]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: The above is a histogram where width of each bar is 1.</span><br><span class="line">The largest rectangle is shown in the red area, which has an area = 10 units.</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">heights</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> largestRectangleArea = <span class="function"><span class="keyword">function</span>(<span class="params">heights</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> monoStack = [];</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span>;</span><br><span class="line">  heights = [<span class="number">0</span>, ...heights, <span class="number">0</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; heights.length; i++) &#123;</span><br><span class="line">    <span class="keyword">while</span> (monoStack.length &gt; <span class="number">0</span> &amp;&amp; heights[monoStack[monoStack.length - <span class="number">1</span>]] &gt; heights[i]) &#123;</span><br><span class="line">      <span class="keyword">const</span> top = monoStack.pop();</span><br><span class="line">      res = <span class="built_in">Math</span>.max(res, (i - monoStack[monoStack.length - <span class="number">1</span>] - <span class="number">1</span>) * heights[top]);</span><br><span class="line">    &#125;</span><br><span class="line">    monoStack.push(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/11/19/largest-rectangle-in-histogram/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&text=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&is_video=false&description=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 84 - Largest rectangle in histogram&body=Check out this article: http://example.com/2021/11/19/largest-rectangle-in-histogram/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&title=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/11/19/largest-rectangle-in-histogram/&name=Leetcode 84 - Largest rectangle in histogram&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/11/19/largest-rectangle-in-histogram/&t=Leetcode 84 - Largest rectangle in histogram"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,14 +1,23 @@
 ---
-title: Leetcode 42 - Trapping rain water
+title: Leetcode 42 - 💦 Trapping rain water 💦
 date: 2021-11-03 02:42:08
 tags:
-- priority queue
+- monotonic queue
 ---
 **`Note:`**
-- Just like `trapping rain water ii`, use `min-heap` priority queue `[position, height]`.
-- This time, we don't start with the outermost, instead we start from both ends.
-- Popping PQ based on the height.
-- Use `visited` to mark visited bars.
+- To find how many water some cols can trap, we need to know the `highest walls` on both side.
+- How can we quickly get a col that is higher than current col on the `left` or `right`? 
+- A `decreasing monotonic stack`! Only store `indexes` in the stack.
+- ![img](https://i.imgur.com/68P59WM.gif)
+- When the current `height[i]` is higher than the `top` of the stack. We need to pop it out `stack.pop()`. 
+- The question is, how wide does the `top` extend to both side?
+- ![img](https://i.imgur.com/jMA6Gfd.png)
+- There is one thing that we can be sure: 
+  - `Area between cols in stack have been fill out with water if there are gaps between them`.
+  - All other cols in `height` between two adjacent elements in `stack` are shorter than those two. We can def trap some water there.
+- So, the `WDITH = i - newTop - 1`, which is cols of indexes `4, 5, 6, 7, 8`.
+- The `HEIGHT = min(height[newTop], height[i]) - height[oldTop]`.
+- Like I showed here ![img](https://i.imgur.com/rvwpo1T.png).
 
 **`Question:`**
 
@@ -24,33 +33,25 @@ Explanation: The above elevation map (black section) is represented by array [0,
 ```
 
 **`Code:`**
-```java
-class Solution {
-    public int trap(int[] height) {
-      int length = height.length;
-      boolean[] visited = new boolean[length];
-      // Mark both ends as visited so we won't iterate them again.
-      visited[0] = visited[length - 1] = true;
-      PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
-      pq.offer(new int[]{0, height[0]});
-      pq.offer(new int[]{length - 1, height[length - 1]});
-
-      int res = 0;
-      int[] dirs = {-1, 1};
-      while (!pq.isEmpty()) {
-        int[] poll = pq.poll();
-        for (int dir : dirs) {
-          int pos = poll[0] + dir;
-          if (pos >= 0 && pos < length && !visited[pos]) {
-            if (height[pos] < poll[1]) {
-              res += poll[1] - height[pos];
-            }
-            pq.offer(new int[]{pos, Math.max(height[pos], poll[1])});
-            visited[pos] = true;
-          }
-        }
+```javascript
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+ var trap = function (height) {
+  let monoStack = [];
+  let res = 0;
+  for (let i = 0; i < height.length; i++) {
+    while (monoStack.length > 0 && height[monoStack[monoStack.length - 1]] < height[i]) {
+      const top = monoStack.pop();
+      if (monoStack.length > 0) {
+        const areaWidth = i - monoStack[monoStack.length - 1] - 1;
+        const areaHeight = Math.min(height[i], height[monoStack[monoStack.length - 1]]) - height[top];
+        res += areaWidth * areaHeight;
       }
-      return res;
     }
-}
+    monoStack.push(i);
+  }
+  return res;
+};
 ```

@@ -6,7 +6,13 @@ tags:
 - double pointer
 ---
 **`Note:`**
-
+- ![img](https://i.imgur.com/0YGhZpv.png)
+- Add a `dummy` to the head in case we need to move the first node. And also we can quickly return the `new head`.
+- Use `curr` to iterate the whole list.
+- Use `tmp` to find `tmp.next.val < curr.val` until `tmp.next == null`.
+- Only `curr = curr.next` if no node is smaller than curr.
+- Cut off the node from the list.
+- Start from `dummy`, to find the insertion position with `findInsertion.next.val > nodeToBeInserted.val`.
 
 **`Question:`**
 
@@ -29,6 +35,51 @@ Output: [1,2,3,4]
 ```
 
 **`Code:`**
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var insertionSortList = function(head) {
+  const dummyHead = new ListNode();
+  dummyHead.next = head;
+  let curr = head;
+  while (curr) {
+    let tmp = curr;
+    // Has to be `tmp.next` so we can cut off the next node.
+    while (tmp.next && curr.val < tmp.next.val) {
+      tmp = tmp.next;
+    }
+    if (tmp.next === null) {
+      curr = curr.next;
+      continue;
+    }
+    // Cut off the node
+    let nodeToBeInserted = tmp.next;
+    tmp.next = tmp.next.next;
+    nodeToBeInserted.next = null;
+    // Find insertion position
+    let findInsertionPosition = dummyHead;
+    while (findInsertionPosition.next && findInsertionPosition.next.val < nodeToBeInserted.val) {
+      findInsertionPosition = findInsertionPosition.next;
+    } 
+    // Insert the node
+    tmp = findInsertionPosition.next;
+    findInsertionPosition.next = nodeToBeInserted;
+    nodeToBeInserted.next = tmp;
+  }
+  return dummyHead.next;
+};
+```
+
 ```javascript
 /**
  * Definition for singly-linked list.

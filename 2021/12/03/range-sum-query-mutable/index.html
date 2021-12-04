@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Just use preSum will have O(n) on updating, we need something faster.  Create a tree array with size 2 * nums_length. Insert nums[i] into the end of tree[]. Baed on tree[i] &#x3D; tree[2*i] + tree[2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)">
+<meta property="og:url" content="http://example.com/2021/12/03/range-sum-query-mutable/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Just use preSum will have O(n) on updating, we need something faster.  Create a tree array with size 2 * nums_length. Insert nums[i] into the end of tree[]. Baed on tree[i] &#x3D; tree[2*i] + tree[2">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/TH37Pz5.png">
+<meta property="og:image" content="https://i.imgur.com/fcA6F5B.png">
+<meta property="article:published_time" content="2021-12-03T23:44:18.000Z">
+<meta property="article:modified_time" content="2021-12-04T09:24:34.172Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="binary indexed tree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/TH37Pz5.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/12/03/reverse-words-in-a-string-iii/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/03/range-sum-query-mutable/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/03/range-sum-query-mutable/&text=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/03/range-sum-query-mutable/&is_video=false&description=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)&body=Check out this article: http://example.com/2021/12/03/range-sum-query-mutable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/03/range-sum-query-mutable/&name=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/03/range-sum-query-mutable/&t=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-03T23:44:18.000Z" itemprop="datePublished">2021-12-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/binary-indexed-tree/" rel="tag">binary indexed tree</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>Just use <code>preSum</code> will have O(n) on updating, we need something faster.</li>
+<li><img src="https://i.imgur.com/TH37Pz5.png" alt="img"></li>
+<li>Create a <code>tree</code> array with size <code>2 * nums_length</code>.<ul>
+<li>Insert <code>nums[i]</code> into the end of <code>tree[]</code>.</li>
+<li>Baed on <code>tree[i] = tree[2*i] + tree[2*i + 1]</code>, fill the preceding cells too. (Some cells might be left empty)</li>
+</ul>
+</li>
+<li>Now even it’s still an array, but it is equivalent to something like </li>
+<li><img src="https://i.imgur.com/fcA6F5B.png" alt="img"></li>
+<li>How to update a num?<ul>
+<li>First, update <code>tree[len + index]</code>.</li>
+<li>Then based on <code>pos = len + index</code>, update <code>tree[pos / 2] = tree[left] + tree[right]</code>.</li>
+<li>Be careful that based on whether <code>pos</code> is <code>even</code> or <code>odd</code>, there are some adjustments for <code>left</code> and <code>right</code>.</li>
+<li>If <code>pos</code> is even, <code>left = pos, right = pos + 1</code>.</li>
+<li>If <code>pos</code> is odd, <code>left = pos - 1, right = pos</code>.</li>
+<li>Then update <code>pos</code> as <code>pos / 2</code>, and do this till <code>pos === 0</code>.</li>
+</ul>
+</li>
+<li>How to calculate sum?<ul>
+<li>Be clear that a <code>sum treeNode</code> can only work when <code>left</code> is <code>even</code> and <code>right</code> is <code>odd</code>.</li>
+<li>Add <code>offset numsLen</code> to <code>left</code> and <code>right</code> first. </li>
+<li>If <code>left</code> is <code>odd</code>, we need to add <code>tree[left]</code> to sum, and do <code>left++</code>.</li>
+<li>If <code>right</code> is <code>even</code>, we need to add <code>tree[right]</code> to sum, and do <code>right--</code>.</li>
+<li>Next, we need to find the <code>parentNode</code> of leftNode and rightNode.</li>
+<li>So, do <code>left &gt;&gt; 1</code> and <code>right &gt;&gt; 1</code>.</li>
+<li>When we’ve found the parent node, it will be added to <code>sum</code>.</li>
+<li>Return <code>sum</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>Given an integer array <code>nums</code>, handle multiple queries of the following types:</p>
+<ul>
+<li>Update the value of an element in <code>nums</code>.</li>
+<li>Calculate the sum of the elements of <code>nums</code> between indices <code>left</code> and <code>right</code> inclusive where <code>left &lt;= right</code>.</li>
+</ul>
+<p>Implement the <code>NumArray</code> class:</p>
+<ul>
+<li><code>NumArray(int[] nums)</code> Initializes the object with the integer array <code>nums</code>.</li>
+<li><code>void update(int index, int val)</code> Updates the value of <code>nums[index]</code> to be val.</li>
+<li><code>int sumRange(int left, int right)</code> Returns the sum of the elements of <code>nums</code> between indices <code>left</code> and <code>right</code> inclusive <code>(i.e. nums[left] + nums[left + 1] + ... + nums[right])</code>.</li>
+</ul>
+<p><strong><code>Example:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;NumArray&quot;, &quot;sumRange&quot;, &quot;update&quot;, &quot;sumRange&quot;]</span><br><span class="line">[[[1, 3, 5]], [0, 2], [1, 2], [0, 2]]</span><br><span class="line">Output</span><br><span class="line">[null, 9, null, 8]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">NumArray numArray = new NumArray([1, 3, 5]);</span><br><span class="line">numArray.sumRange(0, 2); // return 1 + 3 + 5 = 9</span><br><span class="line">numArray.update(1, 2);   // nums = [1, 2, 5]</span><br><span class="line">numArray.sumRange(0, 2); // return 1 + 2 + 5 = 8</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> NumArray = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> n = nums.length;</span><br><span class="line">  <span class="keyword">let</span> tree = [...Array(n * <span class="number">2</span>)];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = n; i &lt; <span class="number">2</span>*n; i++) &#123;</span><br><span class="line">    tree[i] = nums[i - n];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    tree[i] = tree[<span class="number">2</span>*i] + tree[<span class="number">2</span>*i + <span class="number">1</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>.n = n;</span><br><span class="line">  <span class="built_in">this</span>.tree = tree;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>index </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">val</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">NumArray.prototype.update = <span class="function"><span class="keyword">function</span>(<span class="params">index, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> pos = <span class="built_in">this</span>.n + index;</span><br><span class="line">  <span class="built_in">this</span>.tree[pos] = val;</span><br><span class="line">  <span class="comment">// pos === 0 also means nums is empty. Also, pos will never be negative, so we can&#x27;t use `=` here.</span></span><br><span class="line">  <span class="keyword">while</span> (pos &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> left = pos % <span class="number">2</span> === <span class="number">0</span> ? pos : pos - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> right = pos % <span class="number">2</span> === <span class="number">0</span> ? pos + <span class="number">1</span> : pos;</span><br><span class="line">    <span class="built_in">this</span>.tree[pos &gt;&gt; <span class="number">1</span>] = <span class="built_in">this</span>.tree[left] + <span class="built_in">this</span>.tree[right];</span><br><span class="line">    pos = pos &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>left </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">right</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">NumArray.prototype.sumRange = <span class="function"><span class="keyword">function</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  left = <span class="built_in">this</span>.n + left;</span><br><span class="line">  right = <span class="built_in">this</span>.n + right;</span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    <span class="keyword">if</span> (left % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">      sum += <span class="built_in">this</span>.tree[left];</span><br><span class="line">      left++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> (right % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      sum += <span class="built_in">this</span>.tree[right];</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">    left = left &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    right = right &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NumArray object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * var obj = new NumArray(nums)</span></span><br><span class="line"><span class="comment"> * obj.update(index,val)</span></span><br><span class="line"><span class="comment"> * var param_2 = obj.sumRange(left,right)</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/03/range-sum-query-mutable/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/03/range-sum-query-mutable/&text=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/03/range-sum-query-mutable/&is_video=false&description=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)&body=Check out this article: http://example.com/2021/12/03/range-sum-query-mutable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/03/range-sum-query-mutable/&title=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/03/range-sum-query-mutable/&name=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/03/range-sum-query-mutable/&t=Leetcode 307 - Range sum query - mutable (🌳 Binary Indexed Tree)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

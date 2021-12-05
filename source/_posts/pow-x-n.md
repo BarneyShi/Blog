@@ -28,8 +28,9 @@ Output: 1024.00000
  * @return {number}
  */
 var myPow = function(x, n) {
-  if (n < 0) return 1 / (x * myPow(x, -(n + 1)));
-  if (n == 0) return 1;
-  return n % 2 === 0 ? myPow(x*x, n / 2): x * myPow(x*x, (n - 1) / 2);
+  if (n < 0) return 1 / myPow(x, -n);
+  if (n === 0) return 1;
+  const y = myPow(x, Math.floor(n / 2));
+  return n % 2 === 0 ? y * y : x * y * y;
 };
 ```

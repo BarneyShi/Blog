@@ -6,6 +6,7 @@ tags:
 ---
 **`Note:`**
 - Using normal iteration by multiplying x every time will cause TLE.
+- `2^32 = (2^16)^2 = ((2^8)^2)^2 = (((2^4)^2)^2)^2 = ((((2^2)^2)^2)^2)^2`.
 - Instead of multiplying `x`, do `(x^2)^(n/2)` every time.
 - It's called `exponentiation by squaring`.
 - Leave one `x` out when `n` is odd.

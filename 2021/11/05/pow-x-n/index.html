@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Note:  Using normal iteration by multiplying x every time will cause TLE. Instead of multiplying x, do (x^2)^(n&#x2F;2) every time. It’s called exponentiation by squaring. Leave one x out when n is odd.  Q">
+    <meta name="description" content="Note:  Using normal iteration by multiplying x every time will cause TLE. 2^32 &#x3D; (2^16)^2 &#x3D; ((2^8)^2)^2 &#x3D; (((2^4)^2)^2)^2 &#x3D; ((((2^2)^2)^2)^2)^2. Instead of multiplying x, do (x^2)^(n&#x2F;2) every time. It">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 50 - Pow(x,n)">
 <meta property="og:url" content="http://example.com/2021/11/05/pow-x-n/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Note:  Using normal iteration by multiplying x every time will cause TLE. Instead of multiplying x, do (x^2)^(n&#x2F;2) every time. It’s called exponentiation by squaring. Leave one x out when n is odd.  Q">
+<meta property="og:description" content="Note:  Using normal iteration by multiplying x every time will cause TLE. 2^32 &#x3D; (2^16)^2 &#x3D; ((2^8)^2)^2 &#x3D; (((2^4)^2)^2)^2 &#x3D; ((((2^2)^2)^2)^2)^2. Instead of multiplying x, do (x^2)^(n&#x2F;2) every time. It">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-05T17:03:00.000Z">
-<meta property="article:modified_time" content="2021-12-04T09:24:34.172Z">
+<meta property="article:modified_time" content="2021-12-05T07:21:25.924Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="recursion">
 <meta name="twitter:card" content="summary">
@@ -153,6 +153,7 @@
     <p><strong><code>Note:</code></strong></p>
 <ul>
 <li>Using normal iteration by multiplying x every time will cause TLE.</li>
+<li><code>2^32 = (2^16)^2 = ((2^8)^2)^2 = (((2^4)^2)^2)^2 = ((((2^2)^2)^2)^2)^2</code>.</li>
 <li>Instead of multiplying <code>x</code>, do <code>(x^2)^(n/2)</code> every time.</li>
 <li>It’s called <code>exponentiation by squaring</code>.</li>
 <li>Leave one <code>x</code> out when <code>n</code> is odd.</li>
@@ -163,7 +164,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: x = 2.00000, n = 10</span><br><span class="line">Output: 1024.00000</span><br></pre></td></tr></table></figure>
 
 <p><strong><code>Code:</code></strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">x</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> myPow = <span class="function"><span class="keyword">function</span>(<span class="params">x, n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span> / (x * myPow(x, -(n + <span class="number">1</span>)));</span><br><span class="line">  <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> n % <span class="number">2</span> === <span class="number">0</span> ? myPow(x*x, n / <span class="number">2</span>): x * myPow(x*x, (n - <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">x</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> myPow = <span class="function"><span class="keyword">function</span>(<span class="params">x, n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span> / myPow(x, -n);</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">const</span> y = myPow(x, <span class="built_in">Math</span>.floor(n / <span class="number">2</span>));</span><br><span class="line">  <span class="keyword">return</span> n % <span class="number">2</span> === <span class="number">0</span> ? y * y : x * y * y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 

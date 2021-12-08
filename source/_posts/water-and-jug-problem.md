@@ -2,6 +2,7 @@
 title: Leetcode 365 - Water and Jug Problem
 date: 2021-12-07 23:58:21
 tags:
+- dfs
 ---
 **`Note:`**
 - Use `[water1, water2]` to represent how much water left in each jug.

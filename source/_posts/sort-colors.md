@@ -8,7 +8,7 @@ tags:
 - `Single pointer with two iterations`
   - Move all `0` to the head first while moving `p`.
   - Move all `1` according to pointer `p`
-- `Double pointer with single iteration`
+- `Double pointers with single iteration`
   - `p0` and `p1`.
   - If `nums[i] === 1`, just `swap(nums[i], p1)`.
   - However, for 0, we need to consider caes like 
@@ -29,7 +29,7 @@ Output: [0,0,1,1,2,2]
 ```
 
 **`Code:`**
-**`Double pointer with single iteration`**
+**`Double pointers with single iteration`**
 ```javascript
 /**
  * @param {number[]} nums

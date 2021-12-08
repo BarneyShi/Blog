@@ -3,7 +3,7 @@ title: Leetcode 3 - Longest substring without repeating chars
 date: 2021-10-19 19:21:30
 tags:
 - string
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use `doule pointer`.

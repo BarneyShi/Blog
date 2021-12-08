@@ -3,7 +3,7 @@ title: Leetcode 5 - Longest palindrome substring
 date: 2021-10-21 01:47:42
 tags:
 - dp
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - `DP`:

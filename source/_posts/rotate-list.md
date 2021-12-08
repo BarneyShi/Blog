@@ -3,11 +3,11 @@ title: Leetcode 61 - Rotate list
 date: 2021-11-23 01:43:19
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use `stack` to store vals and rotate them is really naive.
-- Use `double pointer` to find the new head;
+- Use `double pointers` to find the new head;
 - ![img](https://i.imgur.com/OS2apqx.png)
 
 **`Question:`**

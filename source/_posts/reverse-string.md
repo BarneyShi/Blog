@@ -3,10 +3,10 @@ title: Leetcode 344 - Reverse string
 date: 2021-09-22 01:09:14
 tags:
 - string
-- double pointer
+- double pointers
 ---
 **`Note`**
-- `Double pointer` is the way to go.
+- `Double pointers` is the way to go.
 
 Write a function that reverses a string. The input string is given as an array of characters s.
 

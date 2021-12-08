@@ -3,7 +3,7 @@ title: Leetcode 147 - Insertion sort list
 date: 2021-11-29 02:24:59
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - ![img](https://i.imgur.com/0YGhZpv.png)

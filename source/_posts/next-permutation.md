@@ -2,7 +2,7 @@
 title: Leetcode 31 - Next permutation
 date: 2021-11-22 16:44:06
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Finding next one bigger than `[1,2,3,4]` is just like finding next one bigger than `1234`.

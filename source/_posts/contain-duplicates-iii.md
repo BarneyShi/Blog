@@ -5,7 +5,7 @@ tags:
 - bucket sort
 - sort
 - hash table
-- sliding windows
+- sliding window
 ---
 **`Note:`**
 - We can maintain a sliding window with size `k`.

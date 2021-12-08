@@ -2,10 +2,10 @@
 title: Leetcode 34 - Find first and last position of element in sorted array
 date: 2021-10-27 21:38:57
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
-- The required time complexity is `O(logn)`, so we need to use `binary search`, and DON'T USE `DOUBLE POINTER`!
+- The required time complexity is `O(logn)`, so we need to use `binary search`, and DON'T USE `DOUBLE POINTERS`!
 - Double-pointer is `O(n)` but not `O(logn)`.
 - Take findLeftBoundary for example:
   - When `nums[middle] < target`, `left = middle + 1`.

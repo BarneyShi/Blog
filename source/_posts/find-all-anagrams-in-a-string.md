@@ -3,7 +3,7 @@ title: Leetcode 438 - Find all anagrams in a string
 date: 2021-11-27 19:04:08
 tags:
 - sliding window
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use `array` instead of `hash table` to store counts. Because then we can quickly check if all number are `0` or `undefined`.

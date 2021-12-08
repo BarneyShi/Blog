@@ -2,7 +2,7 @@
 title: Leetcode 237 - Delete node in a linked list
 date: 2021-11-01 17:38:08
 tags:
-- double pointer
+- double pointers
 - linked list
 ---
 **`Note:`**

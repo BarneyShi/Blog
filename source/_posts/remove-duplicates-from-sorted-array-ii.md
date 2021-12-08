@@ -2,7 +2,7 @@
 title: Leetcode 80 - Remove duplicates from sorted array II
 date: 2021-11-23 23:12:47
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - ![img](https://i.imgur.com/PuUyIBv.png)

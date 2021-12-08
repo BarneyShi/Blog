@@ -2,10 +2,10 @@
 title: Leetcode 492 - Construct the rectangle
 date: 2021-10-22 17:38:17
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
-- `Double pointer` set as `floor(sqrt(area))`.
+- `Double pointers` set as `floor(sqrt(area))`.
 - Check if `left*right === area`. If too big, `left--`, otherwise `right++`
 
 **`Question:`**

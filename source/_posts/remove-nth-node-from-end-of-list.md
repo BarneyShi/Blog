@@ -3,7 +3,7 @@ title: Leetcode 19 - Remove nth node from end of list
 date: 2021-10-11 21:23:20
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - It's a 2-pointer question, but needs a little trick.

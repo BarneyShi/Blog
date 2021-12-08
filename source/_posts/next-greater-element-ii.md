@@ -2,7 +2,7 @@
 title: Leetcode 503 - Next greater element II
 date: 2021-10-26 01:12:36
 tags:
-- monotone stack
+- monotonic stack
 ---
 **`Note:`**
 - Concat `nums[0, len - 2]` to nums to build a new array.

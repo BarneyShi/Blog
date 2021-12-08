@@ -2,13 +2,13 @@
 title: Leetcode 151 - Reverse words in a string
 date: 2021-10-11 02:54:57
 tags:
-- double pointer
+- double pointers
 - string
 ---
 **`Note:`**
 - Know how to use `trim` to remove leading or trailing spaces.
 - Use `replace` and `/ +/g` regex to replace multi spaces with `single` space.
-- COnvert string to arr, then use double pointer method to reverse.
+- Convert string to arr, then use double pointers method to reverse.
 
 **`Question:`**
 Given an input string s, reverse the order of the words.

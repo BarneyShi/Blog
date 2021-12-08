@@ -4,12 +4,12 @@ date: 2021-10-18 00:37:56
 tags:
 ---
 **`Note:`**
-- For `O(1)` space solution, we need to reverse second half linked list then use double pointer.
+- For `O(1)` space solution, we need to reverse second half linked list then use double pointers.
 - How to reverse the second half list? `Fast and slow` pointers.
   - Because `fast` moves twice faster than `slow`. If the length is `odd`, `fast` will be at the end. If the length is `even`, `fast` will be one node away from the end.
   - We make sure that the first half is at least as long as the second half, so it needs to `keep` the `middle` node when the length is `odd`.
 - After reversing the second half, it's detached from the first half because now its `end` is `null` instead of the `middle node`.
-- Use double pointer to iterate. We stop when we hit the end of `second half` because sometimes the first half can have `one more node` than the second half.
+- Use double pointers to iterate. We stop when we hit the end of `second half` because sometimes the first half can have `one more node` than the second half.
 
 **`Question:`**
 
@@ -24,7 +24,7 @@ Output: true
 ```
 
 **`Code:`**
-**`Double pointer - O(1) space`**
+**`Double pointers - O(1) space`**
 ```javascript
 /**
  * Definition for singly-linked list.
@@ -73,7 +73,7 @@ function reverseList(head) {
 }
 ```
 
-**`Double pointer with O(n) space`**
+**`Double pointers with O(n) space`**
 ```javascript
 var isPalindrome = function(head) {
   let nums = [];

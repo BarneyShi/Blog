@@ -2,7 +2,7 @@
 title: Leetcode 541 - Reverse string II
 date: 2021-10-12 22:12:52
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Because we do this reverse thing every `2k`, we do `i = 2k + i` for each iteration.

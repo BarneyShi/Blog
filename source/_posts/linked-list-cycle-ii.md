@@ -4,8 +4,8 @@ date: 2021-10-11 23:58:51
 tags:
 ---
 **`Note:`**
-- Double pointer:
-  - Just like `Linked list cycle I`, we should use `double pointer` but it's more complicated.
+- Double pointers:
+  - Just like `Linked list cycle I`, we should use `double pointers` but it's more complicated.
   - ![img](https://i.imgur.com/hHFR4Ht.png)
   - By using 2-pointer, we can find the node where two pointers meet.
   - Here comes the deduction: 
@@ -33,7 +33,7 @@ Explanation: There is a cycle in the linked list, where tail connects to the sec
 
 **`Code:`**
 
-**`Double pointer`**
+**`Double pointers`**
 ```javascript
 /**
  * Definition for singly-linked list.

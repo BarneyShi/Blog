@@ -3,7 +3,7 @@ title: Leetcode 143 - Reorder list
 date: 2021-11-29 00:03:44
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Find the middle nodes, and separate the first half and the second half.

@@ -2,10 +2,10 @@
 title: Leetcode 374 - Guess number higher or lower
 date: 2021-11-10 20:55:40
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
-- Double pointer
+- Double pointers
 - Because there is no duplicates, we can let `low < high`.
 - `>>>` has a higher predecender than `-`. So we need a parentheses `const middle = low + ((high - low) >>> 1)`.
 

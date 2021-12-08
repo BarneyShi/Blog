@@ -2,7 +2,7 @@
 title: Leetcode 81 - Search in rotated sorted array II
 date: 2021-11-24 03:28:49
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Find the `middle = left + right / 2`.

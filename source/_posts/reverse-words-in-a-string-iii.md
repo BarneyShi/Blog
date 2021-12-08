@@ -2,7 +2,7 @@
 title: Leetcode 557 - Reverse words in a string III
 date: 2021-12-03 19:03:52
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Strings are immutable in JS, so we need to convert them to arrays.

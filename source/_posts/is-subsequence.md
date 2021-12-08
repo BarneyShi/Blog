@@ -42,7 +42,7 @@ var isSubsequence = function(s, t) {
 };
 ```
 
-**`Double Pointer`**
+**`Double Pointers`**
 ```javascript
 /**
  * @param {string} s

@@ -2,7 +2,7 @@
 title: Leetcode Interview - Intersection of Two Linked Lists LCCI
 date: 2021-10-11 22:15:01
 tags:
-- double pointer
+- double pointers
 - array
 ---
 **`Note:`**

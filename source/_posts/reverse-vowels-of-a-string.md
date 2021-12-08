@@ -2,11 +2,11 @@
 title: Leetcode 345 - Reverse vowels of a string
 date: 2021-11-10 02:23:55
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use `2D array` to initialize a map.
-- Use `Double pointer`.
+- Use `Double pointers`.
 
 **`Question:`**
 

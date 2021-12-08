@@ -3,7 +3,7 @@ title: Leetcode 86 - Partition list
 date: 2021-11-24 20:14:00
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use two `dummy heads`.

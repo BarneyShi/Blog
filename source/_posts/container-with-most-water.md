@@ -2,11 +2,11 @@
 title: Leetcode 11 - Container with most water
 date: 2021-10-22 20:24:10
 tags:
-- double pointer
+- double pointers
 - greedy
 ---
 **`Note:`**
-- My intuition is to use `double pointer` but how we should determine to move `left` or `right` pointer?
+- My intuition is to use `double pointers` but how we should determine to move `left` or `right` pointer?
 - No matter which we move, `W` will be smaller.
 - To at least not make our next container smaller, we have to preserve the `higher` L. So, we should move the smaller pointer who has a `shorter L`.
 - This can be proved by math, but we don't bother to.
@@ -28,7 +28,7 @@ Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,
 
 **`Code:`**
 
-**`Double pointer O(n)`**
+**`Double pointers O(n)`**
 ```javascript
 /**
  * @param {number[]} height

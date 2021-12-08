@@ -2,10 +2,10 @@
 title: Leetcode 16 - 3Sum closest
 date: 2021-11-21 17:05:12
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
-- Just like the other `3sum` questions, just use `double pointer`.
+- Just like the other `3sum` questions, just use `double pointers`.
 - Fix an `i`, then set `left = i + 1, right = len - 1` and move either one by `sum` is bigger than `target` or `not`.
 - Keep compare with `res` while moving pointers.
 

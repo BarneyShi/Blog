@@ -40,7 +40,7 @@ var sortedSquares = function (nums) {
   return arr.sort((a, b) => a - b);
 };
 
-/* Double pointer */
+/* Double pointers */
 var sortedSquares = function(nums) {
   let ans = [];
   // sort it first for later use.

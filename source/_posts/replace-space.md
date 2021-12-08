@@ -2,12 +2,12 @@
 title: Leetcode - Replace space
 date: 2021-10-11 01:44:17
 tags:
-- double pointer
+- double pointers
 - string
 ---
 **`Note:`**
 - Normal approach is pretty intuitive so we don't talk about it.
-- For double pointer:
+- For double pointers:
   - If there are `n` spaces in the string, the result will have `2n` more chars than the original.
   - Iterate string to find the `count` of spaces.
   - Append `2n` spaces to the stirng.
@@ -45,7 +45,7 @@ var replaceSpace = function(s) {
 };
 ```
 
-**`Double pointer`** (Save memory space)
+**`Double pointers`** (Save memory space)
 ```javascript
 /**
  * @param {string} s

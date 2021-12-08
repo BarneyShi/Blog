@@ -2,7 +2,7 @@
 title: Leetcode 18 - 4Sum
 date: 2021-10-12 19:09:16
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Use `Set` and store nums as strings to remove duplicates.

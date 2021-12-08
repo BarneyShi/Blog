@@ -4,7 +4,7 @@ date: 2021-11-19 17:34:31
 tags:
 - sliding window
 - hash table
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Sliding window

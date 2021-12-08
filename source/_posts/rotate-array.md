@@ -3,7 +3,7 @@ title: Leetcode 189 - Rotate array
 date: 2021-11-15 00:56:49
 tags:
 - array
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - When `k === nums.length`, the array will become the same as its initial state. 

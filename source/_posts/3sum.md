@@ -2,7 +2,7 @@
 title: Leetcode 15 - 3Sum
 date: 2021-10-12 01:56:28
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - For each `i`, do what we did in `2sum` between `[i+1, length - 1]` for target `-nums[i]`.

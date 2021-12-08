@@ -2,7 +2,7 @@
 title: Leetcode 4 - Median of two sorted arrays
 date: 2021-10-19 23:35:18
 tags:
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - It requires `O(log(m+n))` time complexity, apparently, we need `binary search`.
@@ -72,7 +72,7 @@ var findMedianSortedArrays = function (nums1, nums2) {
 ```
 
 
-**`Double pointer with O(m+n)`**
+**`Double pointers with O(m+n)`**
 ```javascript
 /**
  * @param {number[]} nums1

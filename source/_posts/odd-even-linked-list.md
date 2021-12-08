@@ -3,7 +3,7 @@ title: Leetcode 328 - Odd even linked list
 date: 2021-11-16 03:33:54
 tags:
 - linked list
-- double pointer
+- double pointers
 ---
 **`Note:`**
 - Think about doing the same thing to an array in O(n) speed and O(1) extra space. It's kinda hard.

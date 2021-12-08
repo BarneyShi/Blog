@@ -2,7 +2,7 @@
 title: Leetcode 105 - Construct binary tree from inorder and preorder  traversal
 date: 2021-09-28 23:56:11
 tags:
-- binatry tree
+- binary tree
 ---
 **`Note:`**
 - Much like what we did in `postorder`, the first element of `preorder` is the current root.

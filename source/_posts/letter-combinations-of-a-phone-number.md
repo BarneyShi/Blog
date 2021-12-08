@@ -2,7 +2,7 @@
 title: Leetcode 17 - Letter combinations of a phone number
 date: 2021-09-08 22:51:31
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

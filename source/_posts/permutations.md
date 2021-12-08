@@ -2,7 +2,7 @@
 title: Leetcode 46 - Permutations
 date: 2021-09-11 18:19:18
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

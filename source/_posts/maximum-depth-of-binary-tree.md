@@ -3,7 +3,7 @@ title: Leetcode 104 - Maximum Depth of Binary Tree
 date: 2021-09-02 22:06:40
 tags:
 - leetcode 
-- BFS
+- bfs
 ---
 Given the root of a binary tree, return its maximum depth.
 

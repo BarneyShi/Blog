@@ -3,7 +3,7 @@ title: Leetcode 141 - Linked list cycle
 date: 2021-08-18 23:01:36
 tags:
 - leetcode
-- list
+- linked list
 ---
 Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
 

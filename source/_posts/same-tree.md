@@ -3,7 +3,7 @@ title: Leetcode 100 - Same tree
 date: 2021-09-02 22:12:40
 tags:
 - leetcode
-- BFS
+- bfs
 ---
 Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 

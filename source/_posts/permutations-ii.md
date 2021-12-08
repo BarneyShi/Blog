@@ -2,7 +2,7 @@
 title: Leetcode 47 - Permutations II
 date: 2021-09-13 02:46:34
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

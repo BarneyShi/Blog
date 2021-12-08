@@ -2,7 +2,7 @@
 title: Leetcode 513 - Find bottom left tree value
 date: 2021-09-28 17:03:42
 tags:
-- binatry tree
+- binary tree
 ---
 **`Note:`**
 - `Level order traversal` makes this question quite easier.

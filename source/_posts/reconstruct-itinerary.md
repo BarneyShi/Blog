@@ -2,7 +2,7 @@
 title: Leetcode 332 - Reconstruct itinerary
 date: 2021-09-13 23:31:22
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

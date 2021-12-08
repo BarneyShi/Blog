@@ -2,7 +2,7 @@
 title: Leetcode 338 - Counting bits
 date: 2021-10-24 03:10:51
 tags:
-- bit manipulation
+- bitwise
 ---
 **`Note:`**
 - Let's just stick to the most naive soltution.

@@ -2,7 +2,7 @@
 title: Algorithm - KMP
 date: 2021-10-13 17:58:31
 tags:
-- algorithm
+- kmp
 ---
 - What is prefix table? 
   - Table's length is the length of `pattern`. 

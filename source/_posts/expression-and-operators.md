@@ -3,6 +3,7 @@ title: Leetcode 282 - Expression and operators
 date: 2021-10-16 16:52:14
 tags:
 - backtracking
+- dfs
 ---
 **`Note:`**
 - This is a `backtracking` problem, very similar to `palindrome partitioning`.

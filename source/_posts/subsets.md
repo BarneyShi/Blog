@@ -2,7 +2,7 @@
 title: Leetcode 78 - Subsets
 date: 2021-09-11 22:31:53
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

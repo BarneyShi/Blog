@@ -2,7 +2,7 @@
 title: Leetcode 216 - Combination sum III
 date: 2021-09-08 01:54:15
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

@@ -3,7 +3,6 @@ title: Sort - Quicksort
 date: 2021-08-21 21:51:51
 tags:
 - sort
-- algorithm
 ---
 - `Note`:
   - ![img](https://i.imgur.com/V6jl43g.png)

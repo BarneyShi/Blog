@@ -2,7 +2,7 @@
 title: Leetcode 39 - Combination sum
 date: 2021-09-09 15:00:05
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

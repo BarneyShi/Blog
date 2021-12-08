@@ -2,8 +2,8 @@
 title: Backtracking
 date: 2021-08-21 17:50:44
 tags:
-- algorithm
 - backtracking
+- dfs
 ---
 I realized I ain't learn shit in CPSC320.
 Backtracking are perfect for questions like

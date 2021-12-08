@@ -2,7 +2,7 @@
 title: Leetcode 29 - Divide two ints
 date: 2021-10-28 23:43:18
 tags:
-- integer
+- math
 ---
 **`Note:`**
 - Take `100 / 3` for example:

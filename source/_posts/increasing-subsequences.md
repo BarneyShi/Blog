@@ -2,7 +2,7 @@
 title: Leetcode 491 - Increasing subsequences
 date: 2021-09-12 23:19:39
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

@@ -2,7 +2,7 @@
 title: Leetcode 42 - 💦 Trapping rain water 💦
 date: 2021-11-03 02:42:08
 tags:
-- monotonic queue
+- monotonic stack
 ---
 **`Note:`**
 - To find how many water some cols can trap, we need to know the `highest walls` on both side.

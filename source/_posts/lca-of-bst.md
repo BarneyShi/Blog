@@ -2,7 +2,7 @@
 title: Leetcode 235 - LCA of BST
 date: 2021-10-01 17:02:58
 tags:
-- BST
+- bst
 - binary tree
 ---
 **`Note:`**

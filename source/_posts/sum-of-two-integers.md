@@ -2,7 +2,7 @@
 title: Leetcode 371 - Sum of two integers
 date: 2021-11-16 20:41:42
 tags:
-- bit wise
+- bitwise
 ---
 **`Note:`**
 - Not hard to come up with bit wise methods.

@@ -2,7 +2,7 @@
 title: Leetcode 131 - Palindrome partitioning
 date: 2021-09-11 00:43:49
 tags:
-- leetcode
+- dfs
 - backtracking
 ---
 **`Note:`**

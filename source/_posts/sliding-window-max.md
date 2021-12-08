@@ -2,7 +2,7 @@
 title: Leetcode 239 - Sliding window max
 date: 2021-10-10 01:53:34
 tags:
-- monotonic queue
+- monotonic stack
 ---
 **`Note:`**
 - This is a typical `monotonic` problem.

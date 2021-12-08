@@ -2,8 +2,7 @@
 title: Leetcode 77 - Combinations
 date: 2021-08-21 17:46:32
 tags:
-- leetcode
-- medium
+- dfs
 - backtracking
 ---
 Given two integers n and k, return all possible combinations of k numbers out of the range [1, n].

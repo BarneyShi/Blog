@@ -2,7 +2,7 @@
 title: Leetcode 383 - Ransom note
 date: 2021-10-15 01:12:20
 tags:
-- hash 
+- hash table
 - string
 ---
 **`Note:`**

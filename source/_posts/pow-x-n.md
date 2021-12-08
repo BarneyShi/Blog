@@ -2,7 +2,8 @@
 title: Leetcode 50 - Pow(x,n)
 date: 2021-11-05 17:03:00
 tags:
-- recursion
+- math
+- dfs
 ---
 **`Note:`**
 - Using normal iteration by multiplying x every time will cause TLE.

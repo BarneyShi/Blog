@@ -2,7 +2,7 @@
 title: Leetcode 12 - Int to roman
 date: 2021-11-20 23:31:12
 tags:
-- number
+- math
 ---
 **`Note:`**
 - First, we need to list all `atomic` roman numbers, including variant like `900, 90, 40...`.

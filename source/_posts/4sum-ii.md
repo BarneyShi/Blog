@@ -2,7 +2,7 @@
 title: Letcode 454 - 4sum II
 date: 2021-10-15 00:58:14
 tags:
-- hash
+- hash table
 - array
 ---
 **`Note:`**

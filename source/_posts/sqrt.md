@@ -3,7 +3,7 @@ title: Leetcode 69 - Sqrt
 date: 2021-08-18 22:52:29
 tags:
 - leetcode
-- number
+- math
 ---
 Given a non-negative integer `x`, compute and return *the square root of* `x`.
 

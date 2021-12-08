@@ -3,7 +3,7 @@ title: Leetcode 350 - Intersection of 2 arrays II
 date: 2021-10-14 17:42:03
 tags:
 - array
-- hash
+- hash table
 ---
 **`Note:`**
 - Use `map` to store frequencies, if it's bigger than 1, then it should be added into the result.

@@ -3,7 +3,7 @@ title: Leetcode 190 - Reverse bits
 date: 2021-08-18 23:06:11
 tags:
 - leetcode
-- number
+- math
 ---
 **Note**: Use bitwise opertators like `<< >> | &` to impress your interviewers. That's what they want to see.
 

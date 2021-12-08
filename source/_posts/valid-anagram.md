@@ -2,7 +2,7 @@
 title: Leetcode 242 - Valid anagram
 date: 2021-10-14 16:24:40
 tags:
-- hash
+- hash table
 ---
 **`Note:`**
 - `Anagram` is a different word using another word's letters with the same amounts.

@@ -3,7 +3,7 @@ title: Leetcode 349 - Intersection of 2 arrays
 date: 2021-10-14 17:03:22
 tags:
 - array
-- hash
+- hash table
 ---
 **`Note:`**
 - At first, I thought we are looking for an intersection that has to be the same order in both arrays. But it's not that hard in fact.

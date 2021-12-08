@@ -3,7 +3,7 @@ title: Leetcode 326 - Power of three
 date: 2021-08-18 23:10:58
 tags:
 - leetcode
-- number
+- math
 ---
 **Note**: It's not that hard but there are some traps in this problem.
 

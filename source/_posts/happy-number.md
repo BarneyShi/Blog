@@ -2,8 +2,8 @@
 title: Leetcode 202 - Happy number
 date: 2021-08-18 23:08:37
 tags:
-- number
-- hash
+- math
+- hash table
 ---
 **Note**
 - Learnt how to manipulate numbers. Like how to get the last digit with modulues operator `num % 10`.

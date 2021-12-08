@@ -3,7 +3,7 @@ title: Leetcode 172 - Factorial trailing zeroes
 date: 2021-08-18 23:12:48
 tags:
 - leetcode
-- number
+- math
 ---
 Given an integer `n`, return *the number of trailing zeroes in `n!`*.
 

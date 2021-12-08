@@ -3,7 +3,7 @@ title: Leetcode 543 - Diameter of binary tree
 date: 2021-10-22 01:27:10
 tags:
 - binary tree
-- recursion
+- dfs
 ---
 **`Note:`**
 - It doesn't feel like an easy question.

@@ -3,7 +3,7 @@ title: Leetcode 496 - Next greater element I
 date: 2021-10-25 22:12:28
 tags:
 - array
-- monotone
+- monotonic stack
 ---
 **`Note:`**
 - `Monotone stack`

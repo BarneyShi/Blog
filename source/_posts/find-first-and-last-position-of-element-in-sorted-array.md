@@ -6,7 +6,7 @@ tags:
 ---
 **`Note:`**
 - The required time complexity is `O(logn)`, so we need to use `binary search`, and DON'T USE `DOUBLE POINTERS`!
-- Double-pointer is `O(n)` but not `O(logn)`.
+- Double pointers is `O(n)` but not `O(logn)`.
 - Take findLeftBoundary for example:
   - When `nums[middle] < target`, `left = middle + 1`.
   - When `nums[middle] > target`, `right = middle - 1`.

@@ -3,7 +3,7 @@ title: Leetcode 141 - Linked list cycle
 date: 2021-09-06 21:13:38
 tags:
 - leetcode
-- double-pointer
+- double pointers
 ---
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
@@ -21,7 +21,7 @@ Explanation: There is a cycle in the linked list, where the tail connects to the
 ```
 
 **`Note:`**
-- Use double-pointer, a `fast` and a `slow` pointer.
+- Use double pointers, a `fast` and a `slow` pointer.
 - `fast` pointer moves `2` every iteration and `slow` pointer moves `1` every time. 
 - If there is a cycle, the `fast` pointer will be `behind` `slow` pointer eventually.
 

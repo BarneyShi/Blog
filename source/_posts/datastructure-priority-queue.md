@@ -3,6 +3,7 @@ title: Data structure - 🆎 Priority Queue
 date: 2021-11-28 16:22:09
 tags:
 - heap
+- priority queue
 ---
 Heap is a tree-based data structure. Generally, we use `MinPriorityQueue` and `MaxPriorityQueue` in JavaScript.
 

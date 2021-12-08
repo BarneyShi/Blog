@@ -2,6 +2,7 @@
 title: Leetcode 407 - Trapping water II
 date: 2021-11-02 23:35:18
 tags:
+- heap
 - priority queue
 ---
 **`Note:`**

@@ -3,6 +3,7 @@ title: Leetcode 786 - K-th smallest prime fraction
 date: 2021-11-28 16:11:45
 tags:
 - heap
+- priority queue
 ---
 **`Note:`**
 - Use built-in `MinPriorityQueue` whose priority is based on `arr[i] / arr[j]`.

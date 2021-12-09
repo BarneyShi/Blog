@@ -3,7 +3,7 @@ title: Leetcode 701 - Insert into a bst
 date: 2021-10-01 22:27:24
 tags:
 - binary tree
-- BST
+- bst
 ---
 **`Note:`**
 - Because it's a BST and all values are unique. 

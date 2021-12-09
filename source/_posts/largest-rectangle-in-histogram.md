@@ -2,7 +2,7 @@
 title: Leetcode 84 - Largest rectangle in histogram
 date: 2021-11-19 01:48:52
 tags:
-- monotonic queue
+- monotonic stack
 ---
 **`Note:`**
 - For each `col`, we need to find the `first` col that is `shorter` than it on both `left` and `right`.

@@ -3,7 +3,7 @@ title: Leetcode 171 - Excel sheet column number
 date: 2021-08-18 23:13:42
 tags:
 - leetcode
-- number
+- math
 ---
 **Note**: Just like decimal system, we add `1` to the next digit. 
 

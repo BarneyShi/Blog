@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Prefer stack over recursion coz you can have access to the last NestedInteger. Note:  Need to create an NI even for integers. Don’t just add them to a parent NI. Need a str to record cur number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 385 - Mini Parser">
+<meta property="og:url" content="http://example.com/2021/12/11/Mini-Parser/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Prefer stack over recursion coz you can have access to the last NestedInteger. Note:  Need to create an NI even for integers. Don’t just add them to a parent NI. Need a str to record cur number">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-11T16:21:08.000Z">
+<meta property="article:modified_time" content="2021-12-12T00:28:12.526Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="stack">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 385 - Mini Parser</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/12/11/To-Lower-Case/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/11/Mini-Parser/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/11/Mini-Parser/&text=Leetcode 385 - Mini Parser"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/11/Mini-Parser/&is_video=false&description=Leetcode 385 - Mini Parser"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 385 - Mini Parser&body=Check out this article: http://example.com/2021/12/11/Mini-Parser/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/11/Mini-Parser/&name=Leetcode 385 - Mini Parser&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/11/Mini-Parser/&t=Leetcode 385 - Mini Parser"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 385 - Mini Parser
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-11T16:21:08.000Z" itemprop="datePublished">2021-12-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/stack/" rel="tag">stack</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>Prefer <code>stack</code> over <code>recursion</code> coz you can have access to the last NestedInteger.</li>
+<li>Note: <ul>
+<li>Need to create an NI even for integers. Don’t just add them to a parent NI.</li>
+<li>Need a <code>str</code> to record cur number.</li>
+</ul>
+</li>
+<li>Handle edge case with pure ints like <code>321</code> first.</li>
+<li>When <code>s[i] === [</code>, create an NI then push it to <code>stack</code>.</li>
+<li>When <code>s[i] === ]</code>, the <code>top NI</code> of <code>stack</code> has been finished, <code>pop</code> it, then <code>add</code> it to the next top NI. <code>Reset</code> <code>str</code> after.</li>
+<li>When <code>s[i] === ,</code> the <code>cur num</code> has been finished, add <code>str</code> to the <code>top NI</code> of stack. <code>Reset</code> str after.</li>
+<li>Otherwise, keep appending <code>s[i]</code> to str.</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>Given a string s represents the serialization of a nested list, implement a parser to deserialize it and return the deserialized <code>NestedInteger</code>.</p>
+<p>Each element is either an integer or a list whose elements may also be integers or other lists.</p>
+<p><strong><code>Example:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;324&quot;</span><br><span class="line">Output: 324</span><br><span class="line">Explanation: You should return a NestedInteger object which contains a single integer 324.</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * // This is the interface that allows for creating nested lists.</span></span><br><span class="line"><span class="comment"> * // You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"> * function NestedInteger() &#123;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     Return true if this NestedInteger holds a single integer, rather than a nested list.</span></span><br><span class="line"><span class="comment"> *     <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> *     this.isInteger = function() &#123;</span></span><br><span class="line"><span class="comment"> *         ...</span></span><br><span class="line"><span class="comment"> *     &#125;;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     Return the single integer that this NestedInteger holds, if it holds a single integer</span></span><br><span class="line"><span class="comment"> *     Return null if this NestedInteger holds a nested list</span></span><br><span class="line"><span class="comment"> *     <span class="doctag">@return <span class="type">&#123;integer&#125;</span></span></span></span><br><span class="line"><span class="comment"> *     this.getInteger = function() &#123;</span></span><br><span class="line"><span class="comment"> *         ...</span></span><br><span class="line"><span class="comment"> *     &#125;;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     Set this NestedInteger to hold a single integer equal to value.</span></span><br><span class="line"><span class="comment"> *     <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> *     this.setInteger = function(value) &#123;</span></span><br><span class="line"><span class="comment"> *         ...</span></span><br><span class="line"><span class="comment"> *     &#125;;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     Set this NestedInteger to hold a nested list and adds a nested integer elem to it.</span></span><br><span class="line"><span class="comment"> *     <span class="doctag">@return <span class="type">&#123;void&#125;</span></span></span></span><br><span class="line"><span class="comment"> *     this.add = function(elem) &#123;</span></span><br><span class="line"><span class="comment"> *         ...</span></span><br><span class="line"><span class="comment"> *     &#125;;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *     Return the nested list that this NestedInteger holds, if it holds a nested list</span></span><br><span class="line"><span class="comment"> *     Return null if this NestedInteger holds a single integer</span></span><br><span class="line"><span class="comment"> *     <span class="doctag">@return <span class="type">&#123;NestedInteger[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> *     this.getList = function() &#123;</span></span><br><span class="line"><span class="comment"> *         ...</span></span><br><span class="line"><span class="comment"> *     &#125;;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">s</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;NestedInteger&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> deserialize = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (s[<span class="number">0</span>] !== <span class="string">&#x27;[&#x27;</span>) <span class="keyword">return</span> <span class="keyword">new</span> NestedInteger(<span class="built_in">parseInt</span>(s));</span><br><span class="line">  <span class="keyword">let</span> stack = [];</span><br><span class="line">  <span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s[i] === <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> nestInteger = <span class="keyword">new</span> NestedInteger();</span><br><span class="line">      stack.push(nestInteger);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i] === <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> top = stack.pop();</span><br><span class="line">      <span class="keyword">if</span> (str.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        top.add(<span class="keyword">new</span> NestedInteger(<span class="built_in">parseInt</span>(str)));</span><br><span class="line">        str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (stack.length === <span class="number">0</span>) <span class="keyword">return</span> top;</span><br><span class="line">      stack[stack.length - <span class="number">1</span>].add(top);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i] === <span class="string">&#x27;,&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (str.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        stack[stack.length - <span class="number">1</span>].add(<span class="keyword">new</span> NestedInteger(<span class="built_in">parseInt</span>(str)));</span><br><span class="line">      &#125;</span><br><span class="line">      str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      str += s[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/11/Mini-Parser/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/11/Mini-Parser/&text=Leetcode 385 - Mini Parser"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/11/Mini-Parser/&is_video=false&description=Leetcode 385 - Mini Parser"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 385 - Mini Parser&body=Check out this article: http://example.com/2021/12/11/Mini-Parser/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/11/Mini-Parser/&title=Leetcode 385 - Mini Parser"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/11/Mini-Parser/&name=Leetcode 385 - Mini Parser&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/11/Mini-Parser/&t=Leetcode 385 - Mini Parser"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

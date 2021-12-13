@@ -44,14 +44,10 @@ var maxIncreaseKeepingSkyline = function(grid) {
   let maxRows = [...Array(rows).fill(0)];
   let maxCols = [...Array(cols).fill(0)];
   for (let i = 0; i < rows; i++) {
-    maxRows[i] = Math.max(...grid[i]);
-  }
-  for (let j = 0; j < cols; j++) {
-    let max = 0;
-    for (let i = 0; i < rows; i++) {
-      max = Math.max(max, grid[i][j]);
+    for (let j = 0; j < cols; j++) {
+      maxRows[i] = Math.max(grid[i][j], maxRows[i]);
+      maxCols[j] = Math.max(grid[i][j], maxCols[j]);
     }
-    maxCols[j] = max;
   }
   let ans = 0;
   for (let i = 0; i < rows; i++) {

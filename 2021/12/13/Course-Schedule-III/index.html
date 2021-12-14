@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Sort course by ending time. Use sum to track total time. Add every duration to a maxHeap. If adding curr course’ duration will exceed its ending time, compare it with the top of the maxHeap. If">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 630 - Course Schedule III">
+<meta property="og:url" content="http://example.com/2021/12/13/Course-Schedule-III/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Sort course by ending time. Use sum to track total time. Add every duration to a maxHeap. If adding curr course’ duration will exceed its ending time, compare it with the top of the maxHeap. If">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-13T19:30:50.000Z">
+<meta property="article:modified_time" content="2021-12-14T03:46:29.414Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="greedy">
+<meta property="article:tag" content="heap">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 630 - Course Schedule III</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/12/13/Two-Sum-IV-Input-is-a-BST/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/13/Course-Schedule-III/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/13/Course-Schedule-III/&text=Leetcode 630 - Course Schedule III"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/13/Course-Schedule-III/&is_video=false&description=Leetcode 630 - Course Schedule III"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 630 - Course Schedule III&body=Check out this article: http://example.com/2021/12/13/Course-Schedule-III/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/13/Course-Schedule-III/&name=Leetcode 630 - Course Schedule III&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/13/Course-Schedule-III/&t=Leetcode 630 - Course Schedule III"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 630 - Course Schedule III
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-13T19:30:50.000Z" itemprop="datePublished">2021-12-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/greedy/" rel="tag">greedy</a>, <a class="tag-link-link" href="/tags/heap/" rel="tag">heap</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>Sort course by <code>ending</code> time.</li>
+<li>Use <code>sum</code> to track total time.</li>
+<li>Add every <code>duration</code> to a <code>maxHeap</code>.</li>
+<li>If adding curr course’ duration will exceed its ending time, compare it with the <code>top</code> of the maxHeap.</li>
+<li>If curr course’s <code>duration &lt; topDuration</code>, pop the heap and add curr course to <code>sum</code> as well as the heap.</li>
+<li>Return the length of <code>heap</code>. </li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>There are <code>n</code> different online courses numbered from <code>1</code> to <code>n</code>. You are given an array <code>courses</code> where <code>courses[i] = [durationi, lastDayi]</code> indicate that the <code>ith</code> course should be taken continuously for <code>durationi</code> days and must be finished before or on <code>lastDayi</code>.</p>
+<p>You will start on the <code>1st</code> day and you cannot take two or more courses simultaneously.</p>
+<p>Return the maximum number of courses that you can take.</p>
+<p><strong><code>Example:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: </span><br><span class="line">There are totally 4 courses, but you can take 3 courses at most:</span><br><span class="line">First, take the 1st course, it costs 100 days so you will finish it on the 100th day, and ready to take the next course on the 101st day.</span><br><span class="line">Second, take the 3rd course, it costs 1000 days so you will finish it on the 1100th day, and ready to take the next course on the 1101st day. </span><br><span class="line">Third, take the 2nd course, it costs 200 days so you will finish it on the 1300th day. </span><br><span class="line">The 4th course cannot be taken now, since you will finish it on the 3300th day, which exceeds the closed date.</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">courses</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> scheduleCourse = <span class="function"><span class="keyword">function</span>(<span class="params">courses</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> queue = <span class="keyword">new</span> maxHeap();</span><br><span class="line">  courses.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a[<span class="number">1</span>] - b[<span class="number">1</span>]);</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> course <span class="keyword">of</span> courses) &#123;</span><br><span class="line">    <span class="keyword">if</span> (course[<span class="number">0</span>] + sum &lt;= course[<span class="number">1</span>]) &#123;</span><br><span class="line">      sum += course[<span class="number">0</span>];</span><br><span class="line">      queue.insert(course[<span class="number">0</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (queue.heap.length &gt; <span class="number">0</span> &amp;&amp; queue.heap[<span class="number">0</span>] &gt; course[<span class="number">0</span>]) &#123;</span><br><span class="line">      sum = sum - queue.pop() + course[<span class="number">0</span>];</span><br><span class="line">      queue.insert(course[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> queue.heap.length;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* MaxHeap */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">maxHeap</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.heap = [];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">swap</span>(<span class="params">i, j</span>)</span> &#123;</span><br><span class="line">    [<span class="built_in">this</span>.heap[i], <span class="built_in">this</span>.heap[j]] = [<span class="built_in">this</span>.heap[j], <span class="built_in">this</span>.heap[i]];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getParentIndex</span>(<span class="params">i</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (i - <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getLeftChildIndex</span>(<span class="params">i</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getRightChildIndex</span>(<span class="params">i</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * i + <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">shiftDown</span>(<span class="params">i</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> leftIndex = <span class="built_in">this</span>.getLeftChildIndex(i);</span><br><span class="line">    <span class="keyword">const</span> rightIndex = <span class="built_in">this</span>.getRightChildIndex(i);</span><br><span class="line">    <span class="keyword">if</span> (leftIndex &lt; <span class="built_in">this</span>.heap.length &amp;&amp; <span class="built_in">this</span>.heap[leftIndex] &gt; <span class="built_in">this</span>.heap[i]) &#123;</span><br><span class="line">      <span class="built_in">this</span>.swap(i, leftIndex);</span><br><span class="line">      <span class="built_in">this</span>.shiftDown(leftIndex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightIndex &lt; <span class="built_in">this</span>.heap.length &amp;&amp; <span class="built_in">this</span>.heap[rightIndex] &gt; <span class="built_in">this</span>.heap[i]) &#123;</span><br><span class="line">      <span class="built_in">this</span>.swap(i, rightIndex);</span><br><span class="line">      <span class="built_in">this</span>.shiftDown(rightIndex);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">shiftUp</span>(<span class="params">i</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.heap[i] &gt; <span class="built_in">this</span>.heap[<span class="built_in">this</span>.getParentIndex(i)]) &#123;</span><br><span class="line">      <span class="built_in">this</span>.swap(i, <span class="built_in">this</span>.getParentIndex(i));</span><br><span class="line">      <span class="built_in">this</span>.shiftUp(<span class="built_in">this</span>.getParentIndex(i));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">insert</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.heap.push(val);</span><br><span class="line">    <span class="built_in">this</span>.shiftUp(<span class="built_in">this</span>.heap.length - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">pop</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> first = <span class="built_in">this</span>.heap[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">const</span> last = <span class="built_in">this</span>.heap.pop();</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.heap.length !== <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.heap[<span class="number">0</span>] = last;</span><br><span class="line">      <span class="built_in">this</span>.shiftDown(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/13/Course-Schedule-III/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/13/Course-Schedule-III/&text=Leetcode 630 - Course Schedule III"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/13/Course-Schedule-III/&is_video=false&description=Leetcode 630 - Course Schedule III"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 630 - Course Schedule III&body=Check out this article: http://example.com/2021/12/13/Course-Schedule-III/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/13/Course-Schedule-III/&title=Leetcode 630 - Course Schedule III"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/13/Course-Schedule-III/&name=Leetcode 630 - Course Schedule III&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/13/Course-Schedule-III/&t=Leetcode 630 - Course Schedule III"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

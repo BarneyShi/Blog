@@ -3,7 +3,7 @@ title: Leetcode 105 - Construct binary tree from preorder and inorder traversal
 date: 2021-10-21 22:55:56
 tags:
 - binary tree
-= recursion
+- dfs
 ---
 **`Note:`**
 - The return value is the root, so we need to return `node` in the recursion function.

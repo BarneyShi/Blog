@@ -6,17 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="We can optimize what we got from using a 2D array.In DP[i][j] &#x3D; max(DP[i-1][j], DP[i-1][j-weight[i] + value[i]), we can see the state of DP[i] is only related to DP[i-1]. Somehow, we can use a 1D arra">
+    <meta name="description" content="Note: We can optimize what we got from using a 2D array.  Keyword: No Aftereffect: It means the future only cares about the current state but not the history.   In this problem, it means that DP[j] on">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DP - 1D knapsack optimization">
+<meta property="og:title" content="DP - 1D knapsack Optimization">
 <meta property="og:url" content="http://example.com/2021/09/04/1D-knapsack/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="We can optimize what we got from using a 2D array.In DP[i][j] &#x3D; max(DP[i-1][j], DP[i-1][j-weight[i] + value[i]), we can see the state of DP[i] is only related to DP[i-1]. Somehow, we can use a 1D arra">
+<meta property="og:description" content="Note: We can optimize what we got from using a 2D array.  Keyword: No Aftereffect: It means the future only cares about the current state but not the history.   In this problem, it means that DP[j] on">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-04T02:56:13.000Z">
-<meta property="article:modified_time" content="2021-12-14T00:52:57.571Z">
+<meta property="article:modified_time" content="2021-12-14T01:24:30.657Z">
 <meta property="article:author" content="Barney">
-<meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary">
     
@@ -38,7 +37,7 @@
       
     
     <!-- title -->
-    <title>DP - 1D knapsack optimization</title>
+    <title>DP - 1D knapsack Optimization</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -93,16 +92,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/04/1D-knapsack/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/04/1D-knapsack/&text=DP - 1D knapsack optimization"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/04/1D-knapsack/&is_video=false&description=DP - 1D knapsack optimization"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DP - 1D knapsack optimization&body=Check out this article: http://example.com/2021/09/04/1D-knapsack/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/04/1D-knapsack/&name=DP - 1D knapsack optimization&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/04/1D-knapsack/&t=DP - 1D knapsack optimization"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/04/1D-knapsack/&text=DP - 1D knapsack Optimization"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/04/1D-knapsack/&is_video=false&description=DP - 1D knapsack Optimization"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DP - 1D knapsack Optimization&body=Check out this article: http://example.com/2021/09/04/1D-knapsack/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/04/1D-knapsack/&name=DP - 1D knapsack Optimization&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/04/1D-knapsack/&t=DP - 1D knapsack Optimization"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -119,7 +118,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        DP - 1D knapsack optimization
+        DP - 1D knapsack Optimization
     </h1>
 
 
@@ -142,7 +141,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/dp/" rel="tag">dp</a>, <a class="tag-link-link" href="/tags/leetcode/" rel="tag">leetcode</a>
+        <a class="tag-link-link" href="/tags/dp/" rel="tag">dp</a>
     </div>
 
 
@@ -151,15 +150,23 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>We can optimize what we got from using a 2D array.<br>In <code>DP[i][j] = max(DP[i-1][j], DP[i-1][j-weight[i] + value[i])</code>, we can see the state of <code>DP[i]</code> is only related to <code>DP[i-1]</code>. Somehow, we can use a 1D array to get what we want:<br><code>DP[j] = max(DP[j], DP[j - weight(i)] + value[i])</code>.</p>
-<p><strong>Note:</strong></p>
+    <p><strong>Note:</strong></p>
+<p>We can optimize what we got from using a 2D array.</p>
 <ul>
-<li>When we don’t care about the <code>order</code> of element:<ol>
+<li><p>Keyword: <code>No Aftereffect</code>: It means the <code>future</code> only cares about the <code>current state</code> but not the <code>history</code>. </p>
+</li>
+<li><p>In this problem, it means that <code>DP[j]</code> only depends on <code>DP[j - 1]</code>. </p>
+</li>
+<li><p>In <code>DP[i][j] = max(DP[i-1][j], DP[i-1][j-weight[i] + value[i])</code>, we can see the state of <code>DP[i]</code> is only related to <code>DP[i-1]</code>. Here, <code>DP[j]</code> represents our result from last iteration, and it contains info about <code>i - 1</code>. Hence we can use <code>DP[j]</code> only as a 1D array.</p>
+</li>
+<li><p>When we don’t care about the <code>order</code> of elements:</p>
+<ol>
 <li>We have to iterate <code>item</code> first then <code>bag</code>. (So for arr[1,2..], we can be sure [2,1] won’t happen in any result.)</li>
 <li>We have to iterate <code>bag</code> from the <code>end</code> to the <code>start</code>.</li>
 </ol>
 </li>
-<li>When we care about the order of element:<ol>
+<li><p>When we care about the order of elements:</p>
+<ol>
 <li>Iterate <code>j</code> first then <code>i</code>.</li>
 </ol>
 </li>
@@ -196,16 +203,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/04/1D-knapsack/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/04/1D-knapsack/&text=DP - 1D knapsack optimization"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/04/1D-knapsack/&is_video=false&description=DP - 1D knapsack optimization"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=DP - 1D knapsack optimization&body=Check out this article: http://example.com/2021/09/04/1D-knapsack/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack optimization"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/04/1D-knapsack/&name=DP - 1D knapsack optimization&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/04/1D-knapsack/&t=DP - 1D knapsack optimization"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/04/1D-knapsack/&text=DP - 1D knapsack Optimization"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/04/1D-knapsack/&is_video=false&description=DP - 1D knapsack Optimization"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DP - 1D knapsack Optimization&body=Check out this article: http://example.com/2021/09/04/1D-knapsack/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/04/1D-knapsack/&title=DP - 1D knapsack Optimization"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/04/1D-knapsack/&name=DP - 1D knapsack Optimization&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/04/1D-knapsack/&t=DP - 1D knapsack Optimization"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

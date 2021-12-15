@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Topological BFS: Looks at the input, it’s quite like the course schedule problem I did. Using indegree gives us access to traverse the graph. Be careful of the direction of edges. It has to poi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 851 - Loud and Rich">
+<meta property="og:url" content="http://example.com/2021/12/14/Loud-and-Rich/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Topological BFS: Looks at the input, it’s quite like the course schedule problem I did. Using indegree gives us access to traverse the graph. Be careful of the direction of edges. It has to poi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-14T19:47:43.000Z">
+<meta property="article:modified_time" content="2021-12-15T04:19:17.259Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="dfs">
+<meta property="article:tag" content="topological sort">
+<meta property="article:tag" content="bfs">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 851 - Loud and Rich</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/12/14/Rotate-Function/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/14/Loud-and-Rich/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/14/Loud-and-Rich/&text=Leetcode 851 - Loud and Rich"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/14/Loud-and-Rich/&is_video=false&description=Leetcode 851 - Loud and Rich"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 851 - Loud and Rich&body=Check out this article: http://example.com/2021/12/14/Loud-and-Rich/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/14/Loud-and-Rich/&name=Leetcode 851 - Loud and Rich&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/14/Loud-and-Rich/&t=Leetcode 851 - Loud and Rich"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 851 - Loud and Rich
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-14T19:47:43.000Z" itemprop="datePublished">2021-12-14</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bfs/" rel="tag">bfs</a>, <a class="tag-link-link" href="/tags/dfs/" rel="tag">dfs</a>, <a class="tag-link-link" href="/tags/topological-sort/" rel="tag">topological sort</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li><code>Topological BFS:</code><ul>
+<li>Looks at the input, it’s quite like the <code>course schedule</code> problem I did. Using <code>indegree</code> gives us access to traverse the graph.</li>
+<li>Be careful of the direction of edges. It has to point from <code>richer</code> to <code>poorer</code> because in <code>ans</code>, the richest people have their own as the answer.</li>
+<li>Construct a <code>map</code> for <code>edges</code>, and initialize <code>queue</code> with vertexes whose <code>indegree === 0</code>.</li>
+<li>While iterating, update <code>queue</code> with <code>vertex</code> whose <code>indegree</code> becomes <code>0</code>.</li>
+</ul>
+</li>
+<li><code>DFS:</code><ul>
+<li>DFS was my first intuition but I didn’t think it thorough. (sad)</li>
+<li>Use <code>ans[]</code> to memo answers.</li>
+<li>Use <code>map</code> to construct <code>edges</code> from <code>poor</code> to <code>rich</code>.</li>
+<li>Do DFS toward every possible edges. </li>
+<li>Return ans when <code>ans[i]</code> is not -1.</li>
+<li>For richest people, return themselves.</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>There is a group of <code>n</code> people labeled from <code>0</code> to <code>n - 1</code> where each person has a different amount of money and a different level of quietness.</p>
+<p>You are given an array <code>richer</code> where <code>richer[i] = [ai, bi]</code> indicates that <code>ai</code> has more money than <code>bi</code> and an integer array <code>quiet</code> where <code>quiet[i]</code> is the quietness of the <code>ith</code> person. All the given data in richer are logically correct (i.e., the data will not lead you to a situation where <code>x</code> is richer than <code>y</code> and <code>y</code> is richer than <code>x</code> at the same time).</p>
+<p>Return an integer array <code>answer</code> where <code>answer[x] = y</code> if <code>y</code> is the least quiet person (that is, the person y with the smallest value of <code>quiet[y]</code>) among all people who definitely have equal to or more money than the person x.</p>
+<p><strong><code>Example:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: richer = [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]], quiet = [3,2,5,4,6,1,7,0]</span><br><span class="line">Output: [5,5,2,5,4,5,6,7]</span><br><span class="line">Explanation: </span><br><span class="line">answer[0] = 5.</span><br><span class="line">Person 5 has more money than 3, which has more money than 1, which has more money than 0.</span><br><span class="line">The only person who is quieter (has lower quiet[x]) is person 7, but it is not clear if they have more money than person 0.</span><br><span class="line">answer[7] = 7.</span><br><span class="line">Among all people that definitely have equal to or more money than person 7 (which could be persons 3, 4, 5, 6, or 7), the person who is the quietest (has lower quiet[x]) is person 7.</span><br><span class="line">The other answers can be filled out with similar reasoning.</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<p><strong><code>Topological sort</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">richer</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">quiet</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> loudAndRich = <span class="function"><span class="keyword">function</span>(<span class="params">richer, quiet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ans = [...Array(quiet.length)].map(<span class="function">(<span class="params">e, i</span>) =&gt;</span> i);</span><br><span class="line">  <span class="keyword">let</span> queue = [];</span><br><span class="line">  <span class="keyword">let</span> indegree = [...Array(quiet.length).fill(<span class="number">0</span>)];</span><br><span class="line">  <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [b, a] <span class="keyword">of</span> richer) &#123;</span><br><span class="line">    indegree[a]++;</span><br><span class="line">    <span class="keyword">if</span> (!map.has(b)) &#123;</span><br><span class="line">      map.set(b, [a]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      map.set(b, [...map.get(b), a]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [i, d] <span class="keyword">of</span> indegree.entries()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (d === <span class="number">0</span>) &#123;</span><br><span class="line">      queue.push(i);</span><br><span class="line">      ans[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> length = queue.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> head = queue.shift();</span><br><span class="line">      <span class="keyword">const</span> next = map.get(head);</span><br><span class="line">      <span class="keyword">if</span> (next) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> edge <span class="keyword">of</span> next) &#123;</span><br><span class="line">          indegree[edge]--;</span><br><span class="line">          ans[edge] = (quiet[ans[edge]] &lt; quiet[ans[head]]) ? ans[edge] : ans[head];</span><br><span class="line">          <span class="keyword">if</span> (indegree[edge] === <span class="number">0</span>)  &#123;</span><br><span class="line">            queue.push(edge);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong><code>DFS</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">richer</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">quiet</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> loudAndRich = <span class="function"><span class="keyword">function</span>(<span class="params">richer, quiet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ans = [...Array(quiet.length).fill(-<span class="number">1</span>)];</span><br><span class="line">  <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [a, b] <span class="keyword">of</span> richer) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!map.has(b)) &#123;</span><br><span class="line">      map.set(b, [a]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      map.set(b, [...map.get(b), a]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; quiet.length; i++) &#123;</span><br><span class="line">    dfs(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">start</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ans[start] !== -<span class="number">1</span>) <span class="keyword">return</span> ans[start];</span><br><span class="line">    ans[start] = start;</span><br><span class="line">    <span class="keyword">if</span> (!map.has(start)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> neighbor <span class="keyword">of</span> map.get(start)) &#123;</span><br><span class="line">      dfs(neighbor);</span><br><span class="line">      <span class="keyword">if</span> (quiet[ans[neighbor]] &lt; quiet[ans[start]]) &#123;</span><br><span class="line">        ans[start] = ans[neighbor];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/14/Loud-and-Rich/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/14/Loud-and-Rich/&text=Leetcode 851 - Loud and Rich"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/14/Loud-and-Rich/&is_video=false&description=Leetcode 851 - Loud and Rich"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 851 - Loud and Rich&body=Check out this article: http://example.com/2021/12/14/Loud-and-Rich/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/14/Loud-and-Rich/&title=Leetcode 851 - Loud and Rich"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/14/Loud-and-Rich/&name=Leetcode 851 - Loud and Rich&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/14/Loud-and-Rich/&t=Leetcode 851 - Loud and Rich"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

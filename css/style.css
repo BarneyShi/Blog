@@ -1062,13 +1062,15 @@ body {
   display: inline;
 }
 #recentPosts {
-  transition: 0.1s;
+  transition: 0.3s;
 }
 #recentPosts:hover {
-  color: #fff;
-  background-color: #808080;
-  border-radius: 5px;
-  padding: 3px 3px 3px 0;
+  text-decoration: underline;
+  color: #9d2a3a;
+}
+#projectLink:hover {
+  text-decoration: underline;
+  color: #9d2a3a;
 }
 article header .posttitle {
   margin-top: 0;

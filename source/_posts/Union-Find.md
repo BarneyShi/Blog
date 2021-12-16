@@ -1,5 +1,5 @@
 ---
-title: Data structure - Union Find
+title: Data structure - 🧑‍🏫 Union Find
 date: 2021-12-15 01:58:05
 tags:
 - union find

@@ -34,7 +34,7 @@
 <section id="writing">
   <span class="h1">
     <a id="recentPosts" href="<%- url_for(theme.nav.Posts) %>">
-      <%= __('Recent Posts... 👈') %>
+      <%= __('Recent Posts 👈') %>
     </a>
   </span>
   <!-- <% if (theme.tags_overview && site.tags.length) { %>
@@ -65,7 +65,7 @@
 
 <% if (site.data.projects) { %>
 <section id="projects">
-  <span class="h1"><a href="<%- url_for(theme.projects_url) %>"><%= __('index.projects') %></a></span>
+  <span class="h1"><a id="projectLink" href="<%- url_for(theme.social_links.github) %>"><%= __('index.projects') %></a></span>
   <ul class="project-list">
     <% for(var obj in site.data.projects){ %>
       <li class="project-item">

@@ -1061,6 +1061,15 @@ body {
 .project-list .project-item p {
   display: inline;
 }
+#recentPosts {
+  transition: 0.1s;
+}
+#recentPosts:hover {
+  color: #fff;
+  background-color: #808080;
+  border-radius: 5px;
+  padding: 3px 3px 3px 0;
+}
 article header .posttitle {
   margin-top: 0;
   margin-bottom: 0;

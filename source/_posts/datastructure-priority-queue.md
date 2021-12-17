@@ -160,6 +160,16 @@ class MinPriorityQueue {
     return ans;
   }
 }
+
+// For example:
+let  pq = new MinPriorityQueue((o1, o2) => o1.sum < o2.sum);
+let o1 = {item: [1,2], sum: 3};
+let o2 = {itm: [-1,-2], sum: -3};
+pq.insert(o1);
+pq.insert(o2);
+while (pq.heap.length > 0) {
+  console.log(pq.pop());
+}
 ```
 
 **`Time complexity`**

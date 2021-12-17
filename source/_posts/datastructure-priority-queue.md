@@ -1,5 +1,5 @@
 ---
-title: Data structure - 🆎 Heap (ft. Priority Queue)
+title: Data structure - 🆎 Heap & 📈 Priority Queue
 date: 2021-11-28 16:22:09
 tags:
 - heap
@@ -34,26 +34,14 @@ class MinHeap {
     [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
   
-  /**
-   * @param {*} i
-   * @return {*}
-   */
   getParentIndex (i) {
     return (i - 1) >> 1;
   }
 
-  /**
-   * @param {*} i
-   * @return {*}
-   */
   getLeftIndex(i) {
     return i * 2 + 1;
   }
   
-  /**
-   * @param {*} i
-   * @return {*}
-   */
   getRightIndex(i) {
     return i * 2 + 2;
   }
@@ -67,9 +55,6 @@ class MinHeap {
     }
   }
 
-  /**
-   * @param {*} index
-   */
   shiftDown(i) {
     const leftIndex = this.getLeftIndex(i);
     const rightIndex = this.getRightIndex(i);
@@ -83,9 +68,6 @@ class MinHeap {
     }
   }
 
-  /**
-   * @param {*} value
-   */
   insert(val) {
     this.heap.push(val);
     this.shiftUp(this.heap.length - 1);
@@ -111,22 +93,75 @@ class MinHeap {
 }
 ```
 
+**`Min/Max Priority Queue`**
+
+Note: 
+PQ is quite simimlar to normal binary `heaps`, but the element can be `objects` but no just `numbers`. And sometimes we need more complex `comparator` to diff priorities. Hence a `comparator` is necessary in constructor.
+```javascript
+class MinPriorityQueue {
+  constructor(comparator) {
+    this.heap = [];
+    this.comparator = comparator;
+  }
+
+  swap(i, j) {
+    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+  }
+
+  parentIndex(i) {
+    return (i - 1) >> 1;
+  }
+
+  leftChildIndex(i) {
+    return 2*i + 1;
+  }
+
+  rightChildIndex(i) {
+    return 2*i + 2;
+  }
+  
+  insert(element) {
+    this.heap.push(element);
+    let index = this.heap.length - 1;
+    let parentIndex = this.parentIndex(index);
+
+    while (parentIndex >= 0 && this.comparator(this.heap[index], this.heap[parentIndex])) {
+      this.swap(index, parentIndex);
+      index = parentIndex;
+      parentIndex = this.parentIndex(index);
+    }
+  }
+
+  pop() {
+    const ans = this.heap[0];
+    this.swap(0, this.heap.length - 1);
+    this.heap.pop();
+
+    let index = 0;
+    let leftChildIndex = this.leftChildIndex(index);
+    let rightChildIndex = this.rightChildIndex(index);
+
+    while (leftChildIndex < this.heap.length || rightChildIndex < this.heap.length) {
+      let nextIndex = null;
+      if (this.comparator(this.heap[leftChildIndex], this.heap[index])) {
+        nextIndex = leftChildIndex;
+      }
+      if (rightChildIndex < this.heap.length && this.comparator(this.heap[rightChildIndex], this.heap[leftChildIndex])) {
+        nextIndex = rightChildIndex;
+      }
+      // No child has lower priority than heap[index], break the loop.
+      if (nextIndex === null) break;
+
+      this.swap(index, nextIndex);
+      index = nextIndex;
+      leftChildIndex = this.leftChildIndex(index);
+      rightChildIndex = this.rightChildIndex(index);
+    }
+    return ans;
+  }
+}
+```
 
 **`Time complexity`**
 
 ![img](https://i.imgur.com/EwGEWof.png)
-
-
-
-
-Code example : minHeap:
-```javascript
-let queue = new MinPriorityQueue({priority: (obj) => obj.val});
-queue.enqueue({x, y, val});
-
-let obj = queue.dequeue();
-//The structure of obj is like {priority : p, element : {x, y, val}};
-let {x, y, val} = obj;
-
-queue.enqueue({x, y, val});
-```

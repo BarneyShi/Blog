@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Divide and conquer, or DFS Use len to represent the current grid, initialized as n. If it’s all 0s or 1s in the grid, return a leaf. If not, divide the length by 2!! (Len would never be somethi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 427 - Construct Quad Tree">
+<meta property="og:url" content="http://example.com/2021/12/19/Construct-Quad-Tree/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Divide and conquer, or DFS Use len to represent the current grid, initialized as n. If it’s all 0s or 1s in the grid, return a leaf. If not, divide the length by 2!! (Len would never be somethi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/02/11/grid1.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/02/12/e1tree.png">
+<meta property="article:published_time" content="2021-12-19T03:14:40.000Z">
+<meta property="article:modified_time" content="2021-12-19T11:23:34.679Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="dfs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/02/11/grid1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 427 - Construct Quad Tree</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/12/18/Longest-Repeating-Character-Replacement/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/19/Construct-Quad-Tree/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/19/Construct-Quad-Tree/&text=Leetcode 427 - Construct Quad Tree"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/19/Construct-Quad-Tree/&is_video=false&description=Leetcode 427 - Construct Quad Tree"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 427 - Construct Quad Tree&body=Check out this article: http://example.com/2021/12/19/Construct-Quad-Tree/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/19/Construct-Quad-Tree/&name=Leetcode 427 - Construct Quad Tree&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/19/Construct-Quad-Tree/&t=Leetcode 427 - Construct Quad Tree"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 427 - Construct Quad Tree
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-19T03:14:40.000Z" itemprop="datePublished">2021-12-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/dfs/" rel="tag">dfs</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>Divide and conquer, or DFS</li>
+<li>Use <code>len</code> to represent the current grid, initialized as <code>n</code>.</li>
+<li>If it’s all <code>0</code>s or <code>1</code>s in the grid, return a leaf.</li>
+<li>If not, <code>divide the length by 2</code>!! (Len would never be something like 6).</li>
+<li>Need params for starting point <code>topLeft</code>. Use <code>i, j</code> as start point.</li>
+<li>Start from there and expand it until we’ve found inharmonious vals or reached the bondaries.</li>
+<li>If it is the former case, divide the length by 2 and continue dfs on the <code>4 children grids</code>.</li>
+<li>If it is the latter case, return a leaf node.</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>Given a <code>n * n</code> matrix <code>grid</code> of <code>0</code>‘s and <code>1</code>‘s only. We want to represent the <code>grid</code> with a Quad-Tree.</p>
+<p>Return the root of the Quad-Tree representing the <code>grid</code>.</p>
+<p>Notice that you can assign the value of a node to True or False when <code>isLeaf</code> is False, and both are accepted in the answer.</p>
+<p>A Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:</p>
+<ul>
+<li><code>val</code>: True if the node represents a grid of 1’s or False if the node represents a grid of 0’s.</li>
+<li><code>isLeaf</code>: True if the node is leaf node on the tree or False if the node has the four children.</li>
+</ul>
+<p>We can construct a Quad-Tree from a two-dimensional area using the following steps:</p>
+<ol>
+<li>If the current grid has the same value (i.e all <code>1</code>‘s or all <code>0</code>‘s) set <code>isLeaf</code> True and set <code>val</code> to the value of the grid and set the four children to Null and stop.</li>
+<li>If the current grid has different values, set <code>isLeaf</code> to False and set <code>val</code> to any value and divide the current grid into four sub-grids as shown in the photo.</li>
+<li>Recurse for each of the children with the proper sub-grid.</li>
+</ol>
+<p><code>Quad-Tree format</code>:</p>
+<p>The output represents the serialized format of a Quad-Tree using level order traversal, where <code>null</code> signifies a path terminator where no node exists below.</p>
+<p>It is very similar to the serialization of the binary tree. The only difference is that the node is represented as a list <code>[isLeaf, val]</code>.</p>
+<p>If the value of <code>isLeaf</code> or <code>val</code> is True we represent it as 1 in the list <code>[isLeaf, val]</code> and if the value of <code>isLeaf</code> or <code>val</code> is False we represent it as <code>0</code>.</p>
+<p><strong><code>Example:</code></strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/02/11/grid1.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[0,1],[1,0]]</span><br><span class="line">Output: [[0,1],[1,0],[1,1],[1,1],[1,0]]</span><br><span class="line">Explanation: The explanation of this example is shown below:</span><br><span class="line">Notice that 0 represnts False and 1 represents True in the photo representing the Quad-Tree.</span><br></pre></td></tr></table></figure>
+<p><img src="https://assets.leetcode.com/uploads/2020/02/12/e1tree.png" alt="img"></p>
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * // Definition for a QuadTree node.</span></span><br><span class="line"><span class="comment"> * function Node(val,isLeaf,topLeft,topRight,bottomLeft,bottomRight) &#123;</span></span><br><span class="line"><span class="comment"> *    this.val = val;</span></span><br><span class="line"><span class="comment"> *    this.isLeaf = isLeaf;</span></span><br><span class="line"><span class="comment"> *    this.topLeft = topLeft;</span></span><br><span class="line"><span class="comment"> *    this.topRight = topRight;</span></span><br><span class="line"><span class="comment"> *    this.bottomLeft = bottomLeft;</span></span><br><span class="line"><span class="comment"> *    this.bottomRight = bottomRight;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">grid</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Node&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> construct = <span class="function"><span class="keyword">function</span>(<span class="params">grid</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> n = grid.length;</span><br><span class="line">  <span class="keyword">return</span> dfs(<span class="number">0</span>, <span class="number">0</span>, n);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">i, j, len</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">let</span> node = <span class="keyword">new</span> Node(<span class="number">1</span>, <span class="number">0</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">let</span> row = i;</span><br><span class="line">    <span class="keyword">let</span> col = j;</span><br><span class="line">    <span class="keyword">while</span> (row &lt; len + i &amp;&amp; col &lt; len + j &amp;&amp; grid.slice(i, row + <span class="number">1</span>).every(<span class="function"><span class="params">e</span> =&gt;</span> e.slice(j, col + <span class="number">1</span>).every(<span class="function"><span class="params">n</span> =&gt;</span> n === grid[i][j]))) &#123;</span><br><span class="line">      row++;</span><br><span class="line">      col++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (row === i + len &amp;&amp; col === j + len) &#123;</span><br><span class="line">      node.val = grid[i][j];</span><br><span class="line">      node.isLeaf = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> nextLen = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>);</span><br><span class="line">    node.topLeft = dfs(i, j, nextLen);</span><br><span class="line">    node.topRight = dfs(i, j + nextLen, nextLen);</span><br><span class="line">    node.bottomLeft = dfs(i + nextLen, j, nextLen);</span><br><span class="line">    node.bottomRight = dfs(i + nextLen, j + nextLen, nextLen);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/19/Construct-Quad-Tree/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/19/Construct-Quad-Tree/&text=Leetcode 427 - Construct Quad Tree"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/19/Construct-Quad-Tree/&is_video=false&description=Leetcode 427 - Construct Quad Tree"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 427 - Construct Quad Tree&body=Check out this article: http://example.com/2021/12/19/Construct-Quad-Tree/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/19/Construct-Quad-Tree/&title=Leetcode 427 - Construct Quad Tree"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/19/Construct-Quad-Tree/&name=Leetcode 427 - Construct Quad Tree&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/19/Construct-Quad-Tree/&t=Leetcode 427 - Construct Quad Tree"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -13,7 +13,7 @@ tags:
 - If `map.has(n & mask ^ mask)`, it means there is another num that can do `a ^ b = mask`.
 - If not, it means the digit should be `0` in mask.
 - Continue it until mask's length === max.length.
-- Visulize the process
+- Visulize the process: As the process going, less and less nums would be left on both sides.
 - ![img](https://i.imgur.com/j4ADwvZ.png)
 
 **`Question:`**

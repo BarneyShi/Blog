@@ -27,7 +27,7 @@ function binarySearch(array, target) {
 }
 ```
 
-2. **`Searching for the FIRST number that is SMALLER or EQUAL to the target`**
+2. **`Searching for the FIRST number that is BIGGER or EQUAL to the target`**
 - Return the index otherwise -1
 - Idea: Resize the window till only ONE element left coz if `array[mid] == target`, 
 - it doesn't mean it's the FIRST one. Like `[2,2,2,4]`, array[1] = 2, but 0 is the ans.
@@ -50,7 +50,7 @@ function binarySearch(array, target) {
 }
 ```
 
-3. **`Searching for the LAST number that is BIGGER or EQUAL to the target`**
+3. **`Searching for the LAST number that is SMALLER or EQUAL to the target`**
 - Return the index otherwise -1
 - Idea: Resize the window till only ONE element left.
 - Why it's `mid = left + ((1 + right - left) >> 1)`?

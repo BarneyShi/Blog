@@ -5,6 +5,7 @@ tags:
 - dfs
 ---
 **`Note:`**
+- ![img](https://i.imgur.com/89Szp8o.png)
 - Path sum on a tree, usually we need DFS.
 - What should we return in each `DFS`?
 - It should include `node.val`, and add `node.val` to `every combination from children`.

@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="Barney&#39;s Blog">
 <meta property="og:description" content="What is prefix table?   Table’s length is the length of pattern.  Each value is the max length of substring that can fit as prefix and suffix. Prefix are substrings that don’t include the last char.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.imgur.com/nfIsa11.jpg">
+<meta property="og:image" content="https://i.imgur.com/pAfc8Em.png">
 <meta property="article:published_time" content="2021-10-13T17:58:31.000Z">
-<meta property="article:modified_time" content="2021-12-21T11:30:16.595Z">
+<meta property="article:modified_time" content="2021-12-22T02:51:14.576Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="kmp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/nfIsa11.jpg">
+<meta name="twitter:image" content="https://i.imgur.com/pAfc8Em.png">
     
     
       
@@ -180,7 +180,7 @@
 <li><code>j</code> can be understood as the <code>end of suffix</code>.</li>
 <li>Let <code>i = 0</code>, <code>j = 1</code>. Take <code>aaa</code> for example, if <code>pattern[i] === pattern[j]</code>, then <code>next[j] === i + 1</code>.</li>
 <li>if <code>pattern[i] !== pattern[j]</code> like below</li>
-<li><img src="https://i.imgur.com/nfIsa11.jpg" alt="img"></li>
+<li><img src="https://i.imgur.com/pAfc8Em.png" alt="img"></li>
 <li>We need to find a max <code>prefix</code> for <code>suffix (ABABA)</code> ending at <code>j</code>! (The prefix will occupy all or part of ABABA)</li>
 <li>We need to go back, but apparently we cannot do <code>i = next[i]</code> because then we’ll always have a prefix ending with the same char like <code>pattern[j]</code>.</li>
 <li>What about <code>next[i - 1]</code>? That sounds right!</li>

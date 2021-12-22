@@ -9,7 +9,7 @@ tags:
 - There is a pattern in this problem.
 - If `a.len >= b.len`, then we can only repeat a `no more than twice`.
 - If `a.len < b.len`, then we can only repeat `ceil(b.len / a.len) + 1` times.
-  - For example: `a = 'abc', b = "cabcabca"`. The ans is 4.
+  - For example: `a = 'abc', b = "cabcabca"`. The ans is 4. Because `b` used part of `a` at the start, and part of `a` at the end.
 
 **`Question:`**
 

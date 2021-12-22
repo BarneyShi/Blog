@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Use kmp to check substrings. There is a pattern in this problem. If a.len &gt;&#x3D; b.len, then we can only repeat a no more than twice. If a.len &lt; b.len, then we can only repeat ceil(b.len &#x2F; a.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-21T18:35:37.000Z">
-<meta property="article:modified_time" content="2021-12-22T02:51:14.568Z">
+<meta property="article:modified_time" content="2021-12-22T03:06:16.739Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="kmp">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,10 @@
 <li>Use <code>kmp</code> to check substrings.</li>
 <li>There is a pattern in this problem.</li>
 <li>If <code>a.len &gt;= b.len</code>, then we can only repeat a <code>no more than twice</code>.</li>
-<li>If <code>a.len &lt; b.len</code>, then we can only repeat <code>ceil(b.len / a.len) + 1</code> times.</li>
+<li>If <code>a.len &lt; b.len</code>, then we can only repeat <code>ceil(b.len / a.len) + 1</code> times.<ul>
+<li>For example: <code>a = &#39;abc&#39;, b = &quot;cabcabca&quot;</code>. The ans is 4.</li>
+</ul>
+</li>
 </ul>
 <p><strong><code>Question:</code></strong></p>
 <p>Given two strings <code>a</code> and <code>b</code>, return the minimum number of times you should repeat string <code>a</code> so that string <code>b</code> is <code>a</code> substring of it. If it is impossible for <code>b​​​​​​</code> to be <code>a</code> substring of <code>a</code> after repeating it, return -1.</p>

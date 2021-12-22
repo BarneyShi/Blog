@@ -15,7 +15,7 @@ tags:
   - `j` can be understood as the `end of suffix`.
   - Let `i = 0`, `j = 1`. Take `aaa` for example, if `pattern[i] === pattern[j]`, then `next[j] === i + 1`.
   - if `pattern[i] !== pattern[j]` like below
-  - ![img](https://i.imgur.com/nfIsa11.jpg)
+  - ![img](https://i.imgur.com/pAfc8Em.png)
   - We need to find a max `prefix` for `suffix (ABABA)` ending at `j`! (The prefix will occupy all or part of ABABA)
   - We need to go back, but apparently we cannot do `i = next[i]` because then we'll always have a prefix ending with the same char like `pattern[j]`.
   - What about `next[i - 1]`? That sounds right!

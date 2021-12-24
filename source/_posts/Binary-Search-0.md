@@ -7,7 +7,7 @@ tags:
 **`Note:`**
 
 - To find the `target` but not `first element bigger than or equal to target`, or `last element smaller than or equal to target`, use `<=`, and we don't need a last check on `nums[left]` with `target`.
-- Don't need `add 1` to `left + right >> 1` because there won't be ifinite loops, and we won't miss any ans.
+- Don't need `add 1` to `left + right >> 1` because there won't be infinite loops, and we won't miss any ans.
 
 **`Question:`**
 

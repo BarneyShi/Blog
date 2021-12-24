@@ -6,7 +6,7 @@ tags:
 ---
 **`Note:`**
 - Give you a time, we need to find the `last timestamp` that is `less or equal` than `t`.
-- It just sound like `binary search` right?
+- It just sounds like `binary search` right?
 - To accelerate this process, we need to precalculate an `tops[]` array in which each element represents the `winner` at `times[i]`.
 - Detail: 
   - To prevent dead loop, `mid = left + right + 1 / 2)`. Without `plus 1`, we might fall into a dead loop like `[1, 3], t = 2` coz when `times[i] <= t`, we have `left = mid`. In this example, we'll be stuck at `left = 0` forever.

@@ -46,7 +46,6 @@ var longestWord = function(words) {
     children = Object.entries(children);
     let ans = '';
     for (const [c, nextChildren] of children) {
-      if (c === 'isEnd') continue;
       if (nextChildren.isEnd) {
         const res = dfs(nextChildren, path + c);
         if (res.length > ans.length || res.length === ans.length && res < ans) ans = res;

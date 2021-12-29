@@ -7,7 +7,8 @@ tags:
 **`Note:`**
 - DFS
   - choose an `i`, start from it and document the `path` in a set. Also mark the `direction` with a bool.
-  - If next index appears in `set`, check if the path is `length > 1`.
+  - If next index appears in `path`, check if the path is `length > 1`.
+  - If `curr index` is in `visited[]`, then it must be `false`.
   - If nums[i] is positive but direction is false, then it means the curr path is `false`. 
   - Move to next start index in the for loop.
   - Note that `nums[i]` might be bigger than `length`, so we need `nums[i] % length` sometimes.
@@ -58,28 +59,31 @@ By definition the sequence's length must be strictly greater than 1 to be a cycl
  * @return {boolean}
  */
  var circularArrayLoop = function(nums) {
-  const set = new Set();
+  const path = new Set();
+  let visited = {};
   for (let i = 0; i < nums.length; i++) {
-    set.clear();
-    if (dfs(i, set, nums[i] > 0)) return true;
+    path.clear();
+    if (dfs(i, path, nums[i] > 0)) return true;
   }
   return false;
 
-  function dfs(startIndex, set, isForward) {
+  function dfs(startIndex, path, isForward) {
     const nextStep = isForward ? startIndex : -startIndex;
-    if (set.has(nextStep)) {
-      let arr = Array.from(set);
+    if (path.has(nextStep)) {
+      let arr = Array.from(path);
       const index = arr.indexOf(nextStep);
       return arr.length - index > 1;
     }
-    set.add(nextStep);
+    if (visited[startIndex] !== undefined) return visited[startIndex];
+    path.add(nextStep);
     if (isForward && nums[startIndex] < 0 || !isForward && nums[startIndex] > 0) {
       return false;
     }
+    visited[startIndex] = false;
     startIndex += nums[startIndex] % nums.length;
     if (startIndex >= nums.length) startIndex -= nums.length;
     if (startIndex < 0) startIndex += nums.length;
-    const ans = dfs(startIndex, set, isForward);
+    const ans = dfs(startIndex, path, isForward);
     return ans; 
   }
 };

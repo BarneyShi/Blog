@@ -8,9 +8,10 @@ tags:
 **`Note:`**
 - Based on the size of constraints, it's solvable through `backtracking`.
 - Do we need to track `startIndex` here? 
-  - No because after having form a side, we need to keep find more and have to preserve curr sides. So every time we need to iterate from `0`. (Just image when recursion is pretty deep and `startIndex` would be really big. If we do have `startIndex`, then we have no access to very front elements.)
+  - `No` because after having form a side, we need to keep find more and have to preserve curr sides. So every time we need to iterate from `0`. (Just image when recursion is pretty deep and `startIndex` would be really big. If we do have `startIndex`, then we have no access to very front elements.)
 - Edge case to trim unnecessary dfs: Side target is 18, and an element is 16, but every element is longer than 2.
 - Use a `set` to track `index` that we've used.
+- If we don't sort it first, then we might have really deep recursions if the front elements are really small. So we'd better put big element in the front.
 
 **`Question:`**
 

@@ -8,6 +8,7 @@ tags:
 - By the description, $P_{w[i]} = \frac{w[i]}{sum(w)}$.
 - In order for this to work, we have to make a `presum[]`.
 - Imagine each `w[i]` occupy an interval on x-axios, then if we generate a `random`, the `first element` in presum[] that is bigger than `random` is our ans.
+- ![img](https://i.imgur.com/nMTpuUI.png)
 
 **`Question:`**
 

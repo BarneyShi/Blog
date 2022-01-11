@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Note:  Normal BFS or DFS will def TLE cuz the grid is just too big. Key point: As long as a point is not besieged by blocked[i], then it must have a path to target. If a souce is besiged by blocked ce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 1036 - Escape a Large Maze">
+<meta property="og:url" content="http://example.com/2022/01/10/Escape-a-Large-Maze/index.html">
+<meta property="og:site_name" content="Barney&#39;s Blog">
+<meta property="og:description" content="Note:  Normal BFS or DFS will def TLE cuz the grid is just too big. Key point: As long as a point is not besieged by blocked[i], then it must have a path to target. If a souce is besiged by blocked ce">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/FPfzko3.png">
+<meta property="article:published_time" content="2022-01-10T17:32:39.000Z">
+<meta property="article:modified_time" content="2022-01-11T01:54:20.703Z">
+<meta property="article:author" content="Barney">
+<meta property="article:tag" content="bfs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/FPfzko3.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico?">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Leetcode 1036 - Escape a Large Maze</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2022/01/09/Complex-Number-Multiplication/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/01/10/Escape-a-Large-Maze/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&text=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&is_video=false&description=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 1036 - Escape a Large Maze&body=Check out this article: http://example.com/2022/01/10/Escape-a-Large-Maze/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&name=Leetcode 1036 - Escape a Large Maze&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/01/10/Escape-a-Large-Maze/&t=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Leetcode 1036 - Escape a Large Maze
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Barney</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-01-10T17:32:39.000Z" itemprop="datePublished">2022-01-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bfs/" rel="tag">bfs</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong><code>Note:</code></strong></p>
+<ul>
+<li>Normal BFS or DFS will def TLE cuz the grid is just too big.</li>
+<li>Key point: As long as a point is not <code>besieged</code> by <code>blocked[i]</code>, then it must have a path to <code>target</code>.</li>
+<li>If a <code>souce</code> is besiged by <code>blocked</code> cells, then what would happen?</li>
+<li>The <code>BFS</code> would only circulate within that inner area and cannot get out. It would go through every <code>besieged grid</code> in that area.</li>
+<li>So, if a <code>BFS</code> can go through more than the number of <code>Max Besieged grids</code>, then it’s def not besieged.</li>
+<li>Here comes the biggest question: <code>How many grids can block[i] besiged ?</code>.</li>
+<li>By some math deductions, it’s like this: It used the boundaries to form the biggest area.</li>
+<li><img src="https://i.imgur.com/FPfzko3.png" alt="img"></li>
+<li>Which is $1 + 2 + 3 + … + n = \frac{n*(n-1)}{2}$</li>
+<li>We use a <code>list[]</code> to contain all visited grids, after BFS ends, if it has more than <code>n*(n-1)/2</code> elements, it means it’s not trapped.</li>
+<li>Do BFS on both <code>start -&gt; end</code> and <code>end -&gt; start</code>.</li>
+</ul>
+<p><strong><code>Question:</code></strong></p>
+<p>There is a <code>1 million</code> by <code>1 million</code> grid on an XY-plane, and the coordinates of each grid square are (x, y).</p>
+<p>We start at the <code>source</code> = [sx, sy] square and want to reach the <code>target</code> = [tx, ty] square. There is also an array of blocked squares, where each <code>blocked</code>[i] = [xi, yi] represents a blocked square with coordinates (xi, yi).</p>
+<p>Each move, we can walk one square north, east, south, or west if the square is not in the array of blocked squares. We are also not allowed to walk outside of the grid.</p>
+<p>Return true if and only if it is possible to reach the <code>target</code> square from the <code>source</code> square through a sequence of valid moves.</p>
+<p><strong><code>Example:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: blocked = [[0,1],[1,0]], source = [0,0], target = [0,2]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: The target square is inaccessible starting from the source square because we cannot move.</span><br><span class="line">We cannot move north or east because those squares are blocked.</span><br><span class="line">We cannot move south or west because we cannot go outside of the grid.</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>Code:</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[][]&#125;</span> <span class="variable">blocked</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">source</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isEscapePossible = <span class="function"><span class="keyword">function</span> (<span class="params">blocked, source, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> BOUND = <span class="number">1000000</span>;</span><br><span class="line">  <span class="keyword">const</span> DIRS = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> MAX = blocked.length * (blocked.length - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">const</span> block = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> [x, y] <span class="keyword">of</span> blocked) &#123;</span><br><span class="line">    block.add(x + <span class="string">&#x27;.&#x27;</span> + y);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bfs(source, target) &amp;&amp; bfs(target, source);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bfs</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> list = [start];</span><br><span class="line">    <span class="keyword">let</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">    visited.add(start[<span class="number">0</span>] + <span class="string">&#x27;.&#x27;</span> + start[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; list.length &amp;&amp; list.length &lt;= MAX; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; k++) &#123;</span><br><span class="line">        <span class="keyword">const</span> nx = list[i][<span class="number">0</span>] + DIRS[k];</span><br><span class="line">        <span class="keyword">const</span> ny = list[i][<span class="number">1</span>] + DIRS[k + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (nx &lt; <span class="number">0</span> || nx &gt;= BOUND || ny &lt; <span class="number">0</span> || ny &gt;= BOUND || block.has(nx + <span class="string">&#x27;.&#x27;</span> + ny) || visited.has(nx + <span class="string">&#x27;.&#x27;</span> + ny)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (nx === end[<span class="number">0</span>] &amp;&amp; ny === end[<span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        visited.add(nx + <span class="string">&#x27;.&#x27;</span> + ny);</span><br><span class="line">        list.push([nx, ny]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list.length &gt; MAX;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/01/10/Escape-a-Large-Maze/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&text=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&is_video=false&description=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Leetcode 1036 - Escape a Large Maze&body=Check out this article: http://example.com/2022/01/10/Escape-a-Large-Maze/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&title=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/01/10/Escape-a-Large-Maze/&name=Leetcode 1036 - Escape a Large Maze&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/01/10/Escape-a-Large-Maze/&t=Leetcode 1036 - Escape a Large Maze"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    Barney
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/BarneyShi">Projects</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://barneyshi.github.io/portfolio/">Resume</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEDM4XH56M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KEDM4XH56M');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

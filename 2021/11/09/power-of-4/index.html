@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Because n &#x3D;&#x3D; 4^x &#x3D;&#x3D; 2^2x, we can do a square root then use lowbit.  Question: Given an integer n, return true if it is a power of four. Otherwise, return false. An integer n is a power of four,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-09T17:13:55.000Z">
-<meta property="article:modified_time" content="2022-01-24T22:33:49.658Z">
+<meta property="article:modified_time" content="2022-05-12T09:18:17.657Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -59,7 +59,7 @@
 		</script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 	
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -172,7 +172,7 @@
 
 <p><strong><code>Code:</code></strong></p>
 <p><strong><code>Math O(1)</code></strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">n</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isPowerOfFour = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n &gt; <span class="number">0</span> &amp;&amp; (<span class="built_in">Math</span>.sqrt(n) &amp; -<span class="number">1</span>*<span class="built_in">Math</span>.sqrt(n)) === <span class="built_in">Math</span>.sqrt(n);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isPowerOfFour = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> n &gt; <span class="number">0</span> &amp;&amp; (<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(n) &amp; -<span class="number">1</span>*<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(n)) === <span class="title class_">Math</span>.<span class="title function_">sqrt</span>(n);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 

@@ -42,27 +42,17 @@ Output: 4193
  */
 var myAtoi = function(s) {
   s = s.trim();
-
-  const max = 2**31 - 1, min = -1*2**31;
-  let result = 0;
-
-  let isPositive = s[0] !== '-';
+  const isPositive = s[0] !== '-';
+  let ans = 0;
   let start = 0;
   if (s[0] === '-' || s[0] === '+') start++;
-
   for (let i = start; i < s.length; i++) {
-    if (!isNaN(s[i]) && s[i] !== ' ') {
-      if (result === 0) {
-        result = (s[i] - 0) * (isPositive ? 1 : -1);
-      } else {
-        result = result*10 + (isPositive ? s[i] - 0 : -1*(s[i] - 0));
-      }
-    } else {
-      return result;
-    }
-    if (isPositive && result >= max) return max;
-    if (!isPositive && result <= min) return min; 
+    if (isNaN(s[i]) || s[i] === ' ') break;
+    ans = ans*10 + (s[i] - 0);
   }
-  return result;
+  ans = (isPositive ? 1 : -1) * ans;
+  if (ans > 2**31-1) return 2**31-1;
+  if (ans < -1*2**31) return -1*2**31;
+  return ans;
 };
 ```

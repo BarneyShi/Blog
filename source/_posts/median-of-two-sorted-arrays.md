@@ -5,6 +5,7 @@ tags:
 - double pointers
 ---
 **`Note:`**
+- Update: I keep forgetting how to solve it in `O(log(m+n))`, so I'll just stick to `double pointer` way. Be careful of edge cases like one of them is empty or they have same elements like `[0,0], [0,0]`.
 - It requires `O(log(m+n))` time complexity, apparently, we need `binary search`.
 - How to find the `median`? The median separates the array in half.
   - ![img](https://i.imgur.com/Bq707Eb.png)
@@ -79,44 +80,24 @@ var findMedianSortedArrays = function (nums1, nums2) {
  * @param {number[]} nums2
  * @return {number}
  */
-var findMedianSortedArrays = function (nums1, nums2) {
-  const m = nums1.length, n = nums2.length;
-  const middle = Math.floor((m+n)/2) + 1;
-  let newArr = [...Array(middle).fill(0)];
-
-  let p1 = 0, p2 = 0, isNum1Out = nums1.length === 0, isNum2Out = nums2.length === 0;
-  
-  for (let i = 0 ; i < newArr.length; i++) {
-    if (isNum1Out) {
-      newArr[i] = nums2[p2];
-      p2++;
-      continue;
-    }
-    if (isNum2Out) {
-      newArr[i] = nums1[p1];
-      p1++;
-      continue;
-    }
-    if (nums1[p1] < nums2[p2]) {
-      newArr[i] = nums1[p1];
-      if (p1 === nums1.length - 1) {
-        isNum1Out = true;
-        continue;
-      }
+var findMedianSortedArrays = function(nums1, nums2) {
+  let merged = [];
+  const len = nums1.length + nums2.length;
+  let p1 = 0;
+  let p2 = 0;
+  for (let i = 0; i <= (nums1.length + nums2.length) >> 1; i++) {
+    if (nums2[p2] === undefined || nums1[p1] <= nums2[p2] && nums1[p1] !== undefined) {
+      merged.push(nums1[p1]);
       p1++;
     } else {
-      newArr[i] = nums2[p2];
-      if (p2 === nums2.length - 1) {
-        isNum2Out =  true;
-        continue;
-      }
+      merged.push(nums2[p2]);
       p2++;
     }
   }
-  if ((m+n) % 2 === 1) {
-    return newArr[Math.floor((m+n)/2)];
+  if (len & 1 === 1) {
+    return merged[len >> 1];
   } else {
-    return (newArr[newArr.length - 1] + newArr[newArr.length - 2]) / 2;
+    return (merged[merged.length - 1] + merged[merged.length - 2]) / 2;
   }
 };
 ```

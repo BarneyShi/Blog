@@ -28,36 +28,25 @@ Output: [[-1,-1,2],[-1,0,1]]
  * @return {number[][]}
  */
 var threeSum = function(nums) {
+  let set = new Set();
   nums.sort((a, b) => a - b);
-  const result = [];
-  for (let i = 0; i < nums.length - 1; i++) {
-    /* Avoid duplicates */
-    if (i >= 1 && nums[i] === nums[i-1]) continue;
-    let left = i + 1;
+  for (let i = 0; i < nums.length; i++) {
+    let left = i+1; 
     let right = nums.length - 1;
     const target = -nums[i];
     while (left < right) {
       const sum = nums[left] + nums[right];
-      if (sum > target) {
-        right--;
-        continue;
-      }
-      if (sum < target) {
+      if (sum === target) {
+        set.add(`${nums[i]},${nums[left]},${nums[right]}`);
         left++;
-        continue;
-      }
-      result.push([nums[i], nums[left], nums[right]]);
-      /* Avoid duplicates */
-      while(left < right && nums[right] === nums[right - 1]) {
+        right--;
+      } else if (sum < target) {
+        left++;
+      } else {
         right--;
       }
-      while(left < right && nums[left] === nums[left + 1]) {
-        left++;
-      }
-      right--;
-      left++;
     }
   }
-  return result;
+  return Array.from(set).map((a) => a.split(',').map(e => e - 0));
 };
 ```

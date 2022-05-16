@@ -5,6 +5,11 @@ tags:
 - double pointers
 ---
 **`Note:`**
+- Update on 2nd review:
+  - Some key points: 
+    - After finding the first `num[i]` that's smaller than `nums[i+1]`. We can be sure that `num[i+1] to nums[len - 1]` is in `ASCENDING` order!
+    - So the `nums[j]` we're looking for is just the first element that meets `nums[j] > nums[i]`.
+    - Then to reverse the rest array, because `nums[i+1] to nums[len - 1]` is in ascending order, we can just use `DOUBLE POINTERS`!
 - Finding next one bigger than `[1,2,3,4]` is just like finding next one bigger than `1234`.
 - Starting from the lowest digit, when we find the first `nums[i] < nums[i + 1]`, it means `[j + 1, end]` is in `descending order`. 
 - We can def find the `first num[j]` that is bigger than `nums[i]`.

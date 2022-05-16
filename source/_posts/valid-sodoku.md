@@ -34,36 +34,58 @@ Output: true
  * @param {character[][]} board
  * @return {boolean}
  */
- var isValidSudoku = function (board) {
-  const rows = board.length;
-  const cols = board[0].length;
+var isValidSudoku = function (board) {
+  return check3x3() && checkCol() && checkRow();
 
-  for (let i = 0; i < rows; i++) {
-    let rowMap = new Map();
-    for (const char of board[i]) {
-      if (!isNaN(char) && rowMap.has(char)) return false;
-      if (!isNaN(char)) rowMap.set(char, true);
+  function check3x3() {
+    let set = new Set();
+    let times = 0;
+    for (let r = 0; r <= 8; r += 3) {
+      for (let c = 0; c <= 8; c += 3) {
+        for (let i = r; i <= r + 2; i++) {
+          for (let j = c; j <= c + 2; j++) {
+            if (!isNaN(board[i][j])) {
+              set.add(board[i][j] - 0);
+              times++;
+            }
+          }
+        }
+        if (times !== set.size) return false;
+        times = 0;
+        set.clear();
+      }
     }
+    return set.size === times;
   }
-  for (let j = 0; j < cols; j++) {
-    let colMap = new Map();
-    for (let i = 0; i < rows; i++) {
-      const char = board[i][j];
-      if (!isNaN(char) && colMap.has(char)) return false;
-      if (!isNaN(char)) colMap.set(char, true);
+  function checkRow() {
+    let set = new Set();
+    let times = 0;
+    for (let i = 0; i <= 8; i++) {
+      for (let j = 0; j <= 8; j++) {
+        if (!isNaN(board[i][j])) {
+          set.add(board[i][j] - 0);
+          times++;
+        }
+      }
+      if (times !== set.size) return false;
+      times = 0;
+      set.clear();
     }
+    return times === set.size;
   }
-  return check3x3(0, 0) && check3x3(0, 3) && check3x3(0, 6) && check3x3(3, 0) && check3x3(3, 3) && check3x3(3, 6) && check3x3(6, 0) && check3x3(6, 3) && check3x3(6, 6);
-
-  function check3x3(rowStart, colStart) {
-    let arr = [];
-    for (let i = 0; i < 3; i++) {
-      arr = arr.concat(board[rowStart + i].slice(colStart, colStart + 3));
-    }
-    let map = new Map();
-    for (const char of arr) {
-      if (!isNaN(char) && map.has(char)) return false;
-      if (!isNaN(char)) map.set(char, true);
+  function checkCol() {
+    let set = new Set();
+    let times = 0;
+    for (let j = 0; j <= 8; j++) {
+      for (let i = 0; i <= 8; i++) {
+        if (!isNaN(board[i][j])) {
+          set.add(board[i][j] - 0);
+          times++;
+        }
+      }
+      if (times !== set.size) return false;
+      times = 0;
+      set.clear();
     }
     return true;
   }

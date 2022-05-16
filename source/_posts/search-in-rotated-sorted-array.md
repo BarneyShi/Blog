@@ -5,6 +5,9 @@ tags:
 - binary search
 ---
 **`Note:`**
+- Update
+  - Don't just compare `nums[middle]` with `target` because `target` can be on either side.
+  - Compare `nums[middle]` with `nums[left]` first to check which situation we're talk about.
 - Because of the time complexity requirement, we can know we must use `binary search`
 - The direction of moving `left, right` pointers depends on where the pivot is, there are two situations:
   - ![img](https://i.imgur.com/wQv14wo.png)
@@ -37,32 +40,29 @@ Output: 4
  * @param {number} target
  * @return {number}
  */
- var search = function(nums, target) {
-  let left = 0, right = nums.length - 1;
+var search = function(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
   while (left <= right) {
     if (nums[right] === target) return right;
     if (nums[left] === target) return left;
-    let middle = ~~((left + right) / 2);
-    if (nums[middle] === target) return middle;
-    
-    if (nums[left] <= nums[middle]) {
-      if (nums[middle] > target && nums[left] < target) {
-        right = middle - 1;
-        continue;
-      } else {
+    const middle = (left + right) >> 1;
+    if (target === nums[middle]) {
+      return middle;
+    }
+    if (nums[left] >= nums[middle]) {
+      if (nums[middle] < target && target < nums[right]) {
         left = middle + 1;
-        continue;
+      } else {
+        right = middle - 1;
       }
-    } else if (nums[left] > nums[middle]) {
-      if (nums[middle] < target && nums[right] > target) {
-        left = middle + 1;
-        continue;
-      } else {
+    } else {
+      if (target < nums[middle] && target > nums[left]) {
         right = middle - 1;
-        continue;
+      } else {
+        left = middle + 1;
       }
     }
-    return -1;
   }
   return -1;
 };

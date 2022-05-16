@@ -4,6 +4,9 @@ date: 2021-10-15 02:07:20
 tags:
 ---
 **`Note:`**
+- Update:
+  - Use one variable to store prev result.
+  - Using `stack` is more wise.
 - The description of this question is quite confusing.
 - Even it's a medium question, it's not that hard. Don't be terrified!
 
@@ -37,27 +40,28 @@ countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
  * @param {number} n
  * @return {string}
  */
-var countAndSay = function(n) {
-  let memo = ['1'];
-  for (let i = 1; i < n; i++) {
-    const toRead = memo[memo.length - 1];
-    memo.push(read(toRead));
-  }
-  return memo[memo.length - 1];
-};
-
-function read(str) {
-  let count = 0;
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    if (str[i+1] && str[i+1] === str[i]) {
-      count++;
-    } else {
-      count++;
-      result += `${count}${str[i]}`;
-      count = 0;
+var countAndSay = function (n) {
+  let curr = '1';
+  let stack = [];
+  for (let i = 2; i <= n; i++) {
+    let tmp = '';
+    for (const char of curr) {
+      if (char === stack[stack.length - 1]) {
+        stack.push(char);
+      } else {
+        if (stack.length > 0) {
+          tmp += stack.length + '' + stack[0];
+          stack = [];
+          stack.push(char);
+        } else {
+          stack.push(char);
+        }
+      }
     }
+    curr = tmp;
+    curr += stack.length + '' + stack[0];
+    stack = [];
   }
-  return result;
-}
+  return curr;
+};
 ```

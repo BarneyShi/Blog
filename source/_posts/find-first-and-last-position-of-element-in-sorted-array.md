@@ -5,6 +5,9 @@ tags:
 - double pointers
 ---
 **`Note:`**
+- Update:
+  - Just use 2 binary search.
+  - Pre-check `nums[middle - 1]` and `nums[middle + 1]` in case we're right on the boundary!
 - The required time complexity is `O(logn)`, so we need to use `binary search`, and DON'T USE `DOUBLE POINTERS`!
 - Double pointers is `O(n)` but not `O(logn)`.
 - Take findLeftBoundary for example:
@@ -35,41 +38,44 @@ Output: [3,4]
  * @param {number} target
  * @return {number[]}
  */
-var searchRange = function(nums, target) {
-  const left = findLeftBoundary(nums, target);
-  const right = findRightBoundary(nums, target);
-  return [left, right];
+var searchRange = function (nums, target) {
+  return [findLeftBoundary(nums, target), findRightBoundary(nums, target)];
 
-  function findLeftBoundary(nums, target) {
-    let left = 0, right = nums.length - 1;
-    while (left <= right) {
-      const middle = left + ~~((right - left) / 2);
-      if (nums[middle] > target) {
+  function findLeftBoundary(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    while (left < right) {
+      const middle = (left + right) >> 1;
+      if (arr[middle] === target) {
+        if (nums[middle - 1] !== target) {
+          return middle;
+        }
         right = middle - 1;
-      } else if (nums[middle] < target) {
+      } else if (arr[middle] > target) {
+        right = middle - 1;
+      } else {
         left = middle + 1;
-      } else if (nums[middle] === target) {
-        if (middle > 0 && nums[middle - 1] !== target || middle === 0) return middle;
-        right = middle - 1;
       }
     }
-    return -1;
+    return nums[left] === target ? left : -1;
   }
-
-  function findRightBoundary(nums, target) {
-    let left = 0, right = nums.length - 1;
-    while (left <= right) {
-      const middle = left + ~~((right - left) / 2);
-      if (nums[middle] > target) {
-        right = middle - 1;
-      } else if (nums[middle] < target) {
+  function findRightBoundary(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    while (left < right) {
+      const middle = (left + right) >> 1;
+      if (arr[middle] === target) {
+        if (nums[middle + 1] !== target) {
+          return middle;
+        }
         left = middle + 1;
-      } else if (nums[middle] === target) {
-        if (middle < nums.length - 1 && nums[middle + 1] !== target || middle === nums.length - 1) return middle;
+      } else if (arr[middle] > target) {
+        right = middle - 1;
+      } else {
         left = middle + 1;
       }
     }
-    return -1;
+    return nums[left] === target ? left : -1;
   }
 };
 ```

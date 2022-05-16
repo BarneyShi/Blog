@@ -10,7 +10,8 @@ tags:
   - Instead, we use `>>>` unsigned left shift to divide dividend every time, so we can quicklly find the first number that is `bigger` than divisor.
     - BTW, we use `>>>` instead of `divisor << i` coz it can `prevent overflow`.
   - Make sure `100 >>> i >= 3`.
-  - After we find `100 >>> 1` for 5 times, which means we've found `2^5 = 32` divisors exist in 100. Then `100 - 32*3 = 4`
+  - After we find `100 >>> 1` for 5 times, which means we've found `2^5 * 3 <= 100`;
+  - Then `100 - 32*3 = 4`
   - Let dividend = 4, and add 32 to res. Do the iteration again.
 - Use `>>>` on `2**31` otherwise you'll get a negative number coz `2**31`'s first digit is `1` and JS will assume its a negative number after shifting it.
 
@@ -38,21 +39,23 @@ Explanation: 10/3 = 3.33333.. which is truncated to 3.
  * @param {number} divisor
  * @return {number}
  */
- var divide = function(dividend, divisor) {
+var divide = function(dividend, divisor) {
   const MIN = -1 * 2**31, MAX = 2**31 - 1;
   if (dividend === MIN && divisor === -1) return MAX;
   if (dividend === MIN && divisor === 1) return MIN;
-  let isNegative = (dividend ^ divisor) < 0;
+  const isNegative = (dividend ^ divisor) < 0;
   let [a, b] = [Math.abs(dividend), Math.abs(divisor)];
-
   let res = 0;
-  for (let i = 31; i >= 0; i--) {
-    if (a >>> i >= b) {
-      res += 1 << i;
-      a -= b << i;
+  while (a >= b) {
+    for (let i = 31; i >= 0; i--) {
+      if (a >>> i >= b) {
+        res += 1 << i;
+        a -= b * (1 << i);
+        break;
+      }
     }
   }
   if (!isNegative) return res;
-  return 0 - res;
+  return 0-res;
 };
 ```

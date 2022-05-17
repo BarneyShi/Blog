@@ -28,50 +28,55 @@ Output: "56088"
  * @param {string} num2
  * @return {string}
  */
- var multiply = function(num1, num2) {
-   if (num1 === '0' || num2 === '0') return '0';
-
-  let num1Arr = [];
-  let num2Arr = [];
+var multiply = function (num1, num2) {
+  let arr1 = [];
+  let arr2 = [];
   for (let i = 0; i < num1.length; i++) {
-    num1[i] !== '0' && num1Arr.push(num1[i] + '0'.repeat(num1.length - i - 1));
+    num1[i] !== '0' && arr1.push(num1[i] + '0'.repeat(num1.length - 1 - i));
   }
   for (let i = 0; i < num2.length; i++) {
-    num2[i] !== '0' && num2Arr.push(num2[i] + '0'.repeat(num2.length - i - 1));
+    num2[i] !== '0' && arr2.push(num2[i] + '0'.repeat(num2.length - 1 - i));
   }
-  let products = [];
-  for (let i = 0; i < num1Arr.length; i++) {
-    for (let j = 0; j < num2Arr.length; j++) {
-      const p = num1Arr[i][0] * num2Arr[j][0] + '0'.repeat(num1Arr[i].length - 1 + num2Arr[j].length - 1);
-      products.push(p);
-    }
-  }
-  while (products.length > 1) {
-    const str1 = products.pop();
-    const str2 = products.pop();
-    products.push(addTwoString(str1, str2));
-  }
-  return products[0];
 
-  function addTwoString(str1, str2) {
-    const diff = str1.length - str2.length;
-    if (diff < 0) [str1, str2] = [str2, str1];
-    str2 = '0'.repeat(Math.abs(diff)) + str2;
-    let res = '';
-    let carry = 0;
-    for (let i = str1.length - 1; i >= 0; i--) {
-      const sum = (str1[i] - 0) + (str2[i] - 0) + carry;
-      if (sum < 10) {
-        res = sum + res;
-        carry = 0;
-      } else {
-        res = (sum - 10) + res;
-        carry = 1;
-      }
+  let sum = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      const a = arr1[i];
+      const b = arr2[j];
+      sum.push(a[0] * b[0] + '0'.repeat(a.length + b.length - 2));
     }
-    if (carry === 1) res = 1 + res;
-    return res;
+  }
+
+  let acc = '0';
+  for (const e of sum) {
+    acc = addTwoString(e, acc);
+  }
+  return acc.replace(/^0+/g, '0');
+
+  function addTwoString(a, b) {
+    let prev = 0;
+    let ans = '';
+    while (a.length > 0 || b.length > 0) {
+      let sum = prev;
+      prev = 0;
+      if (a.length > 0) {
+        sum += a[a.length - 1] - 0;
+        a = a.slice(0, a.length - 1);
+      }
+      if (b.length > 0) {
+        sum += b[b.length - 1] - 0;
+        b = b.slice(0, b.length - 1);
+      }
+      if (sum >= 10) {
+        sum -= 10;
+        prev = 1;
+      }
+      ans = sum + ans;
+    } 
+    if (prev === 1) {
+      ans = '1' + ans;
+    }
+    return ans;
   }
 };
-
 ```

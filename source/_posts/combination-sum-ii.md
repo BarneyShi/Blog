@@ -8,8 +8,10 @@ tags:
 **`Note:`**
 - This is a backtracking problem
 - The key is to remove repetitive elements that have appeared on the `same level`
+  - Check `i > startIndex` because the leftmost node on each level can have the same value as its parent.
   - For example `[1, 1, 2]`. To avoid `[1,2]` appearing twice, we have to check if `candidates[i] == candidates[i-1]` in the for loop.
 - Rememebr to `sort` candidates first before iterating, so elements with same value will be neighbors. 
+- ![img](https://i.imgur.com/2ISIfXk.png)
 
 Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
 

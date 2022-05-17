@@ -34,23 +34,22 @@ These are the only two combinations.
  * @return {number[][]}
  */
 var combinationSum = function(candidates, target) {
-  let ans = [];
+  let res = [];
   let path = [];
-  backtracking(0, target, 0, candidates);
-  return ans;
+  backtracking(0, 0);
+  return res;
   
-  function backtracking(curSum, targetSum, startIndex, candidates) {
-    if (curSum > targetSum) return;
-    if (curSum === targetSum) {
-      ans.push([...path]);
+  function backtracking(startIndex, sum) {
+    if (sum > target || startIndex >= candidates.length) {
       return;
-    } 
+    }
+    if (sum === target) {
+      res.push([...path]);
+      return;
+    }
     for (let i = startIndex; i < candidates.length; i++) {
-      curSum += candidates[i];
       path.push(candidates[i]);
-      // Not i+1 but just i
-      backtracking(curSum, targetSum, i, candidates);
-      curSum -= candidates[i];
+      backtracking(i, sum + candidates[i]);
       path.pop();
     }
   }

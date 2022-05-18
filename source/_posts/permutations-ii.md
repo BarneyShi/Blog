@@ -29,25 +29,27 @@ Output:
  * @return {number[][]}
  */
 var permuteUnique = function(nums) {
-  let ans = [];
+  nums.sort((a, b) => a - b);
   let path = [];
-  nums.sort((a, b) => (a - b));
-  let used = [...Array(nums.length).fill(false)];
-  backtracking();
-  return ans;
-  
-  function backtracking() {
+  let result = [];
+  let used = new Set();
+  backtracking(used);
+  return result;
+
+  function backtracking(used) {
     if (path.length === nums.length) {
-      ans.push([...path]);
+      result.push([...path]);
       return;
     }
-    for (let i = 0; i < nums.length; i++) {
-      if (used[i] || nums[i] == nums[i-1] && !used[i-1]) continue;
+
+    for(let i = 0; i < nums.length; i++) {
+      if (used.has(i)) continue;
+      if (nums[i] === nums[i-1] && !used.has(i-1)) continue;
       path.push(nums[i]);
-      used[i] = true;
-      backtracking();
+      used.add(i);
+      backtracking(used);
       path.pop();
-      used[i] = false;
+      used.delete(i);
     }
   }
 };

@@ -28,27 +28,26 @@ Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
  */
 var groupAnagrams = function(strs) {
   let map = new Map();
-  let res = [];
-  for (const word of strs) {
-    const rep = representWord(word);
-    if (map.has(rep)) {
-      map.set(rep, [...map.get(rep), word]);
+  for (const s of strs) {
+    const count = countRecurrence(s);
+    if (map.has(count)) {
+      map.get(count).push(s);
     } else {
-      map.set(rep, [word]);
+      map.set(count, [s]);
     }
   }
-  for (const [key, value] of map) {
-    res.push([...value]);
+  let result = [];
+  for (const [key, val] of map) {
+    result.push(val);
   }
-  return res;
-};
+  return result;
 
-function representWord(word) {
-  let arr = [...Array(26).fill(0)];
-  for (const char of word) {
-    const num = char.charCodeAt(0) - 97;
-    arr[num]++
+  function countRecurrence(str) {
+    let count = Array(26).fill(0);
+    for (const char of str) {
+      count[char.charCodeAt(0) - 'a'.charCodeAt(0)]++;
+    }
+    return count.join('.');
   }
-  return arr.join('.');
-}
+};
 ```

@@ -24,28 +24,24 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
  * @return {number[][]}
  */
 var permute = function(nums) {
-  let ans = [];
+  let result = [];
   let path = [];
-  let used = [...Array(nums.length).fill(false)]
-  backtracking(nums);
-  return ans;
-  
-  function backtracking(nums) {
+  let used = new Set();
+  backtracking(used);
+  return result;
+
+  function backtracking(used) {
     if (path.length === nums.length) {
-      ans.push([...path]);
+      result.push([...path]);
       return;
     }
-    
     for (let i = 0; i < nums.length; i++) {
-      if (!used[i]) {
-        path.push(nums[i]);
-        used[i] = true;
-        backtracking(nums);
-        used[i] = false;
-        path.pop();
-      } else {
-        continue;
-      }
+      if (used.has(i)) continue;
+      path.push(nums[i]);
+      used.add(i);
+      backtracking(used);
+      path.pop();
+      used.delete(i);
     }
   }
 };

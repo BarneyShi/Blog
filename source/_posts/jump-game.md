@@ -59,3 +59,30 @@ var canJump = function(nums) {
   return true;
 };
 ```
+
+**`DFS`**
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var canJump = function(nums) {
+  let visited = Array(nums.length);
+  return dfs(0);
+  
+  function dfs(index) {
+    if (index === nums.length - 1) return true;
+    if (nums[index] === 0) return false;
+    if (visited[index] !== undefined) {
+      return visited[index];
+    }
+    for (let i = 1; i <= nums[index]; i++) {
+      if (index + i < nums.length && dfs(index + i)) {
+        return true;
+      }
+    }
+    visited[index] = false;
+    return false;
+  }
+};
+```

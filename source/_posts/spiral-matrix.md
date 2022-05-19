@@ -5,6 +5,8 @@ tags:
 - array
 ---
 **Note:** 
+- Update: 
+  - Just pray it won't appear in my interview. Not hard, but a pain in the ass.
 - How to initialize an empty `2D` array?
  `const arr = [...Array(n)].map(e => Array(n))`
 - Keep `[start, right)` style - make the right boundary open so you won't be lost.
@@ -25,34 +27,36 @@ Output: [[1,2,3],[8,9,4],[7,6,5]]
  * @param {number} n
  * @return {number[][]}
  */
-var generateMatrix = function(n) {
-  if (n === 1) return [[1]];
-  let result = [...Array(n)].map(e => Array(n).fill(0));
-  let count = 1;
-  let rowStart = 0, rowEnd = n-1, colStart = 0, colEnd = n - 1; 
-  while (count <= n**2) {
-    for (let i = colStart; i < colEnd; i++) {
-      result[rowStart][i] = count++;
+var generateMatrix = function (n) {
+  let matrix = [...Array(n)].map(e => Array(n).fill('.'));
+  let times = 1;
+  let start = [0, 0];
+  let rows = n;
+  let cols = n;
+  while (true) {
+    if ((n*n & 1) === 1 && times === n*n || (n*n & 1) === 0 && times === n*n + 1) break;
+    for (let j = start[1]; j < cols - 1; j++) {
+      matrix[start[0]][j] = times++;
+      start[1]++;
     }
-    for (let i = rowStart; i < rowEnd; i++) {
-      result[i][colEnd] = count++;
+    for (let i = start[0]; i < rows - 1; i++) {
+      matrix[i][start[1]] = times++;
+      start[0]++;;
     }
-    for (let i = colEnd; i > colStart; i--) {
-      result[rowEnd][i] = count++;
+    for (let j = start[1]; j > n - cols; j--) {
+      matrix[start[0]][j] = times++;
+      start[1]--;;
     }
-    console.log(result)
-    for (let i = rowEnd; i > rowStart; i--) {
-      result[i][colStart] = count++;
+    for (let i = start[0]; i > n - rows; i--) {
+      matrix[i][start[1]] = times++;
+      start[0]--;;
     }
-    colStart++;
-    colEnd--;
-    rowStart++;
-    rowEnd--;
-    if (n % 2 === 1 && count === n*n) {
-      result[Math.floor(n/2)][Math.floor(n/2)] = n**2;
-      return result;
-    }
+    rows--;
+    cols--;
+    start[0]++;
+    start[1]++;
   }
-  return result;
+  if (n*n & 1 === 1) matrix[n>>1][n>>1] = n*n;
+  return matrix;
 };
  ```

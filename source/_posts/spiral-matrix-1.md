@@ -4,6 +4,7 @@ date: 2021-11-07 00:09:17
 tags:
 ---
 **`Note:`**
+- `Peel` the matrix like an 🍎 .
 - Modify matrix is eaiser.
 - Use recursion to pop and add `topRow` first, then `right col most`, then `reversed bottom row`, then `leftmost col`.
 
@@ -27,30 +28,27 @@ Output: [1,2,3,6,9,8,7,4,5]
  */
 var spiralOrder = function (matrix) {
   let res = [];
-  traverse(matrix);
-  return res;
 
-  function traverse(matrix) {
-    if (matrix.length === 0) return;
-    if (matrix.length === 1) {
-      res.push(...matrix.pop());
-      return;
-    }
-    const topRow = matrix.shift();
-    const bottomRow = matrix.pop();
+  while (matrix.length > 0) {
+    let topRow = [];
+    let bottomRow = [];
+    const top = matrix.shift();
+    top && topRow.push(...top);
+    const bottom = matrix.pop();
+    bottom && bottomRow.push(...bottom.reverse());
     let rightCol = [];
     let leftCol = [];
     for (let i = 0; i < matrix.length; i++) {
       const right = matrix[i].pop();
       right && rightCol.push(right);
       const left = matrix[i].shift();
-      left && leftCol.push(left);
+      left && leftCol.unshift(left);
     }
-    res.push(...topRow)
-    res.push(...rightCol)
-    bottomRow.length && res.push(...bottomRow.reverse())
-    leftCol.length && res.push(...leftCol.reverse());
-    traverse(matrix);
+    res.push(...topRow);
+    res.push(...rightCol);
+    res.push(...bottomRow);
+    res.push(...leftCol);
   }
+  return res;
 };
 ```

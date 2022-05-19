@@ -32,17 +32,19 @@ var spiralOrder = function (matrix) {
   while (matrix.length > 0) {
     let topRow = [];
     let bottomRow = [];
+
     const top = matrix.shift();
-    top && topRow.push(...top);
     const bottom = matrix.pop();
+    top && topRow.push(...top);
     bottom && bottomRow.push(...bottom.reverse());
+
     let rightCol = [];
     let leftCol = [];
     for (let i = 0; i < matrix.length; i++) {
-      const right = matrix[i].pop();
-      right && rightCol.push(right);
       const left = matrix[i].shift();
+      const right = matrix[i].pop();
       left && leftCol.unshift(left);
+      right && rightCol.push(right);
     }
     res.push(...topRow);
     res.push(...rightCol);

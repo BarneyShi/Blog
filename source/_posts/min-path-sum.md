@@ -38,42 +38,20 @@ Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
 var minPathSum = function(grid) {
   const rows = grid.length;
   const cols = grid[0].length;
-  const memo = [...Array(rows)].map(e => Array(cols));
-  return dfs(0,0);
-
-  function dfs(i, j) {
-    if (memo[i][j]) return memo[i][j];
-    if (i === rows - 1 && j === cols - 1) return grid[i][j];
-    const dirs = [0, 1, 0];
-    let res = Infinity;
-    for (let k = 0; k < 2; k++) {
-      const nx = i + dirs[k];
-      const ny = j + dirs[k + 1];
-      if (nx < 0 || nx >= rows || ny < 0 || ny >= cols) continue;
-        const val = grid[i][j] + dfs(nx, ny);
-        res = Math.min(res, val);
-    }
-    memo[i][j] = res;
-    return res;
+  let dp = [... new Array(rows)].map(e => new Array(cols).fill(Infinity));
+  dp[0][0] = grid[0][0];
+  for (let i = 1; i < rows; i++) {
+    dp[i][0] = dp[i-1][0] + grid[i][0];
   }
-};
-```
-**`DP`**
-```javascript
-const minPathSum = grid => {
-    const row = grid.length,
-        col = grid[0].length;
-    for (let i = 1; i < row; i++) {
-        grid[i][0] += grid[i - 1][0];
+  for (let j = 1; j < cols; j++) {
+    dp[0][j] = dp[0][j-1] + grid[0][j];
+  }
+
+  for (let i = 1; i < rows; i++) {
+    for (let j = 1; j < cols; j++) {
+      dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
     }
-    for (let j = 1; j < col; j++) {
-        grid[0][j] += grid[0][j - 1];
-    }
-    for (let i = 1; i < row; i++) {
-        for (let j = 1; j < col; j++) {
-            grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
-        }
-    }
-    return grid[row - 1][col - 1];
+  }
+  return dp[rows-1][cols-1];
 };
 ```

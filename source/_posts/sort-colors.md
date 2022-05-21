@@ -5,9 +5,9 @@ tags:
 - double pointers
 ---
 **`Note:`**
-- `Single pointer with two iterations`
-  - Move all `0` to the head first while moving `p`.
-  - Move all `1` according to pointer `p`
+- `Double pointers with 2 passes`.
+  - Move all `2`s to the end.
+  - Move all `0`s to the start.
 - `Double pointers with single iteration`
   - `p0` and `p1`.
   - If `nums[i] === 1`, just `swap(nums[i], p1)`.
@@ -59,18 +59,34 @@ var sortColors = function(nums) {
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var sortColors = function(nums) {
-  let p = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === 0) {
-      [nums[i], nums[p]] = [nums[p], nums[i]];
-      p++;
+var sortColors = function (nums) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left < right) {
+    while (nums[right] === 2) {
+      right--;
+    }
+    if (right > 0 && nums[left] === 2) {
+      [nums[left], nums[right]] = [nums[right], nums[left]];
+      while (nums[right] === 2) {
+        right--;
+      }
+    } else {
+      left++;
     }
   }
-  for (let i = p; i < nums.length; i++) {
-    if (nums[i] === 1) {
-      [nums[i], nums[p]] = [nums[p], nums[i]];
-      p++;
+  left = 0;
+  while (left < right) {
+    while (nums[right] === 1) {
+      right--;
+    }
+    if (nums[left] === 1 && right > 0) {
+      [nums[left], nums[right]] = [nums[right], nums[left]];
+      while (nums[right] === 1) {
+        right--;
+      }
+    } else {
+      left++;
     }
   }
 };

@@ -27,31 +27,29 @@ Output: [[1,0,1],[0,0,0],[1,0,1]]
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
-var setZeroes = function (matrix) {
+var setZeroes = function(matrix) {
   const rows = matrix.length;
   const cols = matrix[0].length;
   for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      const cur = matrix[i][j];
-      if (!isNaN(cur) && cur === 0 || isNaN(cur) && cur[0] === 0) {
-        for (let m = 0; m < rows; m++) {
-          const tmp = matrix[m][j];
-          if (isNaN(tmp)) continue;
-          matrix[m][j] = [matrix[m][j], 0];
+    for (let j = 0; j < cols; j ++) {
+      if (matrix[i][j] === 0 || (isNaN(matrix[i][j]) && matrix[i][j][0] === 0)) {
+        for (let c = 0; c < cols; c++) {
+          if (!isNaN(matrix[i][c])) {
+            matrix[i][c] = [matrix[i][c], 0];
+          }
         }
-        for (let n = 0; n < cols; n++) {
-          const tmp = matrix[i][n];
-          if (isNaN(tmp)) continue;
-          matrix[i][n] = [matrix[i][n], 0];
+        for (let r = 0; r < rows; r++) {
+          if (!isNaN(matrix[r][j])) {
+            matrix[r][j] = [matrix[r][j], 0];
+          }
         }
       }
     }
   }
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      const cur = matrix[i][j];
-      if (isNaN(cur)) {
-        matrix[i][j] = cur[1];
+      if (isNaN(matrix[i][j])) {
+        matrix[i][j] = 0;
       }
     }
   }

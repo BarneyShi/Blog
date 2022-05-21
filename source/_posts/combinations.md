@@ -28,22 +28,24 @@ Output:
  * @param {number} k
  * @return {number[][]}
  */
-var combine = function(n, k) {
-  let ans = [];
+var combine = function (n, k) {
+  let nums = [... new Array(n)];
+  for (let i = 0; i < n; i++) {
+    nums[i] = i + 1;
+  }
+  let result = [];
   let path = [];
-  
-  backtrack(n, k, 1);
-  return ans;
-  
-  function backtrack(n, k, startIndex) {
-    if (path.length == k) {
-      ans.push([...path]);
+  backtracking(nums, 0);
+  return result;
+
+  function backtracking(nums, startIndex) {
+    if (path.length === k) {
+      result.push([...path]);
       return;
     }
-    
-    for (let i = startIndex; i <= n; i++) {
-      path.push(i);
-      backtrack(n, k, i+1);
+    for (let i = startIndex; i < nums.length; i++) {
+      path.push(nums[i]);
+      backtracking(nums, i + 1);
       path.pop();
     }
   }

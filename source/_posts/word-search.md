@@ -6,6 +6,9 @@ tags:
 - backtracking
 ---
 **`Note:`**
+- Update:
+  - Use only `DFS` is not enough, because from one point, we can go multiple ways,
+  what if one way is not correct, but the other is correct? We must return from the wrong way, and redirect to the correct way. Hence `backtracking`.
 - This is a `DFS + backtracking` problem.
 - Intialize `path` with `path[word[0]]`.
 - Call `dfs()` from `board[i][j] = word[0]`.
@@ -33,43 +36,39 @@ Output: true
  * @param {string} word
  * @return {boolean}
  */
- var exist = function (board, word) {
+var exist = function (board, word) {
   const rows = board.length;
   const cols = board[0].length;
-  let used = [...Array(rows)].map(e => Array(cols).fill(false));
-  let path = [word[0]];
-  let flag = false;
-
+  const directions = [-1, 0, 1, 0, -1];
+  let path = [];
+  let used = [...new Array(rows)].map(e => new Array(cols).fill(false));
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      if (flag) return true;
-      if (board[i][j] === word[0]) {
+      if (word[0] === board[i][j]) {
         used[i][j] = true;
-        dfs(board, word, i, j, 1);
+        if (dfs(i, j, 1)) return true;
         used[i][j] = false;
       }
     }
   }
-  return flag;
+  return false;
 
-  function dfs(board, word, x, y, wordIndex) {
-    if (flag) return;
-    if (path.join('') === word) {
-      flag = true;
-      return;
-    }
-    const dirs = [-1, 0, 1, 0, -1];
+  function dfs(i, j, wordIndex) {
+    if (wordIndex === word.length) return true;
+    if (i >= rows || j >= cols || i < 0 || j < 0) {
+      return false;
+    };
     for (let k = 0; k < 4; k++) {
-      const nx = x + dirs[k];
-      const ny = y + dirs[k + 1];
-      if (nx < 0 || nx >= rows || ny < 0 || ny >= cols) continue;
-      if (board[nx][ny] !== word[wordIndex] || used[nx][ny]) continue;
-      used[nx][ny] = true;
-      path.push(board[nx][ny]);
-      dfs(board, word, nx, ny, wordIndex + 1);
-      used[nx][ny] = false;
+      const nx = i + directions[k];
+      const ny = j + directions[k + 1];
+      if (nx < 0 || nx >= rows || ny < 0 || ny >= cols || used[nx][ny] || board[nx][ny] !== word[wordIndex]) continue;
+      path.push(board[i][j]);
+      used[i][j] = true;
+      if (dfs(nx, ny, wordIndex + 1)) return true;
       path.pop();
+      used[i][j] = false;
     }
+    return false;
   }
 };
 ```

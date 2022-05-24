@@ -2,12 +2,12 @@
   {
     "name": "Team1-VanHouse",
     "url": "https://vanhouse.herokuapp.com/",
-    "desc": "CPSC455 course project. A full-stack website dedicated to facilitate the renting processb between Vancouver-based tenants and landlords."
+    "desc": "CPSC455 group project. A full-stack website dedicated to facilitate the renting processb between Vancouver-based tenants and landlords."
   },
   {
     "name": "UBC Insight",
     "url": "https://github.com/BarneyShi/UBC-Insight",
-    "desc": "CPSC310 course group project developed in TDD methodology"
+    "desc": "CPSC310 group project developed in TDD methodology"
   },
   {
     "name": "iMemeDB",

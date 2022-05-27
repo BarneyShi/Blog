@@ -61,22 +61,14 @@ Explanation: "12" could be decoded as "AB" (1 2) or "L" (12).
  * @return {number}
  */
 var numDecodings = function (s) {
-  let dp = [...Array(s.length + 1).fill(0)];
+  let dp = [...new Array(s.length + 1).fill(0)];
   if (s[0] === '0') return 0;
   dp[0] = 1;
-  dp[1] = 1;
-  for (let i = 2; i <= s.length; i++) {
-    if (s[i-1] === '0') {
-      if (s[i - 2] < '1' || s[i - 2] > '2') return 0;
-      dp[i] = dp[i - 2];
-    } else {
-      const num = s.slice(i - 2, i);
-      if (num > '26' || s[i-2] === '0') {
-        dp[i] = dp[i-1];
-      } else {
-        dp[i] = dp[i-1] + dp[i-2];
-      }
+  for (let i = 1; i <= s.length; i++) {
+    if (s[i-1] !== '0') {
+      dp[i] += dp[i-1];
     }
+    if (s.slice(i - 2, i) <= '26' && i - 2 >= 0 && s[i-2] !== '0') dp[i] += dp[i - 2];
   }
   return dp[s.length];
 };
@@ -89,26 +81,21 @@ var numDecodings = function (s) {
  * @return {number}
  */
 var numDecodings = function (s) {
-  let memo = [];
-  return dfs(0, s);
+  let memo = new Map();
+  const res = dfs(0);
+  return res;
 
-  function dfs(i, s) {
-    if (i >= s.length) {
-      return 1;
-    }
-    if (s[i] === '0') return 0;
-    if (i === s.length - 1) return 1;
-    if (memo[i]) return memo[i];
-
+  function dfs(startIndex) {
+    if (startIndex >= s.length) return 1;
+    if (s[startIndex] === '0') return 0;
+    if (memo.has(startIndex)) return memo.get(startIndex);
     let a = 0;
-    a = dfs(i + 1, s);
-
+    a = dfs(startIndex + 1);
     let b = 0;
-    const num = s.slice(i, i + 2);
-    if (num - 0 > 26 || num - 0 < 1 || (num.length > 1 && num[0] === '0')) return a; 
-    b = dfs(i + 2, s);
-    memo[i] = a + b;
-
+    if (startIndex + 1 < s.length && s.slice(startIndex, startIndex + 2) <= '26') {
+      b = dfs(startIndex + 2);
+    }
+    memo.set(startIndex, a + b);
     return a + b;
   }
 };

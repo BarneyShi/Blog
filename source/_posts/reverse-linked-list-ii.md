@@ -38,23 +38,22 @@ Output: [1,4,3,2,5]
  * @return {ListNode}
  */
 var reverseBetween = function(head, left, right) {
-  if (!head || !head.next || left === right) return head;
-  const dummyHead = new ListNode();
-  dummyHead.next = head;
-  let prev = dummyHead;
+  let dummy = new ListNode();
+  dummy.next = head;
+  let prev = dummy;
   let i = 1;
   while (i < left) {
-    prev = prev.next;
     i++;
+    prev = prev.next;
   }
   let curr = prev.next;
   while (i < right) {
+    i++;
     let tmp = curr.next;
     curr.next = tmp.next;
     tmp.next = prev.next;
     prev.next = tmp;
-    i++
   }
-  return dummyHead.next;
+  return dummy.next;
 };
 ```

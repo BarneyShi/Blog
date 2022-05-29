@@ -6,8 +6,10 @@ tags:
 - backtracking
 ---
 **`Note:`**
+- 2022 Update:
+  - No need to write a helper. 
+  - Check `path` length before adding it to the result in case index hasn't reached the end.
 - This is a backtracking problem, very similar to `palindrome partitioning`.
-- Need to write a helper `isValidIP`
 - Pay attention to the `termination condition` because `path.length === s.lenght` is not enough. We also need to check if `path.length === s.length`.
 
 Given a string s containing only digits, return all possible valid IP addresses that can be obtained from s. You can return them in any order.
@@ -29,45 +31,24 @@ Output: ["0.0.0.0"]
  * @return {string[]}
  */
 var restoreIpAddresses = function(s) {
-  let ans = [];
+  let result = [];
   let path = [];
-  if (s.length > 12) return ans;
-  backtracking(s, 0);
-  return ans;
-  
-  function backtracking(s, startIndex) {
-    let tmp = path.join('');
-    if (path.length === 4 && tmp.length === s.length) {
-      ans.push(path.join('.'));
+  backtracking(0);
+  return result;
+
+  function backtracking(startIndex) {
+    if (path.length > 4) return;
+    if (startIndex >= s.length && path.length === 4) {
+      result.push(path.join('.'));
       return;
     }
-    
-    for (let i = startIndex; i < s.length; i++) {
-      let substr = s.substr(startIndex, i - startIndex + 1);
-      if (isValidIP(substr)) {
-        path.push(substr);
-        backtracking(s, i + 1);
-        path.pop();
-      } else {
-        continue;
-      }
+    for (let i = startIndex; i < startIndex + 3 && i < s.length; i++) {
+      const curr = s.slice(startIndex, i + 1);
+      if (curr.length > 1 && curr[0] === '0' || curr - 0 > 255) continue;
+      path.push(curr);
+      backtracking(i + 1);
+      path.pop();
     }
   }
 };
-
-function isValidIP(str) {
-  const num = parseInt(str);
-  if (isNaN(num) || str.length !== num.toString().length || num < 0 || num > 255) {
-    return false;
-  } else {
-    if (str.length === 1) {
-      return true;
-    } else {
-      if (str[0] === '0') {
-        return false;
-      }
-      return true;
-    }
-  }
-}
 ```

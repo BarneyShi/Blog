@@ -5,8 +5,9 @@ tags:
 - binary tree
 ---
 **`Note:`**
-- Use `queue` for level order traversal.
-- For `even` level, iterate from `right` to `left`. And add their `right` children first, then `left` children.
+- BFS traversal
+- Use a bool to check level traversal direction.
+- The only thing changes is the level list. Use `push` or `unshift` based on the bool.
 
 Given the `root` of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
 
@@ -37,40 +38,28 @@ Output: [[3],[20,9],[15,7]]
  */
 var zigzagLevelOrder = function (root) {
   if (!root) return [];
+  let isLeftToRight = true;
   let result = [];
-  traverse(root);
-  return result;
+  let queue = [root];
 
-  function traverse(node) {
-    let queue = [node];
-    let level = 0;
+  while (queue.length > 0) {
+    const length = queue.length;
+    let tmp = [];
+    for (let i = 0; i < length; i++) {
+      let first;
+      first = queue.shift();
+      if (isLeftToRight) {
+        tmp.push(first.val);
+      } else {
+        tmp.unshift(first.val);
+      }
+      if (first.left) queue.push(first.left);
+      if (first.right) queue.push(first.right);
 
-    while (queue.length > 0) {
-      const length = queue.length;
-      let levelTraversal = [];
-      let tmp = [];
-      for (let i = 0; i < length; i++) {
-        let node;
-        if (level % 2 === 0) {
-          node = queue.shift();
-          levelTraversal.push(node.val);
-          node.left && queue.push(node.left);
-          node.right && queue.push(node.right);
-        } else {
-          node = queue[length - i - 1];
-          queue.splice(length - i - 1, 1);
-          levelTraversal.push(node.val);
-          node.right && tmp.push(node.right);
-          node.left && tmp.push(node.left);
-        }
-      }
-      if (tmp.length > 0) {
-        tmp.reverse();
-        queue.push(...tmp);
-      }
-      level++;
-      result.push(levelTraversal);
     }
+    result.push(tmp);
+    isLeftToRight = !isLeftToRight;
   }
+  return result;
 };
 ```

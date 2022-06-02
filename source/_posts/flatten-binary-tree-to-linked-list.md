@@ -42,18 +42,24 @@ Output: [1,null,2,null,3,null,4,null,5,null,6]
  * @return {void} Do not return anything, modify root in-place instead.
  */
 var flatten = function(root) {
-   if (!root) return null;
-   let left = flatten(root.left);
-   let right = flatten(root.right);
+  construct(root);
 
-   let tmp = left;
-   while (tmp && tmp.right) {
-     tmp = tmp.right;
-   }
-   
-  tmp && (tmp.right = right);
-  left && (root.right = left);
-  root.left = null;
-   return root;
+  function construct(node) {
+    if (!node) return null;
+    const leftSub = construct(node.left);
+    const rightSub = construct(node.right);
+    if (leftSub) {
+      node.left = null;
+      node.right = leftSub;
+      let tmp = node.right;
+      while (tmp.right) {
+        tmp = tmp.right;
+      }
+      tmp.right = rightSub;
+    } else {
+      node.right = rightSub;
+    }
+    return node;
+  }
 };
 ```

@@ -71,30 +71,28 @@ var pathSum = function(root, targetSum) {
  * @param {number} targetSum
  * @return {number[][]}
  */
-var pathSum = function(root, targetSum) {
+var pathSum = function (root, targetSum) {
   if (!root) return [];
   let result = [];
-  let path = [];
-  backtracking(root, 0);
+  let path = [root.val];
+  backtracking(root, root.val);
   return result;
-  
-  function backtracking(node, sum) {
-    if (!node.left && !node.right) {
-      sum += node.val;
-      path.push(node.val);
-      if (sum === targetSum) {
-        result.push([...path]);
-      }
+
+  function backtracking(node, curSum) {
+    if (!node) return;
+    if (!node.left && !node.right && curSum === targetSum) {
+      result.push([...path]);
       return;
     }
-    /* make sure to only add cur val ONCE */
-    path.push(node.val);
     if (node.left) {
-      backtracking(node.left, sum + node.val);
+      path.push(node.left.val);
+      backtracking(node.left, curSum + node.left.val);
       path.pop();
     }
+
     if (node.right) {
-      backtracking(node.right, sum + node.val);
+      path.push(node.right.val);
+      backtracking(node.right, curSum + node.right.val);
       path.pop();
     }
   }

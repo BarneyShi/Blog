@@ -29,42 +29,38 @@ Explanation: Surrounded regions should not be on the border, which means that an
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var solve = function(board) {
+var solve = function (board) {
   const rows = board.length;
   const cols = board[0].length;
-  let visited = [...Array(rows)].map(e => Array(cols).fill(false));
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      if ((i === 0 || j === 0 || i === rows - 1 || j === cols - 1) && board[i][j] === 'O') {
-        dfs(i, j);
+      if (i === 0 || j === 0 || i === rows - 1 || j === cols - 1) {
+        if (board[i][j] === 'O') dfs(i, j);
       }
     }
   }
+
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      if (board[i][j] === 'O') {
-        board[i][j] = 'X';
-      } else if (board[i][j] === 'Z') {
+      if (board[i][j] === '+') {
         board[i][j] = 'O';
+      } else {
+        board[i][j] = 'X';
       }
     }
   }
 
   function dfs(i, j) {
-    if (visited[i][j]) return;
-    if (board[i][j] === 'O') {
-      board[i][j] = 'Z';
-    }
-    visited[i][j] = true;
     const dirs = [-1, 0, 1, 0, -1];
+    if (board[i][j] === 'O') {
+      board[i][j] = '+';
+    }
     for (let k = 0; k < 4; k++) {
       const nx = i + dirs[k];
       const ny = j + dirs[k + 1];
-      if (nx < 0 || nx >= rows || ny < 0 || ny >= cols) continue;
-      if (board[nx][ny] === 'O') {
-        dfs(nx, ny);
-      }
+      if (nx < 0 || ny < 0 || nx === rows || ny === cols || board[nx][ny] !== 'O') continue;
+      dfs(nx, ny);
     }
   }
 };

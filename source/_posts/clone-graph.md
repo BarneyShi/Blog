@@ -62,28 +62,30 @@ Explanation: There are 4 nodes in the graph.
  * @param {Node} node
  * @return {Node}
  */
-var cloneGraph = function(node) {
-  if (!node) return node;
+var cloneGraph = function (node) {
+  if (!node) return null;
+
+  let map = new Map();
   let queue = [node];
-  let startNode = new Node(node.val, []);
-  let visited = new Map();
-  visited.set(node, startNode);
-  while (queue.length > 0) {
+  map.set(node, new Node(node.val));
+  while (queue.length) {
     const length = queue.length;
     for (let i = 0; i < length; i++) {
-      const head = queue.shift();
-      for (const child of head.neighbors) {
-        if (!visited.has(child)) {
+      const first = queue.shift();
+      const newFirst = map.get(first);
+      for (const child of first.neighbors) {
+        if (map.has(child)) {
+          newFirst.neighbors.push(map.get(child));
+        } else {
+          const newChild = new Node(child.val);
+          newFirst.neighbors.push(newChild);
           queue.push(child);
-          const newNode = new Node(child.val);
-          visited.set(child, newNode);
+          map.set(child, newChild);
         }
-        const clonedNodes = visited.get(child);
-        visited.get(head).neighbors.push(clonedNodes);
       }
     }
   }
-  return startNode;
+  return map.get(node);
 };
 ```
 

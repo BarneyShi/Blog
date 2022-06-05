@@ -27,40 +27,37 @@ Output: [["a","a","b"],["aa","b"]]
  * @return {string[][]}
  */
 var partition = function(s) {
-  let ans = [];
   let path = [];
-  backtracking(s, 0);
-  return ans;
-  
-  function backtracking(s, startIndex) {
-    if (startIndex > s.length) return;
-    if (startIndex === s.length) {
-      ans.push([...path]);
+  let result = [];
+  backtracking(0);
+  return result;
+
+  function backtracking(index) {
+    if (index >= s.length) {
+      result.push([...path]);
       return;
     }
-  
-    for (let i = startIndex; i < s.length; i++) {
-      let substr = s.substr(startIndex, i - startIndex + 1);
-      if(isPalindrome(substr)) {
-        path.push(substr);
-      } else {
-        continue;
-      }
-      backtracking(s, i+1);
-      path.pop();    
-    }
-  }
-};
 
-function isPalindrome(str) {
-  let left = 0, right = str.length-1;
-  while (left < right) {
-    if (str[left] !== str[right]) {
-      return false;
+    for (let i = index; i < s.length; i++) {
+      if (isPalindrome(index, i)) {
+        path.push(s.slice(index, i+1));
+        backtracking(i+1);
+        path.pop();
+      }
     }
-    left++;
-    right--;
   }
-  return true;
-}
+
+  function isPalindrome(start, end) {
+    let left = start;
+    let right = end;
+    while (left < right) {
+      if (s[left] !== s[right]) return false;
+      left++;
+      right--;
+    }
+    return true;
+  }
+
+
+};
 ```

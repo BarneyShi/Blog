@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg">
 <meta property="article:published_time" content="2021-09-13T23:31:22.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.946Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.083Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dfs">
 <meta property="article:tag" content="backtracking">
@@ -168,9 +168,9 @@
 <li>This is DFS but can be treated like backtracking (The hardest I’ve done so far)</li>
 <li>We need to sort <code>tickets</code> first, so <code>the first path</code> we found must be the res coz we are using <code>greedy</code> algo to iterate in <code>smallest lexical</code> order.</li>
 <li>We need a flag <code>found</code> because if we don’t stop the <code>following forloop</code>, more paths will be added into <code>res</code>.</li>
-<li>Used <code>visited</code> to mark visited path on the <code>same branch</code>. </li>
+<li>Used <code>visited</code> to mark visited path on the <code>same branch</code>.</li>
 </ul>
-<p>You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.</p>
+<p>You are given a list of airline tickets where tickets[i] &#x3D; [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.</p>
 <p>All of the tickets belong to a man who departs from “JFK”, thus, the itinerary must begin with “JFK”. If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.</p>
 <p>For example, the itinerary [“JFK”, “LGA”] has a smaller lexical order than [“JFK”, “LGB”].<br>You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.</p>
 <p><strong>Example</strong></p>

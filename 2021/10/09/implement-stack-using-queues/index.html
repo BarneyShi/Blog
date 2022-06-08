@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Because we are using queues, we can only use push and shift (To get the first element).  DO NOT use pop. One queue is enough for implementation.  Question:Implement a last-in-first-out (LIFO) s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-09T18:52:15.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.938Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.075Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="stack">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,7 @@
 <li>boolean empty() Returns true if the stack is empty, false otherwise.</li>
 </ul>
 <p>Notes:</p>
-<p>You must use only standard operations of a queue, which means that only push to back, peek/pop from front, size and is empty operations are valid.<br>Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue’s standard operations.</p>
+<p>You must use only standard operations of a queue, which means that only push to back, peek&#x2F;pop from front, size and is empty operations are valid.<br>Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue’s standard operations.</p>
 <p><strong><code>Example:</code></strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;MyStack&quot;, &quot;push&quot;, &quot;push&quot;, &quot;top&quot;, &quot;pop&quot;, &quot;empty&quot;]</span><br><span class="line">[[], [1], [2], [], [], []]</span><br><span class="line">Output</span><br><span class="line">[null, null, null, 2, 2, false]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">MyStack myStack = new MyStack();</span><br><span class="line">myStack.push(1);</span><br><span class="line">myStack.push(2);</span><br><span class="line">myStack.top(); // return 2</span><br><span class="line">myStack.pop(); // return 2</span><br><span class="line">myStack.empty(); // return False</span><br></pre></td></tr></table></figure>
 

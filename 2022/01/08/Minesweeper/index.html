@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png">
 <meta property="article:published_time" content="2022-01-08T16:35:51.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dfs">
 <meta name="twitter:card" content="summary">
@@ -180,10 +180,10 @@
 <p>You are also given an integer array click where <code>click = [clickr, clickc]</code> represents the next click position among all the unrevealed squares (‘M’ or ‘E’).</p>
 <p>Return the board after revealing this position according to the following rules:</p>
 <ol>
-<li> If a mine ‘M’ is revealed, then the game is over. You should change it to ‘X’.</li>
-<li> If an empty square ‘E’ with no adjacent mines is revealed, then change it to a revealed blank ‘B’ and all of its adjacent unrevealed squares should be revealed recursively.</li>
-<li> If an empty square ‘E’ with at least one adjacent mine is revealed, then change it to a digit (‘1’ to ‘8’) representing the number of adjacent mines.</li>
-<li> Return the board when no more squares will be revealed.</li>
+<li>If a mine ‘M’ is revealed, then the game is over. You should change it to ‘X’.</li>
+<li>If an empty square ‘E’ with no adjacent mines is revealed, then change it to a revealed blank ‘B’ and all of its adjacent unrevealed squares should be revealed recursively.</li>
+<li>If an empty square ‘E’ with at least one adjacent mine is revealed, then change it to a digit (‘1’ to ‘8’) representing the number of adjacent mines.</li>
+<li>Return the board when no more squares will be revealed.</li>
 </ol>
 <p><strong><code>Example:</code></strong></p>
 <p><img src="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png" alt="img"></p>

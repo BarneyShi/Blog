@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/kbAg6KR.png">
 <meta property="article:published_time" content="2021-09-21T18:14:21.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.942Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.079Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dp">
 <meta property="article:tag" content="leetcode">
@@ -169,7 +169,7 @@
 <li>Use <code>dp[i][j]</code> to represent the max length of subarray that ends with <code>nums1[i]</code> and <code>nums2[j]</code> .</li>
 <li>Initialize the <code>first row</code> and <code>first col</code> because we need <code>i-1</code> and <code>j-1</code> in our code.</li>
 <li>When <code>nums1[i] === nums2[j]</code>, there are two situations<ul>
-<li> <code>nums1[i-1] !== nums2[j-1]</code> so it’s a new subarray. <code>dp[i][j] = 1</code> (need this because non first row/col is init as 0).</li>
+<li><code>nums1[i-1] !== nums2[j-1]</code> so it’s a new subarray. <code>dp[i][j] = 1</code> (need this because non first row&#x2F;col is init as 0).</li>
 <li><code>nums1[i-1] === nums2[j-1]</code> so we just need to <code>add 1</code> to <code>dp[i-1][j-1]</code>.</li>
 </ul>
 </li>

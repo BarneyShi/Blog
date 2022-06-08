@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/vTfsfUz.png">
 <meta property="article:published_time" content="2021-12-01T01:12:21.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.938Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.075Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="hash table">
 <meta property="article:tag" content="sort">
@@ -169,7 +169,7 @@
 <ul>
 <li>We can maintain a sliding window with size <code>k</code>.</li>
 <li>How do we put elements like <code>[0, 1, 2, 3], t = 3</code> into the same bucket?<ul>
-<li>Using <code>x / t</code> doesn’t work when <code> t == -1</code>. Let’s use <code>floor(x / t + 1)</code> (In other languages other than JS, need to dicuss based on x is positive or not because in JS floor(-1.5) == -2).</li>
+<li>Using <code>x / t</code> doesn’t work when <code> t == -1</code>. Let’s use <code>floor(x / t + 1)</code> (In other languages other than JS, need to dicuss based on x is positive or not because in JS floor(-1.5) &#x3D;&#x3D; -2).</li>
 </ul>
 </li>
 <li>Use <code>map.set(bucketIndex, nums[i])</code> to store elements.</li>

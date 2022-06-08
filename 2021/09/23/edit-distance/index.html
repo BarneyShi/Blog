@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/VVJHuf5.png">
 <meta property="article:published_time" content="2021-09-23T02:33:25.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.938Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.075Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary">
@@ -171,8 +171,8 @@
 <li>When <code>word1[i-1] === word2[j-1]</code>, these 2 chars are the same, so <code>dp[i][j] = dp[i-1][j-1]</code></li>
 <li>When <code>word1[i-1] !== word2[j-1]</code>, there are <strong><code>3</code></strong> kinds of operations:<ul>
 <li>Replace: <code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
-<li>Add/Delete: Convert <code>word1 [0, i-2]</code> to <code>word2 [0, i-1]</code> or vice versa.<ul>
-<li><code>dp[i][j-1] + 1</code> Or <code>dp[i-1][j] + 1</code>. When to convert a longer one to a short one, it’s <code>deletion</code>. In the reverse way, it’s <code>addition</code>. </li>
+<li>Add&#x2F;Delete: Convert <code>word1 [0, i-2]</code> to <code>word2 [0, i-1]</code> or vice versa.<ul>
+<li><code>dp[i][j-1] + 1</code> Or <code>dp[i-1][j] + 1</code>. When to convert a longer one to a short one, it’s <code>deletion</code>. In the reverse way, it’s <code>addition</code>.</li>
 </ul>
 </li>
 </ul>

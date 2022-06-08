@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Weird question. Use hash table to record all frequencies of letters. Then copy map and for every letter that appears in both strings, do minus 1 tp map val till it’s 0. Record the count and fin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-09T17:06:52.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.934Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.067Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="simulation">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
 <p><strong><code>Question:</code></strong></p>
 <p>Given a string <code>licensePlate</code> and an array of strings <code>words</code>, find the <code>shortest completing word</code> in words.</p>
 <p>A completing word is a word that <code>contains all the letters</code> in licensePlate. <code>Ignore numbers and spaces</code> in licensePlate, and treat letters as <code>case insensitive</code>. If a letter appears more than once in licensePlate, then it must appear in the word the same number of times or more.</p>
-<p>For example, if licensePlate = “aBc 12c”, then it contains letters ‘a’, ‘b’ (ignoring case), and ‘c’ twice. Possible completing words are “abccdef”, “caaacab”, and “cbca”.</p>
+<p>For example, if licensePlate &#x3D; “aBc 12c”, then it contains letters ‘a’, ‘b’ (ignoring case), and ‘c’ twice. Possible completing words are “abccdef”, “caaacab”, and “cbca”.</p>
 <p>Return the <code>shortest</code> completing word in words. It is guaranteed an answer exists. If there are <code>multiple</code> shortest completing words, return the <code>first</code> one that occurs in words.</p>
 <p><strong><code>Example:</code></strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: licensePlate = &quot;1s3 PSt&quot;, words = [&quot;step&quot;,&quot;steps&quot;,&quot;stripe&quot;,&quot;stepple&quot;]</span><br><span class="line">Output: &quot;steps&quot;</span><br><span class="line">Explanation: licensePlate contains letters &#x27;s&#x27;, &#x27;p&#x27;, &#x27;s&#x27; (ignoring case), and &#x27;t&#x27;.</span><br><span class="line">&quot;step&quot; contains &#x27;t&#x27; and &#x27;p&#x27;, but only contains 1 &#x27;s&#x27;.</span><br><span class="line">&quot;steps&quot; contains &#x27;t&#x27;, &#x27;p&#x27;, and both &#x27;s&#x27; characters.</span><br><span class="line">&quot;stripe&quot; is missing an &#x27;s&#x27;.</span><br><span class="line">&quot;stepple&quot; is missing an &#x27;s&#x27;.</span><br><span class="line">Since &quot;steps&quot; is the only word containing all the letters, that is the answer.</span><br></pre></td></tr></table></figure>

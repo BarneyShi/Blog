@@ -14,7 +14,7 @@
 <meta property="og:description" content="How to optimize DP solutions from 2D array to 1D?. Take the most classic 01 knapsack problem for example. 123weights &#x3D; [1, 3, 4]values &#x3D; [15, 20, 30]bagWeight &#x3D; 4    When we are using 2D array, the de">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-06T00:38:09.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dp">
 <meta property="article:tag" content="leetcode">
@@ -165,7 +165,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">weights = [1, 3, 4]</span><br><span class="line">values = [15, 20, 30]</span><br><span class="line">bagWeight = 4  </span><br></pre></td></tr></table></figure>
 <ol>
 <li>When we are using <code>2D</code> array, the deduction is <code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i])</code>.<br>The state of <code>[i][...]</code> is only related to the state of <code>[i-1][...]</code>. Then, it’s easy to realize that we can use <code>dp[j]</code> to represent our last iteration result, so we can save some spaces.<ul>
-<li>Our deduction becomes <code>dp[j] = max(dp[j], dp[j-weights[i]] + values[i])</code>. </li>
+<li>Our deduction becomes <code>dp[j] = max(dp[j], dp[j-weights[i]] + values[i])</code>.</li>
 </ul>
 </li>
 <li>When we iterate through <code>j</code>, be careful to use <code>reversed</code> order on <code>j</code> to avoid repetitive calculations. <ul>

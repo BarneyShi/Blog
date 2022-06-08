@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Use recursion to generate strings then count. Use s to contain the result, and group[] to contain every group. At first, there will be missing elements in group[]. Add them alternatively based">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-03T19:06:09.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta name="twitter:card" content="summary">
     
@@ -169,7 +169,7 @@
 <ul>
 <li>The string s is magical because concatenating the number of contiguous occurrences of characters <code>&#39;1&#39;</code> and <code>&#39;2&#39;</code> generates the string <code>s</code> itself.</li>
 </ul>
-<p>The first few elements of <code>s</code> is s = <code>&quot;1221121221221121122……&quot;</code>. If we group the consecutive 1’s and 2’s in s, it will be <code>&quot;1 22 11 2 1 22 1 22 11 2 11 22 ......&quot;</code> and the occurrences of 1’s or 2’s in each group are <code>&quot;1 2 2 1 1 2 1 2 2 1 2 2 ......&quot;</code>. You can see that the occurrence sequence is s itself.</p>
+<p>The first few elements of <code>s</code> is s &#x3D; <code>&quot;1221121221221121122……&quot;</code>. If we group the consecutive 1’s and 2’s in s, it will be <code>&quot;1 22 11 2 1 22 1 22 11 2 11 22 ......&quot;</code> and the occurrences of 1’s or 2’s in each group are <code>&quot;1 2 2 1 1 2 1 2 2 1 2 2 ......&quot;</code>. You can see that the occurrence sequence is s itself.</p>
 <p>Given an integer <code>n</code>, return the number of <code>1</code>‘s in the first <code>n</code> number in the magical string s.</p>
 <p><strong><code>Example:</code></strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 6</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The first 6 elements of magical string s is &quot;122112&quot; and it contains three 1&#x27;s, so return 3.</span><br></pre></td></tr></table></figure>

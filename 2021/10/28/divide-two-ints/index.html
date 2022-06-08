@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Take 100 &#x2F; 3 for example: If we just do 100 - 3 every time and count the num, it’s be really slow! Instead, we use &gt;&gt;&gt; unsigned left shift to divide dividend every time, so we can quic">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-28T23:43:18.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.938Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.075Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
@@ -171,7 +171,7 @@
 <li>Make sure <code>100 &gt;&gt;&gt; i &gt;= 3</code>.</li>
 <li>After we find <code>100 &gt;&gt;&gt; 1</code> for 5 times, which means we’ve found <code>2^5 * 3 &lt;= 100</code>;</li>
 <li>Then <code>100 - 32*3 = 4</code></li>
-<li>Let dividend = 4, and add 32 to res. Do the iteration again.</li>
+<li>Let dividend &#x3D; 4, and add 32 to res. Do the iteration again.</li>
 </ul>
 </li>
 <li>Use <code>&gt;&gt;&gt;</code> on <code>2**31</code> otherwise you’ll get a negative number coz <code>2**31</code>‘s first digit is <code>1</code> and JS will assume its a negative number after shifting it.</li>

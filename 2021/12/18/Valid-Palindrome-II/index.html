@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Note:  DFS all the way. Use times as a param to record times we deleted chars. Pair with double pointers. If left &gt;&#x3D; right return true. If s[l] &#x3D;&#x3D;&#x3D; s[r] then continue dfs. If not, times &gt;&#x3D; 1 ret">
+    <meta name="description" content="Note:  DFS all the way. Use times as a param to record times we deleted chars. Pair with double pointers. If left &gt;&#x3D; right return true. If s[l] &#x3D;&#x3D;&#x3D; s[r] then continue dfs. If not, times &gt;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 680 - Valid Palindrome II">
 <meta property="og:url" content="http://example.com/2021/12/18/Valid-Palindrome-II/index.html">
 <meta property="og:site_name" content="Barney&#39;s Blog">
-<meta property="og:description" content="Note:  DFS all the way. Use times as a param to record times we deleted chars. Pair with double pointers. If left &gt;&#x3D; right return true. If s[l] &#x3D;&#x3D;&#x3D; s[r] then continue dfs. If not, times &gt;&#x3D; 1 ret">
+<meta property="og:description" content="Note:  DFS all the way. Use times as a param to record times we deleted chars. Pair with double pointers. If left &gt;&#x3D; right return true. If s[l] &#x3D;&#x3D;&#x3D; s[r] then continue dfs. If not, times &gt;&#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-18T00:39:55.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.934Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.067Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="dfs">
 <meta property="article:tag" content="double pointers">
@@ -168,7 +168,7 @@
 <li>If <code>left &gt;= right</code> return true.</li>
 <li>If <code>s[l] === s[r]</code> then continue dfs.</li>
 <li>If not,<ul>
-<li>times &gt;= 1 return false.</li>
+<li>times &gt;&#x3D; 1 return false.</li>
 <li>Otherwise continue dfs with <code>times + 1</code>.</li>
 </ul>
 </li>

@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2020/08/28/mdir.jpg">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2020/08/28/dir1.jpg">
 <meta property="article:published_time" content="2021-12-12T18:04:42.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="stack">
 <meta name="twitter:card" content="summary">
@@ -180,7 +180,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br><span class="line">⟶ subdir1</span><br><span class="line">⟶ ⟶ file1.ext</span><br><span class="line">⟶ ⟶ subsubdir1</span><br><span class="line">⟶ subdir2</span><br><span class="line">⟶ ⟶ subsubdir2</span><br><span class="line">⟶ ⟶ ⟶ file2.ext</span><br></pre></td></tr></table></figure>
 
 <p>If we were to write this representation in code, it will look like this: <code>&quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot;</code>. Note that the <code>&#39;\n&#39;</code> and <code>&#39;\t&#39;</code> are the new-line and tab characters.</p>
-<p>Every file and directory has a unique absolute path in the file system, which is the order of directories that must be opened to reach the file/directory itself, all concatenated by <code>&#39;/&#39;s</code>. Using the above example, the <code>absolute path</code> to <code>file2.ext</code> is <code>&quot;dir/subdir2/subsubdir2/file2.ext&quot;</code>. Each directory name consists of letters, digits, and/or spaces. Each file name is of the form <code>name.extension</code>, where <code>name</code> and <code>extension</code> consist of letters, digits, and/or spaces.</p>
+<p>Every file and directory has a unique absolute path in the file system, which is the order of directories that must be opened to reach the file&#x2F;directory itself, all concatenated by <code>&#39;/&#39;s</code>. Using the above example, the <code>absolute path</code> to <code>file2.ext</code> is <code>&quot;dir/subdir2/subsubdir2/file2.ext&quot;</code>. Each directory name consists of letters, digits, and&#x2F;or spaces. Each file name is of the form <code>name.extension</code>, where <code>name</code> and <code>extension</code> consist of letters, digits, and&#x2F;or spaces.</p>
 <p>Given a string <code>input</code> representing the file system in the explained format, return the length of the longest absolute path to a file in the abstracted file system. If there is no file in the system, return <code>0</code>.</p>
 <p><strong><code>Example:</code></strong></p>
 <p><img src="https://assets.leetcode.com/uploads/2020/08/28/dir1.jpg" alt="img"></p>

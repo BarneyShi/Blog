@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Don’t use stack and make it too complicate.  Question: A string is a valid parentheses string (denoted VPS) if it meets one of the following:  It is an empty string &quot;&quot;, or a single ch">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T16:00:09.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta name="twitter:card" content="summary">
     
@@ -167,10 +167,10 @@
 </ul>
 <p>We can similarly define the nesting depth depth(S) of any VPS S as follows:</p>
 <ul>
-<li>depth(“”) = 0</li>
-<li>depth(C) = 0, where C is a string with a single character not equal to “(“ or “)”.</li>
-<li>depth(A + B) = max(depth(A), depth(B)), where A and B are VPS’s.</li>
-<li>depth(“(“ + A + “)”) = 1 + depth(A), where A is a VPS.</li>
+<li>depth(“”) &#x3D; 0</li>
+<li>depth(C) &#x3D; 0, where C is a string with a single character not equal to “(“ or “)”.</li>
+<li>depth(A + B) &#x3D; max(depth(A), depth(B)), where A and B are VPS’s.</li>
+<li>depth(“(“ + A + “)”) &#x3D; 1 + depth(A), where A is a VPS.</li>
 </ul>
 <p>For example, “”, “()()”, and “()(()())” are VPS’s (with nesting depths 0, 1, and 2), and “)(“ and “(()” are not VPS’s.</p>
 <p>Given a VPS represented as string s, return the nesting depth of s.</p>

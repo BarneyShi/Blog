@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Normal approach is pretty intuitive so we don’t talk about it. For double pointers: If there are n spaces in the string, the result will have 2n more chars than the original. Iterate string to">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-11T01:44:17.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.946Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.087Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="double pointers">
 <meta property="article:tag" content="string">
@@ -171,7 +171,7 @@
 <li>Convert it to <code>array</code> so we can mutate it. (String is immutable in JS)</li>
 <li><code>Left</code> pointer should be put at the end of the original string, and <code>right</code> is put at the end of the new string.</li>
 <li>When <code>arr[left] === &#39; &#39;</code>, replace <code>arr[right], arr[right-1], arr[right-2]</code> with <code>%20</code>.</li>
-<li>Otherwise just <code>arr[right--] = arr[left--]</code>. (We don’t even need to swap them because old chars will be covered by new chars.) </li>
+<li>Otherwise just <code>arr[right--] = arr[left--]</code>. (We don’t even need to swap them because old chars will be covered by new chars.)</li>
 </ul>
 </li>
 </ul>

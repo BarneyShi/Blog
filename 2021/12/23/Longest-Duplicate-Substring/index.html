@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  This is a really hard question. When a substr with length L is a repeated str of s, then $L_0 &lt; L$ is also a substr of s.  Based on this attribute, we can use binary search. In binary search">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-23T16:42:03.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="hash table">
 <meta property="article:tag" content="binary search">
@@ -172,7 +172,7 @@
 <li>The key part is how to efficiently check if <code>a</code> is <code>b</code>‘s repeated substr?</li>
 <li>If use normal method, it’d be <code>O(n*len)</code> which is not optimal. Let me introduce <code>rabin-karp</code> algorithm, a <code>rolling hash</code> method. </li>
 <li>It looks like <ul>
-<li>$Hash = c_1 * b^{len-1} + c_2 * b^{len-2} + c_3 * b^{len-3} + … + c_{len} * b^{0}$.</li>
+<li>$Hash &#x3D; c_1 * b^{len-1} + c_2 * b^{len-2} + c_3 * b^{len-3} + … + c_{len} * b^{0}$.</li>
 <li><code>b</code> is a random base we chose. <code>c</code> is ASCII code.</li>
 </ul>
 </li>

@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Not hard to come up with bit wise methods. The result must be a 32-bit integer. We init res as 0.  Use prev to carry extra 1 from prev digit. For each digit, how should we add the result into r">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-16T20:41:42.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.946Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.095Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="bitwise">
 <meta name="twitter:card" content="summary">
@@ -168,7 +168,7 @@
 <li>For each digit, how should we add the result into <code>res</code>?</li>
 <li>Use <code>curSum &lt;&lt; i</code>, it will right shift <code>1</code> and use <code>|</code> to add up with <code>res</code>.</li>
 <li>Should we care about <code>negative</code> numbers?<ul>
-<li>No. Actually, when we do <code>a &gt;&gt; 1</code> and <code>a &lt; 0</code>, the left most will be filled with 0. If it’s a while loop, it would be a loop hole. But we only do this <code>32</code> times. So, it will def terminate. </li>
+<li>No. Actually, when we do <code>a &gt;&gt; 1</code> and <code>a &lt; 0</code>, the left most will be filled with 0. If it’s a while loop, it would be a loop hole. But we only do this <code>32</code> times. So, it will def terminate.</li>
 </ul>
 </li>
 </ul>

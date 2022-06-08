@@ -14,7 +14,7 @@
 <meta property="og:description" content="Note:  Double pointer: Based on 0.5x + 7 &lt; y &lt;&#x3D; x, use two pointers to find the interval. Note that from x &gt; 0.5x + 7 we get x &gt; 14. Don’t reset left and right inside loop. Because we can">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-26T18:53:06.000Z">
-<meta property="article:modified_time" content="2022-06-08T05:25:10.930Z">
+<meta property="article:modified_time" content="2022-06-08T05:25:31.063Z">
 <meta property="article:author" content="Barney">
 <meta property="article:tag" content="double pointers">
 <meta property="article:tag" content="hash table">
@@ -169,7 +169,7 @@
 </ul>
 </li>
 <li>Brute force: Put every age into a map. <ul>
-<li>From j = <code>0.5x + 8</code> to <code>x</code>, if map.has(j), requests we can make is len - 1 (exclude itself).</li>
+<li>From j &#x3D; <code>0.5x + 8</code> to <code>x</code>, if map.has(j), requests we can make is len - 1 (exclude itself).</li>
 </ul>
 </li>
 </ul>
@@ -177,7 +177,7 @@
 <p>There are n persons on a social media website. You are given an integer array <code>ages</code> where <code>ages[i]</code> is the age of the $i^{th}$ person.</p>
 <p>A Person <code>x</code> will not send a friend request to a person <code>y</code> <code>(x != y)</code> if any of the following conditions is true:</p>
 <ul>
-<li>age[y] &lt;= 0.5 * age[x] + 7</li>
+<li>age[y] &lt;&#x3D; 0.5 * age[x] + 7</li>
 <li>age[y] &gt; age[x]</li>
 <li>age[y] &gt; 100 &amp;&amp; age[x] &lt; 100</li>
 </ul>

@@ -38,6 +38,39 @@ Output: "0.(012)"
 ```
 
 **`Code:`**
+
+```csharp
+public class Solution {
+    public string FractionToDecimal(int numerator, int denominator) {
+      // Convert to long type in case of (-1, -2147483648) etc.
+      long a = numerator, b = denominator;
+      var isNegative = (a * b) < 0;
+      a = Math.Abs(a);
+      b = Math.Abs(b);
+      long remainder = Math.Abs(a) % Math.Abs(b);
+      long quotient = a / b;
+      if (remainder == 0) return (isNegative ? "-":"") + quotient;
+
+      var dict = new Dictionary<long, int>();
+      int index = 0;
+      
+      StringBuilder fraction = new StringBuilder();
+
+      int i = 0;
+      while (!dict.ContainsKey(remainder)) {
+        dict.Add(remainder, i);
+        fraction.Append(remainder * 10 / b);
+        if (remainder * 10 % b == 0) return (isNegative ? "-":"") + Math.Abs(quotient) + "." + fraction.ToString();
+        remainder = remainder * 10 % b;
+        i++;
+      }
+      // Dictionary contains the start index of repeated decimal part.
+      var startIndex = dict[remainder];
+      return (isNegative ? "-" : "") + Math.Abs(quotient) + "." + fraction.ToString().Substring(0, startIndex) + "(" + fraction.ToString().Substring(startIndex) + ")";
+    }
+}
+```
+
 ```javascript
 /**
  * @param {number} numerator

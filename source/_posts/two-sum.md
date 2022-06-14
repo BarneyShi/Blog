@@ -1,0 +1,46 @@
+---
+title: Leetcode 167 - Two sum
+date: 2022-06-13 21:08:52
+tags:
+- double pointers
+---
+**`Note:`**
+- A very classical `double pointers` questions.
+
+**`Question:`**
+
+Given a `1-indexed` array of integers numbers that is already `sorted in non-decreasing order`, find two numbers such that they add up to a specific `target` number. Let these two numbers be numbers[index1] and numbers[index2] where `1 <= index1 < index2 <= numbers.length`.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+Your solution must use only constant extra space.
+
+**`Example:`**
+```
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+```
+
+**`Code:`**
+```csharp
+public class Solution {
+    public int[] TwoSum(int[] numbers, int target) {
+      var left = 0;
+      var right = numbers.Length - 1;
+      while (left < right) {
+        var sum = numbers[left]+numbers[right];
+        if (sum == target) return new int[2]{left+1, right+1};
+        if (sum < target) {
+          left++;
+        } else {
+          right--;
+        }
+      }
+      return new int[2]{-1,-1};
+    }
+}
+```
